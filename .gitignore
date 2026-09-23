@@ -1,3 +1,19 @@
-/node_modules
-node_modules
-*node_modules
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env*.local
+
+# Production / Vercel outputs
+.vercel
+dist/
+build/
+
+# Test artifacts & screenshots
+shots/
+*.log
+
+# Operating System Files
+.DS_Store
+Thumbs.db

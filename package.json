@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node tools/serve.js",
     "dev": "node tools/serve.js",
+    "build": "echo 'Static site ready for deployment'",
+    "preview": "node tools/serve.js",
     "verify": "node tools/verify.mjs",
     "filmstrip": "node tools/filmstrip.mjs",
     "metrics": "python3 tools/metrics.py \"shots/rest-*.png\"",
