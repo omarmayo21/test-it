@@ -1,0 +1,3 @@
+/* Self-hosted brand type — Plus Jakarta Sans (primary) + Syne (accent) */
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:200 800;font-display:swap;src:url(/public/fonts/PlusJakartaSans.woff2) format('woff2');}
+@font-face{font-family:'Syne';font-style:normal;font-weight:400 800;font-display:swap;src:url(/public/fonts/Syne.woff2) format('woff2');}

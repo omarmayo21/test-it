@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Solutions Castle — IT Services &amp; Training</title>
+<meta name="description" content="Solutions Castle delivers professional IT services and technical training engineered to help organizations build stronger technology and human capability." />
+<meta name="theme-color" content="#02131E" />
+<link rel="icon" href="public/logo.png" />
+<link rel="preload" as="image" href="public/So.png" />
+<link rel="preload" as="font" type="font/woff2" href="public/fonts/PlusJakartaSans.woff2" crossorigin />
+<link rel="stylesheet" href="assets/css/fonts.css" />
+<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+
+<!-- ══════════════════════ ATMOSPHERE (continuous world) ══════════════════════ -->
+<div class="atmosphere" aria-hidden="true">
+  <canvas id="dust" class="atmosphere__dust"></canvas>
+  <div class="atmosphere__grid"></div>
+  <div class="atmosphere__horizon"></div>
+  <div class="atmosphere__glow atmosphere__glow--a"></div>
+  <div class="atmosphere__glow atmosphere__glow--b"></div>
+  <div class="atmosphere__vignette"></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ══════════════════════ NAVIGATION ══════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#section-1" data-goto="0" aria-label="Solutions Castle — home">
+      <img src="public/logo-clear.png" alt="Solutions Castle" class="nav__logo" width="1340" height="441" />
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#section-1" data-goto="0" class="nav__link is-current">Home</a>
+      <a href="#section-2" data-goto="1" class="nav__link">About Us</a>
+      <a href="#section-4" data-goto="3" class="nav__link">IT Services</a>
+      <a href="#section-5" data-goto="4" class="nav__link">Training</a>
+      <a href="#section-7" data-goto="6" class="nav__link">Industries</a>
+      <a href="#section-10" data-goto="9" class="nav__link">Contact</a>
+    </nav>
+
+    <div class="nav__right">
+      <a href="#section-10" data-goto="9" class="btn btn--ghost nav__cta">Let&rsquo;s talk <span class="btn__arw">&#8594;</span></a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav__rule"></div>
+</header>
+
+<!-- ══════════════════════ MOBILE MENU ══════════════════════ -->
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="menu__inner">
+    <p class="menu__eyebrow">Solutions Castle</p>
+    <nav class="menu__nav" aria-label="Mobile">
+      <a href="#section-1" data-goto="0"><i>01</i> Home</a>
+      <a href="#section-2" data-goto="1"><i>02</i> About Us</a>
+      <a href="#section-3" data-goto="2"><i>03</i> What We Do</a>
+      <a href="#section-4" data-goto="3"><i>04</i> IT Services</a>
+      <a href="#section-5" data-goto="4"><i>05</i> Training</a>
+      <a href="#section-6" data-goto="5"><i>06</i> How We Work</a>
+      <a href="#section-7" data-goto="6"><i>07</i> Industries</a>
+      <a href="#section-10" data-goto="9"><i>08</i> Contact</a>
+    </nav>
+    <p class="menu__foot">IT Services &amp; Training</p>
+  </div>
+</div>
+
+<!-- ══════════════════════ PROGRESS RAIL ══════════════════════ -->
+<aside class="rail" aria-hidden="true">
+  <span class="rail__num" id="railNum">01</span>
+  <span class="rail__line"><i id="railFill"></i></span>
+  <span class="rail__tot">10</span>
+</aside>
+
+<!-- ══════════════════════ SCROLL CUE ══════════════════════ -->
+<div class="cue" id="cue" aria-hidden="true">
+  <span class="cue__label">Scroll</span>
+  <span class="cue__line"><i></i></span>
+</div>
+
+<!-- ══════════════════════ WORLD ══════════════════════ -->
+<main id="track">
+
+  <!-- ─────────── 01 · HERO ─────────── -->
+  <section class="scroll-section" id="section-1" data-title="Hero">
+    <div class="panel" data-panel="0">
+      <div class="panel__env" aria-hidden="true">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          <g class="env-lines">
+            <path d="M0 782 H1440" /><path d="M0 838 H1440" opacity=".55" />
+            <g class="env-castle">
+              <path d="M120 782V596h52v186M172 782V648h44v134M216 782V690h40v92M256 782V612h56v170M312 782V666h40v116M352 782V728h36v54M388 782V640h60v142M448 782V706h40v76M488 782V672h52v110M540 782V736h44v46M584 782V624h56v158M640 782V700h40v82M680 782V660h48v122M728 782V716h36v66M764 782V604h60v178M824 782V682h44v100M868 782V742h40v40M908 782V636h56v146M964 782V708h40v74M1004 782V668h52v114M1056 782V730h44v52M1100 782V616h60v166M1160 782V694h40v88M1200 782V656h48v126M1248 782V724h36v58M1284 782V600h60v182" />
+            </g>
+            <g class="env-persp" opacity=".8">
+              <path d="M720 782 L-140 900" /><path d="M720 782 L200 900" /><path d="M720 782 L520 900" />
+              <path d="M720 782 L920 900" /><path d="M720 782 L1240 900" /><path d="M720 782 L1580 900" />
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel__inner">
+        <div class="hero">
+          <p class="eyebrow eyebrow--center">
+            <span class="dot"></span> Solutions Castle <em>//</em> IT Services &amp; Training
+          </p>
+
+          <h1 class="display" data-fit>
+            <span class="mask"><span class="mask__i">Solutions</span></span>
+            <span class="mask"><span class="mask__i">Castle<i>.</i></span></span>
+          </h1>
+
+          <p class="lede">
+            Professional IT services and technical training engineered to help
+            organizations build stronger technology and human capability.
+          </p>
+
+          <div class="cta-row">
+            <a href="#section-10" data-goto="9" class="btn btn--solid">Let&rsquo;s talk <span class="btn__arw">&#8594;</span></a>
+            <a href="#section-3" data-goto="2" class="btn btn--ghost">Explore services <span class="btn__arw">&#8599;</span></a>
+          </div>
+
+          <div class="hero__meta">
+            <span>Est. Alexandria</span><span class="sep"></span>
+            <span>IT Services</span><span class="sep"></span>
+            <span>Training</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 02 · WHO WE ARE ─────────── -->
+  <section class="scroll-section" id="section-2" data-title="Who We Are">
+    <div class="panel" data-panel="1">
+      <div class="panel__env" aria-hidden="true">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          <g class="env-lines">
+            <path d="M180 0V900M360 0V900M540 0V900M900 0V900M1080 0V900M1260 0V900" />
+            <path d="M0 210H1440M0 690H1440" opacity=".6" />
+            <rect x="540" y="210" width="360" height="480" class="env-frame" />
+            <path d="M540 210 L900 690M900 210 L540 690" opacity=".28" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel__inner">
+        <div class="split">
+          <div class="split__lead">
+            <p class="eyebrow"><i>01</i> Who we are</p>
+            <h2 class="title" data-fit>Who<br />we are</h2>
+          </div>
+          <div class="split__body">
+            <p class="lead">
+              Solutions Castle is an IT services and training company built on one
+              idea: technology only creates value when the people around it can
+              operate it with confidence.
+            </p>
+            <ul class="statements">
+              <li><i>01</i><span><b>Engineered delivery</b>Systems designed, deployed and supported with discipline.</span></li>
+              <li><i>02</i><span><b>Human capability</b>Training that turns teams into operators, not spectators.</span></li>
+              <li><i>03</i><span><b>Long-term partnership</b>We stay after go-live. That is where value compounds.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 03 · WHAT WE DO ─────────── -->
+  <section class="scroll-section" id="section-3" data-title="What We Do">
+    <div class="panel" data-panel="2">
+      <div class="panel__env" aria-hidden="true">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          <g class="env-lines">
+            <path d="M720 40V860" class="env-axis" />
+            <path d="M60 300 L720 120 L1380 300" /><path d="M60 600 L720 780 L1380 600" />
+            <circle cx="720" cy="450" r="150" class="env-ring" />
+            <circle cx="720" cy="450" r="240" class="env-ring" opacity=".5" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel__inner">
+        <div class="stack stack--center">
+          <p class="eyebrow eyebrow--center"><i>02</i> What we do</p>
+          <h2 class="title title--center" data-fit>What<br />we do</h2>
+          <p class="lead lead--center">Two connected capabilities, engineered to reinforce each other.</p>
+        </div>
+
+        <div class="fork">
+          <a href="#section-4" data-goto="3" class="fork__side">
+            <span class="fork__idx">A</span>
+            <span class="fork__name" data-fit>IT<br />Services</span>
+            <span class="fork__desc">Infrastructure, cloud, security and support &mdash; run as one system.</span>
+          </a>
+          <span class="fork__axis" aria-hidden="true"></span>
+          <a href="#section-5" data-goto="4" class="fork__side fork__side--r">
+            <span class="fork__idx">B</span>
+            <span class="fork__name" data-fit>Train&shy;ing</span>
+            <span class="fork__desc">Practical programmes that build real operational capability.</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 04 · IT SERVICES ─────────── -->
+  <section class="scroll-section" id="section-4" data-title="IT Services">
+    <div class="panel" data-panel="3">
+      <div class="panel__env" aria-hidden="true">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          <g class="env-lines">
+            <path d="M0 150H1440M0 300H1440M0 450H1440M0 600H1440M0 750H1440" opacity=".45" />
+            <path d="M120 150V750M420 150V750M720 150V750M1020 150V750M1320 150V750" opacity=".3" />
+            <path d="M120 450H420M420 300H720M720 600H1020M1020 450H1320" class="env-circuit" />
+            <circle cx="420" cy="450" r="5" class="env-node" /><circle cx="720" cy="300" r="5" class="env-node" />
+            <circle cx="1020" cy="600" r="5" class="env-node" /><circle cx="1320" cy="450" r="5" class="env-node" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel__inner">
+        <div class="split">
+          <div class="split__lead">
+            <p class="eyebrow"><i>03</i> IT Services</p>
+            <h2 class="title" data-fit>IT<br />Services</h2>
+            <p class="lead lead--tight">
+              Infrastructure, cloud, security and support &mdash; engineered as a single
+              system rather than a list of tickets.
+            </p>
+          </div>
+          <div class="split__body">
+            <ul class="index">
+              <li><i>01</i><span><b>IT Infrastructure</b>Servers, storage, virtualisation and lifecycle management.</span></li>
+              <li><i>02</i><span><b>Cloud &amp; Systems</b>Migration, architecture and hybrid operations.</span></li>
+              <li><i>03</i><span><b>Cybersecurity</b>Assessment, hardening and continuous monitoring.</span></li>
+              <li><i>04</i><span><b>Networking</b>Design, segmentation and resilient connectivity.</span></li>
+              <li><i>05</i><span><b>Technical Support</b>Managed service desk and on-site engineering.</span></li>
+              <li><i>06</i><span><b>Digital Solutions</b>Custom platforms built around how you actually work.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 05 · TRAINING ─────────── -->
+  <section class="scroll-section" id="section-5" data-title="Training">
+    <div class="panel" data-panel="4">
+      <div class="panel__env" aria-hidden="true">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          <g class="env-lines">
+            <circle cx="720" cy="450" r="120" class="env-ring" />
+            <circle cx="720" cy="450" r="210" class="env-ring" opacity=".7" />
+            <circle cx="720" cy="450" r="300" class="env-ring" opacity=".5" />
+            <circle cx="720" cy="450" r="390" class="env-ring" opacity=".32" />
+            <path d="M720 60V840M330 450H1110" opacity=".22" />
+            <path d="M330 60 L1110 840M1110 60 L330 840" opacity=".16" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel__inner">
+        <div class="split split--flip">
+          <div class="split__lead">
+            <p class="eyebrow"><i>04</i> Training</p>
+            <h2 class="title" data-fit>Train&shy;ing</h2>
+            <p class="lead lead--tight">
+              Instructor-led, hands-on programmes designed around the gaps your team
+              actually has &mdash; not a generic catalogue.
+            </p>
+          </div>
+          <div class="split__body">
+            <ul class="index index--arc">
+              <li><i>01</i><span><b>Technical Training</b>Hands-on labs across infrastructure, cloud and security.</span></li>
+              <li><i>02</i><span><b>Professional Development</b>Communication, delivery and technical leadership.</span></li>
+              <li><i>03</i><span><b>IT Skills</b>Vendor-aligned and vendor-neutral certification tracks.</span></li>
+              <li><i>04</i><span><b>Practical Learning</b>Scenario-driven exercises drawn from live environments.</span></li>
+              <li><i>05</i><span><b>Workforce Capability</b>Programmes mapped to your organisation&rsquo;s real gaps.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 06 · HOW WE WORK ─────────── -->
+  <section class="scroll-section" id="section-6" data-title="How We Work">
+    <div class="panel" data-panel="5">
+      <div class="panel__env" aria-hidden="true">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          <g class="env-lines">
+            <path d="M60 620 L360 470 L660 560 L960 350 L1380 430" class="env-path" />
+            <path d="M60 620V860M360 470V860M660 560V860M960 350V860M1380 430V860" opacity=".22" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel__inner">
+        <div class="stack stack--center">
+          <p class="eyebrow eyebrow--center"><i>05</i> How we work</p>
+          <h2 class="title title--center" data-fit>How<br />we work</h2>
+          <p class="lead lead--center">A structured progression from first conversation to long-term support.</p>
+        </div>
+
+        <ol class="stages">
+          <li><i></i><b>Discover</b><span>We map your environment, risks and objectives.</span></li>
+          <li><i></i><b>Plan</b><span>A sequenced roadmap with measurable outcomes.</span></li>
+          <li><i></i><b>Build</b><span>Implementation by engineers, not hand-offs.</span></li>
+          <li><i></i><b>Optimize</b><span>Tuning, hardening and cost discipline.</span></li>
+          <li><i></i><b>Support</b><span>Managed operations and continuous enablement.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 07 · INDUSTRIES ─────────── -->
+  <section class="scroll-section" id="section-7" data-title="Industries">
+    <div class="panel" data-panel="6">
+      <div class="panel__env" aria-hidden="true">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          <g class="env-lines">
+            <circle cx="720" cy="450" r="6" class="env-node" />
+            <path d="M720 450 L360 210M720 450 L1080 210M720 450 L240 450M720 450 L1200 450M720 450 L360 690M720 450 L1080 690" opacity=".5" />
+            <circle cx="360" cy="210" r="4" class="env-node" /><circle cx="1080" cy="210" r="4" class="env-node" />
+            <circle cx="240" cy="450" r="4" class="env-node" /><circle cx="1200" cy="450" r="4" class="env-node" />
+            <circle cx="360" cy="690" r="4" class="env-node" /><circle cx="1080" cy="690" r="4" class="env-node" />
+            <circle cx="720" cy="450" r="330" class="env-ring" opacity=".28" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel__inner">
+        <div class="stack stack--center">
+          <p class="eyebrow eyebrow--center"><i>06</i> Industries</p>
+          <h2 class="title title--center" data-fit>Indus&shy;tries</h2>
+          <p class="lead lead--center">We support organisations where uptime, security and skill are not optional.</p>
+        </div>
+        <ul class="cloud">
+          <li>Enterprise &amp; Corporate</li>
+          <li>Government &amp; Public Sector</li>
+          <li>Education &amp; Research</li>
+          <li>Healthcare</li>
+          <li>Finance &amp; Banking</li>
+          <li>Manufacturing &amp; Logistics</li>
+          <li>Retail &amp; Hospitality</li>
+          <li>Energy &amp; Utilities</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 08 · THE CONNECTION ─────────── -->
+  <section class="scroll-section" id="section-8" data-title="The Connection">
+    <div class="panel" data-panel="7">
+      <div class="panel__env" aria-hidden="true">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          <g class="env-lines">
+            <circle cx="720" cy="450" r="170" class="env-ring" />
+            <circle cx="720" cy="450" r="280" class="env-ring" opacity=".45" />
+            <path d="M120 450H1320" opacity=".55" />
+            <path d="M720 120V780" opacity=".3" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel__inner">
+        <div class="nexus">
+          <p class="eyebrow eyebrow--center"><i>07</i> The connection</p>
+
+          <div class="nexus__row">
+            <span class="nexus__label" data-fit>IT Services</span>
+            <span class="nexus__wire" aria-hidden="true"><i></i></span>
+            <span class="nexus__core">
+              <img src="public/So.png" alt="Solutions Castle" class="so-inline" width="2000" height="2000" />
+            </span>
+            <span class="nexus__wire nexus__wire--r" aria-hidden="true"><i></i></span>
+            <span class="nexus__label nexus__label--r" data-fit>Training</span>
+          </div>
+
+          <h2 class="title title--center title--sm" data-fit>One&nbsp;system</h2>
+          <p class="lead lead--center lead--wide">
+            Services build the system. Training builds the people who run it.
+            Neither works alone &mdash; and that is exactly why we do both.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 09 · TWO DESTINATIONS ─────────── -->
+  <section class="scroll-section" id="section-9" data-title="Two Destinations">
+    <div class="panel" data-panel="8">
+      <div class="panel__env" aria-hidden="true">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          <g class="env-lines">
+            <path d="M720 60V840" class="env-axis" />
+            <path d="M720 450 L120 240M720 450 L120 660M720 450 L1320 240M720 450 L1320 660" opacity=".5" />
+            <path d="M720 450m-120 0a120 120 0 1 0 240 0a120 120 0 1 0 -240 0" class="env-ring" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel__inner">
+        <p class="eyebrow eyebrow--center"><i>08</i> Two destinations</p>
+        <div class="gates">
+          <a href="#section-4" data-goto="3" class="gate">
+            <span class="gate__k">01</span>
+            <h3 class="gate__t" data-fit>IT<br />Services</h3>
+            <p class="gate__d">Start with an environment assessment.</p>
+            <span class="gate__go">Enter <em>&#8594;</em></span>
+          </a>
+
+          <span class="gate__core" aria-hidden="true">
+            <img src="public/So.png" alt="" class="so-inline" width="2000" height="2000" />
+          </span>
+
+          <a href="#section-5" data-goto="4" class="gate gate--r">
+            <span class="gate__k">02</span>
+            <h3 class="gate__t" data-fit>Train&shy;ing</h3>
+            <p class="gate__d">Start with a capability review.</p>
+            <span class="gate__go">Enter <em>&#8594;</em></span>
+          </a>
+        </div>
+        <p class="gates__note">Two entry points. One connected organisation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 10 · FINAL CTA ─────────── -->
+  <section class="scroll-section" id="section-10" data-title="Contact">
+    <div class="panel" data-panel="9">
+      <div class="panel__env" aria-hidden="true">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          <g class="env-lines">
+            <path d="M0 640H1440" opacity=".7" />
+            <path d="M720 640 L-200 900M720 640 L200 900M720 640 L560 900M720 640 L880 900M720 640 L1240 900M720 640 L1640 900" opacity=".5" />
+            <circle cx="720" cy="640" r="210" class="env-ring" opacity=".4" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="panel__inner">
+        <div class="finale">
+          <p class="eyebrow eyebrow--center"><i>09</i> Solutions Castle</p>
+          <h2 class="display display--finale" data-fit>
+            <span class="mask"><span class="mask__i">Let&rsquo;s build</span></span>
+            <span class="mask"><span class="mask__i">what&rsquo;s next<i>.</i></span></span>
+          </h2>
+          <div class="cta-row cta-row--center">
+            <a href="mailto:hello@solutionscastle.com" class="btn btn--solid">Let&rsquo;s talk <span class="btn__arw">&#8594;</span></a>
+          </div>
+
+          <footer class="foot">
+            <a class="foot__brand" href="#section-1" data-goto="0" aria-label="Solutions Castle — home">
+              <img src="public/logo-clear.png" alt="Solutions Castle" width="1340" height="441" />
+            </a>
+            <nav class="foot__nav" aria-label="Footer">
+              <a href="#section-2" data-goto="1">About Us</a>
+              <a href="#section-4" data-goto="3">IT Services</a>
+              <a href="#section-5" data-goto="4">Training</a>
+              <a href="#section-7" data-goto="6">Industries</a>
+            </nav>
+            <p class="foot__copy">&copy; 2026 Solutions Castle. IT Services &amp; Training.</p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════════════ SO — TRANSITION IDENTITY ══════════════════════ -->
+<div class="so-stage" id="soStage" aria-hidden="true">
+  <div class="so" id="so">
+    <span class="so__halo"></span>
+    <span class="so__ring"></span>
+    <span class="so__beam so__beam--l"></span>
+    <span class="so__beam so__beam--r"></span>
+    <img class="so__img" src="public/So.png" alt="" width="2000" height="2000" />
+  </div>
+</div>
+
+<!-- ══════════════════════ DEBUG (only with ?debug) ══════════════════════ -->
+<div class="debug" id="debug" hidden>
+  <div>SCROLL Y: <b id="dbgY">0</b></div>
+  <div>SECTION: <b id="dbgS">1 / 10</b></div>
+  <div>PROGRESS: <b id="dbgP">0.00</b></div>
+  <div>TRANSITION: <b id="dbgT">&mdash;</b></div>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

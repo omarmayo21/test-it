@@ -1,0 +1,15 @@
+{
+  "name": "solutions-castle",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Solutions Castle — premium 3D editorial website (IT services & training)",
+  "scripts": {
+    "start": "node tools/serve.js",
+    "dev": "node tools/serve.js",
+    "verify": "node tools/verify.mjs",
+    "filmstrip": "node tools/filmstrip.mjs",
+    "metrics": "python3 tools/metrics.py \"shots/rest-*.png\"",
+    "analyze": "python3 tools/analyze.py"
+  },
+  "devDependencies": { "playwright": "^1.49.1" }
+}
