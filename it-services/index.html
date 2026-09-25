@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>IT Services &amp; AI Solutions | Solutions Castle</title>
+  <meta name="description" content="Certified partner for enterprise systems development, AI agents, and workflow automation for businesses and government entities across the UAE, KSA, and Egypt." />
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+
+  <link rel="stylesheet" href="/assets/css/fonts.css" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/pages.css" />
+</head>
+<body data-q="3" data-page-title-key="it_h1">
+
+<!-- ══════════════════════ ATMOSPHERE ══════════════════════ -->
+<div class="atmosphere" aria-hidden="true">
+  <canvas id="dust"></canvas>
+  <div class="atmosphere__grid"></div>
+  <div class="atmosphere__horizon"></div>
+  <div class="atmosphere__glow atmosphere__glow--a"></div>
+  <div class="atmosphere__glow atmosphere__glow--b"></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ══════════════════════ NAVIGATION ══════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__bg" aria-hidden="true"></div>
+  <div class="nav__inner">
+    <a class="nav__brand" href="/" aria-label="Solutions Castle — Home">
+      <img src="/public/logo-clear.png" alt="Solutions Castle" class="nav__logo" width="1340" height="441" />
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <span class="nav__pill" id="navPill" aria-hidden="true"></span>
+      <a href="/" class="nav__link" data-i18n="nav_home">Home</a>
+      <a href="/about/" class="nav__link" data-i18n="nav_about">About Us</a>
+      <a href="/it-services/" class="nav__link is-current" aria-current="page" data-i18n="nav_it">IT Services</a>
+      <a href="/training/" class="nav__link" data-i18n="nav_training">Training</a>
+      <a href="/#section-7" class="nav__link" data-i18n="nav_industries">Industries</a>
+      <a href="/contact/" class="nav__link" data-i18n="nav_contact">Contact</a>
+    </nav>
+
+    <div class="nav__right">
+      <button class="lang-switch" id="langSwitch" type="button" aria-label="Switch Language / تغيير اللغة">
+        <span class="lang-btn lang-btn--en" data-lang="en">EN</span>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <span class="lang-btn lang-btn--ar" data-lang="ar">عربي</span>
+      </button>
+      <a href="#tech-form" class="btn btn--ghost nav__cta"><span data-i18n="it_cta_primary">Tech Consultation</span> <span class="btn__arw">&rarr;</span></a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav__rule"></div>
+</header>
+
+<!-- ══════════════════════ MOBILE MENU ══════════════════════ -->
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="menu__inner">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: clamp(24px,5vw,44px);">
+      <p class="menu__eyebrow" style="margin-bottom: 0;" data-i18n="menu_eyebrow">Solutions Castle</p>
+      <button class="lang-switch" id="langSwitchMobile" type="button" aria-label="Switch Language / تغيير اللغة">
+        <span class="lang-btn lang-btn--en" data-lang="en">EN</span>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <span class="lang-btn lang-btn--ar" data-lang="ar">عربي</span>
+      </button>
+    </div>
+    <nav class="menu__nav" aria-label="Mobile">
+      <a href="/"><i>01</i> <span data-i18n="nav_home">Home</span></a>
+      <a href="/about/"><i>02</i> <span data-i18n="nav_about">About Us</span></a>
+      <a href="/it-services/"><i>03</i> <span data-i18n="nav_it">IT Services</span></a>
+      <a href="/training/"><i>04</i> <span data-i18n="nav_training">Training</span></a>
+      <a href="/#section-7"><i>05</i> <span data-i18n="nav_industries">Industries</span></a>
+      <a href="/contact/"><i>06</i> <span data-i18n="nav_contact">Contact</span></a>
+    </nav>
+    <p class="menu__foot" data-i18n="menu_foot">IT Services &amp; Training</p>
+  </div>
+</div>
+
+<!-- ══════════════════════ PAGE CONTENT ══════════════════════ -->
+<main class="page-main">
+
+  <!-- ─────────── 01 · IT HERO & 2-COLUMN MEDIA COMPOSITION ─────────── -->
+  <section class="page-section page-hero">
+    <div class="section-inner">
+      <div class="page-hero__grid">
+        <div>
+          <span class="page-hero__eyebrow" data-i18n="it_hero_eyebrow">IT Solutions &amp; Intelligent Automation</span>
+          <h1 class="page-hero__title" data-i18n="it_h1">
+            نبني البنية التحتية الذكية لمؤسستك ونقود تحولك الرقمي باحترافية.
+          </h1>
+          <p class="page-hero__lede" data-i18n="it_sub">
+            شريك معتمد لتطوير الأنظمة المؤسسية، وكلاء الذكاء الاصطناعي، وأتمتة العمليات لقطاع الأعمال والجهات الحكومية.
+          </p>
+
+          <div class="cta-row">
+            <a href="#tech-form" class="btn btn--solid"><span data-i18n="it_cta_primary">احجز جلسة استشارة تقنية</span> <span class="btn__arw">&rarr;</span></a>
+            <a href="#it-pillars" class="btn btn--ghost"><span data-i18n="it_cta_secondary">استكشف المنتجات والحلول</span> <span class="btn__arw">&rarr;</span></a>
+          </div>
+        </div>
+
+        <!-- Hero Visual Frame -->
+        <div class="hero-visual">
+          <img src="/public/images/it-hero.jpg" alt="Enterprise Cloud Infrastructure" class="hero-visual__img" loading="eager" />
+          <div class="hero-visual__overlay"></div>
+          <div class="hero-visual__badge">
+            <span class="hero-visual__badge-txt">Enterprise Data Mesh</span>
+            <span class="hero-visual__badge-tag">Cloud &middot; AI &middot; Sec</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partner / Certification Strip -->
+      <div class="cred-strip">
+        <div class="cred-item">
+          <span class="cred-icon">★</span>
+          <p class="cred-text" data-i18n="it_cred_oracle">شريك أوراكل المعتمد (<span class="tech-term">Oracle Partner</span>).</p>
+        </div>
+        <div class="cred-item">
+          <span class="cred-icon">☁</span>
+          <p class="cred-text" data-i18n="it_cred_cloud">خبرات تطبيق الأنظمة السحابية وهندسة البنية التحتية المتقدمة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 02 · FOUR IT PILLARS GRID WITH VISUAL HEADERS ─────────── -->
+  <section class="page-section" id="it-pillars">
+    <div class="section-inner">
+      <p class="eyebrow" data-i18n="it_pillars_eyebrow"><i>01</i> محاور الحلول التقنية</p>
+      <h2 class="title" style="margin-bottom: 20px;" data-i18n="it_pillars_title">الركائز الأربع للأنظمة الذكية</h2>
+      <p class="lead" data-i18n="it_pillars_lead">منظومة هندسية متكاملة تغطي دورة حياة الأتمتة، البيانات، السحابة، والحماية السيبرانية.</p>
+
+      <div class="it-grid">
+        <!-- Pillar 1: AI & Automation -->
+        <div class="it-card">
+          <div class="it-card__media">
+            <img src="/public/images/it-pillar-ai.jpg" alt="AI & Automation Agents" class="it-card__img" loading="lazy" />
+          </div>
+          <div class="it-card__body">
+            <div class="it-card__head">
+              <span class="it-card__idx">01 // AI &amp; RPA</span>
+              <span class="badge--en">AI &amp; Automation</span>
+            </div>
+            <h3 class="it-card__title" data-i18n="p1_title">الذكاء الاصطناعي وأتمتة العمليات</h3>
+            <div class="it-card__points">
+              <div class="it-card__point">
+                <span class="it-card__bullet"></span>
+                <div data-i18n="p1_point1">
+                  <b>وكلاء الأقسام <span class="tech-term">Department Agents</span>:</b> بناء <span class="tech-term">AI Agents</span> متخصصة لكل قسم (المبيعات، خدمة العملاء، المالية، الموارد البشرية) لتنفيذ دورة العمل كاملة وليس مجرد محادثة.
+                </div>
+              </div>
+              <div class="it-card__point">
+                <span class="it-card__bullet"></span>
+                <div data-i18n="p1_point2">
+                  <b>أتمتة المهام الروتينية (<span class="tech-term">RPA</span>):</b> معالجة المستندات، إدخال البيانات المتبادلة بين الأنظمة، وسير الموافقات الآلية.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 2: Enterprise ERP & Core Systems -->
+        <div class="it-card">
+          <div class="it-card__media">
+            <img src="/public/images/it-pillar-erp.jpg" alt="Enterprise ERP & Core Systems" class="it-card__img" loading="lazy" />
+          </div>
+          <div class="it-card__body">
+            <div class="it-card__head">
+              <span class="it-card__idx">02 // Core Systems</span>
+              <span class="badge--en">Enterprise ERP</span>
+            </div>
+            <h3 class="it-card__title" data-i18n="p2_title">أنظمة المؤسسات والتكامل</h3>
+            <div class="it-card__points">
+              <div class="it-card__point">
+                <span class="it-card__bullet"></span>
+                <div data-i18n="p2_point1">
+                  تهيئة وتخصيص أنظمة تخطيط الموارد (<span class="tech-term">ERP</span>) وربط منظومة أوراكل.
+                </div>
+              </div>
+              <div class="it-card__point">
+                <span class="it-card__bullet"></span>
+                <div data-i18n="p2_point2">
+                  ربط إدارة المبيعات، المخزون، والمحاسبة في قاعدة بيانات مركزية موحدة تمنع تكرار الإدخال اليدوي.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 3: Cybersecurity & Governance -->
+        <div class="it-card">
+          <div class="it-card__media">
+            <img src="/public/images/it-pillar-cyber.jpg" alt="Cybersecurity & Governance" class="it-card__img" loading="lazy" />
+          </div>
+          <div class="it-card__body">
+            <div class="it-card__head">
+              <span class="it-card__idx">03 // Security &amp; ISO</span>
+              <span class="badge--en">Cybersecurity</span>
+            </div>
+            <h3 class="it-card__title" data-i18n="p3_title">الأمن السيبراني والامتثال</h3>
+            <div class="it-card__points">
+              <div class="it-card__point">
+                <span class="it-card__bullet"></span>
+                <div data-i18n="p3_point1">
+                  اختبارات الاختراق الشاملة وكشف الثغرات الاستباقي (<span class="tech-term">VAPT</span>).
+                </div>
+              </div>
+              <div class="it-card__point">
+                <span class="it-card__bullet"></span>
+                <div data-i18n="p3_point2">
+                  إدارة مركز العمليات الأمنية (<span class="tech-term">SOC</span>) ومواءمة السياسات مع معايير الأمان الدولية (<span class="tech-term">ISO 27001</span>).
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 4: Cloud Migration & Architecture -->
+        <div class="it-card">
+          <div class="it-card__media">
+            <img src="/public/images/it-pillar-cloud.jpg" alt="Cloud Migration & Architecture" class="it-card__img" loading="lazy" />
+          </div>
+          <div class="it-card__body">
+            <div class="it-card__head">
+              <span class="it-card__idx">04 // Cloud &amp; Infra</span>
+              <span class="badge--en">Cloud Architecture</span>
+            </div>
+            <h3 class="it-card__title" data-i18n="p4_title">السحابة والبنية التحتية</h3>
+            <div class="it-card__points">
+              <div class="it-card__point">
+                <span class="it-card__bullet"></span>
+                <div data-i18n="p4_point1">
+                  تصميم خرائط الترحيل السحابي الآمن (<span class="tech-term">Azure &amp; AWS</span>) وإدارة بيئات العمل المؤسسية (<span class="tech-term">M365</span>).
+                </div>
+              </div>
+              <div class="it-card__point">
+                <span class="it-card__bullet"></span>
+                <div data-i18n="p4_point2">
+                  ضمان استمرارية الأعمال وخفض الهدر في تكاليف البنية التحتية والتشغيل.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 03 · POST-IT IMPLEMENTATION ENABLEMENT ─────────── -->
+  <section class="page-section">
+    <div class="section-inner">
+      <div class="enablement-box">
+        <p class="eyebrow eyebrow--center" style="color: var(--cyan-400); justify-content: center; margin-bottom: 12px;" data-i18n="enable_eyebrow">
+          تمكين ما بعد التركيب
+        </p>
+        <h2 class="enablement-box__lead" data-i18n="enable_title">
+          الأنظمة وحدها لا تكفي.. نضمن التبني التام لبرمجياتك فور تركيبها
+        </h2>
+
+        <div class="enablement-steps">
+          <div class="enable-step">
+            <span class="enable-step__num" data-i18n="enable_step1_num">01 // التوريد والتهيئة</span>
+            <p class="enable-step__txt" data-i18n="enable_step1_txt">
+              توريد وضبط الأنظمة البرمجية أو وكلاء الذكاء الاصطناعي.
+            </p>
+          </div>
+          <div class="enable-step">
+            <span class="enable-step__num" data-i18n="enable_step2_num">02 // التدريب المعتمد</span>
+            <p class="enable-step__txt" data-i18n="enable_step2_txt">
+              تدريب الكوادر الوظيفية عبر برامج تدريبية مرخصة من <span class="tech-term">KHDA</span> لضمان تشغيل النظام بمهارة.
+            </p>
+          </div>
+          <div class="enable-step">
+            <span class="enable-step__num" data-i18n="enable_step3_num">03 // التبني والعائد</span>
+            <p class="enable-step__txt" data-i18n="enable_step3_txt">
+              تحقيق أعلى عائد استثماري (<span class="tech-term">ROI</span>) وتصفير مقاومة التغيير بين الموظفين.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 04 · TECH CONSULTATION FORM ─────────── -->
+  <section class="page-section" id="tech-form">
+    <div class="section-inner">
+      <div class="form-container">
+        <div class="form-header">
+          <h2 class="form-title" data-i18n="tech_form_title">دعنا نقيّم احتياجات بنيتك التحتية وخيارات الأتمتة المناسبة لمؤسستك</h2>
+          <p class="form-sub" data-i18n="tech_form_sub">املأ تفاصيل متطلبات مشروعك وسيقوم مستشارونا التقنيون بالتواصل معك خلال يوم عمل واحد.</p>
+        </div>
+
+        <form class="ajax-form" data-ajax="false" aria-label="Technical Consultation Form">
+          <div class="form-grid">
+            <div class="form-field">
+              <label class="form-label" for="t-name" data-i18n="form_lbl_name">الاسم الكامل</label>
+              <input class="form-input" type="text" id="t-name" name="name" placeholder="أدخل اسمك الكريم" required data-i18n-ph="form_lbl_name" />
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="t-org" data-i18n="form_lbl_org">اسم المنشأة / الشركة والمسمى الوظيفي</label>
+              <input class="form-input" type="text" id="t-org" name="organization" placeholder="مثال: شركة التقنية - مدير الأنظمة" required data-i18n-ph="form_lbl_org" />
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-field">
+              <label class="form-label" for="t-phone" data-i18n="form_lbl_phone">رقم الهاتف / واتساب للتواصل السريع</label>
+              <input class="form-input" type="tel" id="t-phone" name="phone" placeholder="+971 -- --- ---- / +966 -- --- ----" required dir="ltr" />
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="t-email" data-i18n="form_lbl_email">البريد الإلكتروني المهني</label>
+              <input class="form-input" type="email" id="t-email" name="email" placeholder="name@company.com" required dir="ltr" />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="t-service" data-i18n="form_lbl_service">الخدمة المطلوبة</label>
+            <select class="form-select" id="t-service" name="service" required>
+              <option value="" disabled selected data-i18n="form_opt_default">اختر الخدمة المطلوبة...</option>
+              <option value="ai" data-i18n="form_opt_ai">وكلاء ذكاء اصطناعي وأتمتة</option>
+              <option value="erp" data-i18n="form_opt_erp">نظام ERP</option>
+              <option value="cyber" data-i18n="form_opt_cyber">أمن سيبراني</option>
+              <option value="cloud" data-i18n="form_opt_cloud">بنية سحابية</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="t-msg" data-i18n="form_lbl_msg">مساحة لوصف متطلبات المشروع الحالية</label>
+            <textarea class="form-textarea" id="t-msg" name="message" rows="4" placeholder="اكتب نبذة عن البنية الحالية أو التحديات المراد حلها..." data-i18n-ph="form_lbl_msg"></textarea>
+          </div>
+
+          <div class="form-feedback" role="status" aria-live="polite"></div>
+
+          <button class="btn btn--solid" type="submit" style="width: 100%; justify-content: center; margin-top: 10px;">
+            <span data-i18n="form_submit_tech">إرسال طلب الاستشارة التقنية</span>
+            <span class="btn__arw">&rarr;</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="nav__brand" href="/" aria-label="Solutions Castle — Home">
+        <img src="/public/logo-clear.png" alt="Solutions Castle" class="nav__logo" width="1340" height="441" />
+      </a>
+      <p class="footer__tagline" data-i18n="footer_tagline">
+        المنظومة المتكاملة للتمكين المؤسسي والتحول الرقمي المستدام في الإمارات والسعودية ومصر.
+      </p>
+    </div>
+
+    <div class="footer__cols">
+      <div class="footer__col">
+        <div class="footer__col-title" data-i18n="footer_quick_links">روابط سريعة</div>
+        <a class="footer__link" href="/" data-i18n="nav_home">الرئيسية</a>
+        <a class="footer__link" href="/about/" data-i18n="nav_about">من نحن</a>
+        <a class="footer__link" href="/it-services/" data-i18n="nav_it">خدمات تقنية المعلومات</a>
+        <a class="footer__link" href="/training/" data-i18n="nav_training">التدريب والتطوير</a>
+        <a class="footer__link" href="/#section-7" data-i18n="nav_industries">القطاعات</a>
+        <a class="footer__link" href="/contact/" data-i18n="nav_contact">تواصل معنا</a>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title" data-i18n="footer_credentials">الاعتمادات والشراكات</div>
+        <span class="footer__link" data-i18n="footer_khda">ترخيص KHDA حكومة دبي</span>
+        <span class="footer__link" data-i18n="footer_cpd">اعتماد CPD الدولي</span>
+        <span class="footer__link" data-i18n="footer_icv">شهادة القيمة الوطنية ICV</span>
+        <span class="footer__link" data-i18n="footer_oracle">شريك Oracle المعتمد</span>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title" data-i18n="footer_hubs">المقرات الإقليمية</div>
+        <span class="footer__link" data-i18n="footer_hub_dubai">دبي — شارع الشيخ زايد</span>
+        <span class="footer__link" data-i18n="footer_hub_riyadh">الرياض — المملكة العربية السعودية</span>
+        <span class="footer__link" data-i18n="footer_hub_cairo">القاهرة — جمهورية مصر العربية</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="footer__inner footer__bottom-inner">
+      <div class="footer__copy" data-i18n="footer_copy">&copy; 2026 Solutions Castle. جميع الحقوق محفوظة.</div>
+      <div class="footer__legal">
+        <span data-i18n="footer_legal">مرخص من هيئة المعرفة والتنمية البشرية (KHDA)</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/internal.js"></script>
+</body>
+</html>

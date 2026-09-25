@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Accredited Training &amp; Workforce Capability | Solutions Castle</title>
+  <meta name="description" content="Over 80 licensed training programs engineered to bridge the gap between academic theory and practical execution in the UAE and Gulf job markets." />
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+
+  <link rel="stylesheet" href="/assets/css/fonts.css" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/pages.css" />
+</head>
+<body data-q="3" data-page-title-key="tr_h1">
+
+<!-- ══════════════════════ ATMOSPHERE ══════════════════════ -->
+<div class="atmosphere" aria-hidden="true">
+  <canvas id="dust"></canvas>
+  <div class="atmosphere__grid"></div>
+  <div class="atmosphere__horizon"></div>
+  <div class="atmosphere__glow atmosphere__glow--a"></div>
+  <div class="atmosphere__glow atmosphere__glow--b"></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ══════════════════════ NAVIGATION ══════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__bg" aria-hidden="true"></div>
+  <div class="nav__inner">
+    <a class="nav__brand" href="/" aria-label="Solutions Castle — Home">
+      <img src="/public/logo-clear.png" alt="Solutions Castle" class="nav__logo" width="1340" height="441" />
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <span class="nav__pill" id="navPill" aria-hidden="true"></span>
+      <a href="/" class="nav__link" data-i18n="nav_home">Home</a>
+      <a href="/about/" class="nav__link" data-i18n="nav_about">About Us</a>
+      <a href="/it-services/" class="nav__link" data-i18n="nav_it">IT Services</a>
+      <a href="/training/" class="nav__link is-current" aria-current="page" data-i18n="nav_training">Training</a>
+      <a href="/#section-7" class="nav__link" data-i18n="nav_industries">Industries</a>
+      <a href="/contact/" class="nav__link" data-i18n="nav_contact">Contact</a>
+    </nav>
+
+    <div class="nav__right">
+      <button class="lang-switch" id="langSwitch" type="button" aria-label="Switch Language / تغيير اللغة">
+        <span class="lang-btn lang-btn--en" data-lang="en">EN</span>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <span class="lang-btn lang-btn--ar" data-lang="ar">عربي</span>
+      </button>
+      <a href="#training-form" class="btn btn--ghost nav__cta"><span data-i18n="tr_cta_secondary">Corporate Proposal</span> <span class="btn__arw">&rarr;</span></a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav__rule"></div>
+</header>
+
+<!-- ══════════════════════ MOBILE MENU ══════════════════════ -->
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="menu__inner">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: clamp(24px,5vw,44px);">
+      <p class="menu__eyebrow" style="margin-bottom: 0;" data-i18n="menu_eyebrow">Solutions Castle</p>
+      <button class="lang-switch" id="langSwitchMobile" type="button" aria-label="Switch Language / تغيير اللغة">
+        <span class="lang-btn lang-btn--en" data-lang="en">EN</span>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <span class="lang-btn lang-btn--ar" data-lang="ar">عربي</span>
+      </button>
+    </div>
+    <nav class="menu__nav" aria-label="Mobile">
+      <a href="/"><i>01</i> <span data-i18n="nav_home">Home</span></a>
+      <a href="/about/"><i>02</i> <span data-i18n="nav_about">About Us</span></a>
+      <a href="/it-services/"><i>03</i> <span data-i18n="nav_it">IT Services</span></a>
+      <a href="/training/"><i>04</i> <span data-i18n="nav_training">Training</span></a>
+      <a href="/#section-7"><i>05</i> <span data-i18n="nav_industries">Industries</span></a>
+      <a href="/contact/"><i>06</i> <span data-i18n="nav_contact">Contact</span></a>
+    </nav>
+    <p class="menu__foot" data-i18n="menu_foot">IT Services &amp; Training</p>
+  </div>
+</div>
+
+<!-- ══════════════════════ PAGE CONTENT ══════════════════════ -->
+<main class="page-main">
+
+  <!-- ─────────── 01 · TRAINING HERO & 2-COLUMN MEDIA COMPOSITION ─────────── -->
+  <section class="page-section page-hero">
+    <div class="section-inner">
+      <div class="page-hero__grid">
+        <div>
+          <span class="page-hero__eyebrow" data-i18n="tr_hero_eyebrow">Workforce Capability &amp; Certified Training</span>
+          <h1 class="page-hero__title" data-i18n="tr_h1">
+            حلول وخدمات تدريب وتطوير مهني معتمدة تصنع أثراً قابلاً للقياس.
+          </h1>
+          <p class="page-hero__lede" data-i18n="tr_sub">
+            أكثر من 80 برنامجاً تدريبياً مرخصاً ومصمماً لسد الفجوة بين المعرفة الأكاديمية والتطبيق الميداني في سوق العمل الإماراتي والخليجي.
+          </p>
+
+          <div class="cta-row">
+            <a href="#training-form" class="btn btn--solid"><span data-i18n="tr_cta_secondary">طلب عرض تدريب مؤسسي</span> <span class="btn__arw">&rarr;</span></a>
+            <a href="#catalog" class="btn btn--ghost"><span data-i18n="tr_cta_primary">تحميل دليل البرامج التدريبية</span> <span class="btn__arw">&rarr;</span></a>
+          </div>
+        </div>
+
+        <!-- Hero Visual Frame -->
+        <div class="hero-visual">
+          <img src="/public/images/training-hero.jpg" alt="Executive Training Environment" class="hero-visual__img" loading="eager" />
+          <div class="hero-visual__overlay"></div>
+          <div class="hero-visual__badge">
+            <span class="hero-visual__badge-txt">Executive Learning Lab</span>
+            <span class="hero-visual__badge-tag">KHDA &middot; CPD</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Credential Strip -->
+      <div class="cred-strip">
+        <div class="cred-item">
+          <span class="cred-icon">✓</span>
+          <p class="cred-text" data-i18n="tr_cred_khda">ترخيص هيئة المعرفة والتنمية البشرية بحكومة دبي (<span class="tech-term">KHDA</span>).</p>
+        </div>
+        <div class="cred-item">
+          <span class="cred-icon">✓</span>
+          <p class="cred-text" data-i18n="tr_cred_cpd">اعتماد التطوير المهني المستمر الدولي (<span class="tech-term">CPD</span>).</p>
+        </div>
+        <div class="cred-item">
+          <span class="cred-icon">✓</span>
+          <p class="cred-text" data-i18n="tr_cred_aue">شراكة الدبلومات التنفيذية مع الجامعة الأمريكية في الإمارات (<span class="tech-term">AUE</span>).</p>
+        </div>
+        <div class="cred-item">
+          <span class="cred-icon">✓</span>
+          <p class="cred-text" data-i18n="tr_cred_stanford">شراكة جامعة ستانفورد للتدريب المهني (<span class="tech-term">STANFORD</span>).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 02 · EDITORIAL TRAINING SLIDER ─────────── -->
+  <section class="page-section">
+    <div class="section-inner">
+      <p class="eyebrow" data-i18n="df_eyebrow"><i>01</i> نماذج التنفيذ</p>
+      <h2 class="title" style="margin-bottom: 20px;" data-i18n="df_title">صيغ التدريب والتمكين</h2>
+      <p class="lead" data-i18n="df_lead">مرونة تامة في آليات التدريب لتلائم متطلبات الشركات، القيادات التنفيذية، والكوادر المهنية.</p>
+
+      <!-- Cinematic Training Slider -->
+      <div class="sc-slider" id="trainingSlider" role="region" aria-label="Training Delivery Formats Slider">
+        <div class="sc-slider__viewport">
+          <div class="sc-slider__track">
+            <!-- Slide 1: B2B In-House -->
+            <div class="sc-slider__slide">
+              <div class="sc-slider__media">
+                <img src="/public/images/training-hero.jpg" alt="B2B Corporate Training" class="sc-slider__img" loading="lazy" />
+                <div class="sc-slider__media-overlay"></div>
+              </div>
+              <div class="sc-slider__content">
+                <span class="sc-slider__tag">FORMAT 01 // B2B IN-HOUSE</span>
+                <h3 class="sc-slider__title" data-i18n="df_b2b_title">التدريب المخصص للشركات (B2B In-House)</h3>
+                <p class="sc-slider__desc" data-i18n="df_b2b_desc">
+                  تصميم برامج تلائم بيئة عملك وتحديات مؤسستك المباشرة، تُنفذ في مقر شركتكم أو افتراضياً.
+                </p>
+                <a href="#training-form" class="btn btn--ghost" style="margin-top: 10px; width: fit-content;">
+                  <span data-i18n="df_b2b_cta">طلب عرض مخصص للشركات</span> <span class="btn__arw">&#8592;</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Slide 2: 1-on-1 VIP -->
+            <div class="sc-slider__slide">
+              <div class="sc-slider__media">
+                <img src="/public/images/contact-hero.jpg" alt="Executive 1-on-1 VIP" class="sc-slider__img" loading="lazy" />
+                <div class="sc-slider__media-overlay"></div>
+              </div>
+              <div class="sc-slider__content">
+                <span class="sc-slider__tag">FORMAT 02 // 1-ON-1 VIP</span>
+                <h3 class="sc-slider__title" data-i18n="df_vip_title">التدريب الفردي التنفيذي (1-on-1 VIP)</h3>
+                <p class="sc-slider__desc" data-i18n="df_vip_desc">
+                  تدريب خاص وحصري لكبار المدراء والتنفيذيين بمقرنا الرئيسي بشارع الشيخ زايد بدبي، بمرونة كاملة تلائم جدول أعمالك.
+                </p>
+                <a href="#training-form" class="btn btn--ghost" style="margin-top: 10px; width: fit-content;">
+                  <span data-i18n="df_vip_cta">حجز مقعد VIP فردي</span> <span class="btn__arw">&#8592;</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Slide 3: Public Calendar -->
+            <div class="sc-slider__slide">
+              <div class="sc-slider__media">
+                <img src="/public/images/about-hero.jpg" alt="Public Calendar" class="sc-slider__img" loading="lazy" />
+                <div class="sc-slider__media-overlay"></div>
+              </div>
+              <div class="sc-slider__content">
+                <span class="sc-slider__tag">FORMAT 03 // PUBLIC CALENDAR</span>
+                <h3 class="sc-slider__title" data-i18n="df_pub_title">البرامج المهنية العامة (Public Calendar)</h3>
+                <p class="sc-slider__desc" data-i18n="df_pub_desc">
+                  ورش عمل ومعسكرات مفتوحة للأفراد والمحترفين الراغبين في نيل شهادات معتمدة تعزز ترقيهم الوظيفي.
+                </p>
+                <a href="#training-form" class="btn btn--ghost" style="margin-top: 10px; width: fit-content;">
+                  <span data-i18n="df_pub_cta">تصفح الجدول الزمني</span> <span class="btn__arw">&#8592;</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider Bar -->
+        <div class="sc-slider__bar">
+          <span class="sc-slider__counter">01 / 03</span>
+          <div class="sc-slider__dots">
+            <button class="sc-slider__dot is-active" type="button" aria-label="Slide 1"></button>
+            <button class="sc-slider__dot" type="button" aria-label="Slide 2"></button>
+            <button class="sc-slider__dot" type="button" aria-label="Slide 3"></button>
+          </div>
+          <div class="sc-slider__nav">
+            <button class="sc-slider__btn sc-slider__btn--prev" type="button" aria-label="Previous Slide"><span class="btn__arw">&#8592;</span></button>
+            <button class="sc-slider__btn sc-slider__btn--next" type="button" aria-label="Next Slide"><span class="btn__arw">&#8594;</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 03 · INTERACTIVE TRAINING CATALOG ─────────── -->
+  <section class="page-section" id="catalog">
+    <div class="section-inner">
+      <div style="text-align: center;">
+        <p class="eyebrow eyebrow--center" style="justify-content: center;" data-i18n="cat_eyebrow"><i>02</i> الدليل التدريبي</p>
+        <h2 class="title title--center" data-i18n="cat_title">المسارات والبرامج التدريبية</h2>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="catalog-tabs" role="tablist">
+        <button class="catalog-tab is-active" role="tab" aria-selected="true" data-target="cat-mgmt" data-i18n="cat_tab_1">
+          الإدارة والقيادة الاستراتيجية
+        </button>
+        <button class="catalog-tab" role="tab" aria-selected="false" data-target="cat-fin" data-i18n="cat_tab_2">
+          المحاسبة والمالية
+        </button>
+        <button class="catalog-tab" role="tab" aria-selected="false" data-target="cat-tech" data-i18n="cat_tab_3">
+          الذكاء الاصطناعي والتكنولوجيا
+        </button>
+      </div>
+
+      <!-- Panel 1: Management -->
+      <div class="catalog-panel is-active" id="cat-mgmt" role="tabpanel">
+        <div class="catalog-empty-card">
+          <h3 style="font-size: clamp(18px, 1.4vw, 22px); color: var(--white); font-weight: 700; margin-bottom: 12px;" data-i18n="cat_tab_1">
+            الإدارة والقيادة الاستراتيجية
+          </h3>
+          <p style="font-size: 15px; color: var(--ink-90); margin-bottom: 18px;" data-i18n="cat_p1_title">
+            برامج قيادة التحول، إدارة الموارد البشرية، وأنظمة تقييم الأداء.
+          </p>
+          <div class="catalog-badges">
+            <span class="cat-badge" data-i18n="cat_badge_khda">اعتماد KHDA</span>
+            <span class="cat-badge" data-i18n="cat_badge_cpd">اعتماد CPD</span>
+            <span class="cat-badge" data-i18n="cat_badge_aue">شراكة AUE</span>
+            <span class="cat-badge" data-i18n="cat_badge_stanford">شراكة STANFORD</span>
+          </div>
+          <p style="font-size: 13.5px; color: var(--ink-70); max-width: 52ch; margin-inline: auto;" data-i18n="cat_empty_notice">
+            الحقائب التدريبية والجداول التفصيلية يتم تصميمها خصيصاً بناءً على تقييم جاهزية المنشأة. لطلب المنهج المعتمد يرجى تعبئة النموذج أدناه.
+          </p>
+          <a href="#training-form" class="btn btn--ghost" style="margin-top: 20px; display: inline-flex;">
+            <span data-i18n="cat_cta_enroll">طلب التفاصيل والالتحاق</span> <span class="btn__arw">&#8592;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Panel 2: Finance -->
+      <div class="catalog-panel" id="cat-fin" role="tabpanel">
+        <div class="catalog-empty-card">
+          <h3 style="font-size: clamp(18px, 1.4vw, 22px); color: var(--white); font-weight: 700; margin-bottom: 12px;" data-i18n="cat_tab_2">
+            المحاسبة والمالية
+          </h3>
+          <p style="font-size: 15px; color: var(--ink-90); margin-bottom: 18px;" data-i18n="cat_p2_title">
+            تطبيقات معايير IFRS، إعداد الموازنات الاستراتيجية، وحسابات الضريبة.
+          </p>
+          <div class="catalog-badges">
+            <span class="cat-badge" data-i18n="cat_badge_khda">اعتماد KHDA</span>
+            <span class="cat-badge" data-i18n="cat_badge_cpd">اعتماد CPD</span>
+          </div>
+          <p style="font-size: 13.5px; color: var(--ink-70); max-width: 52ch; margin-inline: auto;" data-i18n="cat_empty_notice">
+            الحقائب التدريبية والجداول التفصيلية يتم تصميمها خصيصاً بناءً على تقييم جاهزية المنشأة. لطلب المنهج المعتمد يرجى تعبئة النموذج أدناه.
+          </p>
+          <a href="#training-form" class="btn btn--ghost" style="margin-top: 20px; display: inline-flex;">
+            <span data-i18n="cat_cta_enroll">طلب التفاصيل والالتحاق</span> <span class="btn__arw">&#8592;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Panel 3: Tech & AI -->
+      <div class="catalog-panel" id="cat-tech" role="tabpanel">
+        <div class="catalog-empty-card">
+          <h3 style="font-size: clamp(18px, 1.4vw, 22px); color: var(--white); font-weight: 700; margin-bottom: 12px;" data-i18n="cat_tab_3">
+            الذكاء الاصطناعي والتكنولوجيا
+          </h3>
+          <p style="font-size: 15px; color: var(--ink-90); margin-bottom: 18px;" data-i18n="cat_p3_title">
+            الذكاء الاصطناعي للأعمال AI for Business، الأمن السيبراني CEH، وتحليل البيانات Power BI.
+          </p>
+          <div class="catalog-badges">
+            <span class="cat-badge" data-i18n="cat_badge_khda">اعتماد KHDA</span>
+            <span class="cat-badge" data-i18n="cat_badge_cpd">اعتماد CPD</span>
+            <span class="cat-badge">Oracle Partner</span>
+          </div>
+          <p style="font-size: 13.5px; color: var(--ink-70); max-width: 52ch; margin-inline: auto;" data-i18n="cat_empty_notice">
+            الحقائب التدريبية والجداول التفصيلية يتم تصميمها خصيصاً بناءً على تقييم جاهزية المنشأة. لطلب المنهج المعتمد يرجى تعبئة النموذج أدناه.
+          </p>
+          <a href="#training-form" class="btn btn--ghost" style="margin-top: 20px; display: inline-flex;">
+            <span data-i18n="cat_cta_enroll">طلب التفاصيل والالتحاق</span> <span class="btn__arw">&#8592;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 04 · TRAINING METHODOLOGY (4 STAGES) ─────────── -->
+  <section class="page-section">
+    <div class="section-inner">
+      <p class="eyebrow" data-i18n="method_eyebrow"><i>03</i> منهجية التدريب</p>
+      <h2 class="title" style="margin-bottom: 20px;" data-i18n="method_title">المراحل الأربع لبناء الكفاءات</h2>
+
+      <div class="method-grid">
+        <div class="method-card">
+          <span class="method-card__step" data-i18n="method_s1_title">01 التقييم والتشخيص</span>
+          <h3 class="method-card__title">Assessment</h3>
+          <p class="method-card__desc" data-i18n="method_s1_desc">
+            دراسة الاحتياج التدريبي والفجوة الميدانية لدى المتدرب أو الشركة.
+          </p>
+        </div>
+        <div class="method-card">
+          <span class="method-card__step" data-i18n="method_s2_title">02 التصميم المخصص</span>
+          <h3 class="method-card__title">Design</h3>
+          <p class="method-card__desc" data-i18n="method_s2_desc">
+            بناء الحقيبة التدريبية حول الأهداف التشغيلية للعميل.
+          </p>
+        </div>
+        <div class="method-card">
+          <span class="method-card__step" data-i18n="method_s3_title">03 التنفيذ العملي</span>
+          <h3 class="method-card__title">Execution</h3>
+          <p class="method-card__desc" data-i18n="method_s3_desc">
+            دراسات حالة، محاكاة عملية، وتطبيقات واقعية بعيداً عن النظريات الجافة.
+          </p>
+        </div>
+        <div class="method-card">
+          <span class="method-card__step" data-i18n="method_s4_title">04 القياس والأثر</span>
+          <h3 class="method-card__title">Evaluation</h3>
+          <p class="method-card__desc" data-i18n="method_s4_desc">
+            قياس الأثر بعد البرنامج وتقديم إرشادات استشارية لضمان التطبيق الفعلي.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 05 · CORPORATE EDGE & ICV + 60-MIN TRIAL ─────────── -->
+  <section class="page-section">
+    <div class="section-inner">
+      <div class="icv-box">
+        <div>
+          <span class="trial-badge" data-i18n="icv_badge">أفضلية تفضيلية في المناقصات</span>
+          <h2 style="font-family: var(--ff); font-size: clamp(22px, 2.2vw, 32px); color: var(--white); font-weight: 800; margin-bottom: 14px;" data-i18n="icv_title">
+            القيمة المضافة للمؤسسات (ICV)
+          </h2>
+          <p style="font-size: 15px; color: var(--ink-70); line-height: 1.7; max-width: 48ch;" data-i18n="icv_desc">
+            كيف تساهم برامج التدريب الصادرة من منشأة حاصلة على شهادة القيمة الوطنية المضافة (<span class="tech-term">ICV</span>) في رفع نقاط تقييم الشركات في المناقصات الحكومية وشبه الحكومية.
+          </p>
+        </div>
+
+        <div class="trial-card">
+          <span class="trial-badge" data-i18n="trial_badge">عرض تجريبي مجاني</span>
+          <div class="trial-time" data-i18n="trial_time">60 دقيقة</div>
+          <h3 style="font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 8px;" data-i18n="trial_title">
+            ورشة عمل تجريبية مجانية لشركتكم (Try-Before-You-Buy)
+          </h3>
+          <p style="font-size: 13px; color: var(--ink-70);" data-i18n="trial_desc">
+            لفحص كفاءة التدريب ومنهجية المدرب قبل توقيع عقود تدريب فرق العمل.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 06 · TRAINING CONVERSION FORM ─────────── -->
+  <section class="page-section" id="training-form">
+    <div class="section-inner">
+      <div class="form-container">
+        <div class="form-header">
+          <h2 class="form-title" data-i18n="tr_form_title">صمم المسار التدريبي الأنسب لك أو لفريقك</h2>
+          <p class="form-sub" data-i18n="contact_form_sub">املأ النموذج وسيقوم فريق الاستشاريين بالتواصل معك خلال يوم عمل واحد.</p>
+        </div>
+
+        <form class="ajax-form" data-ajax="false" aria-label="Training Consultation Form">
+          <div class="form-grid">
+            <div class="form-field">
+              <label class="form-label" for="tr-name" data-i18n="form_lbl_name">الاسم الكامل</label>
+              <input class="form-input" type="text" id="tr-name" name="name" placeholder="أدخل اسمك الكريم" required data-i18n-ph="form_lbl_name" />
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="tr-org" data-i18n="form_lbl_org">المسمى الوظيفي والجهة / الشركة</label>
+              <input class="form-input" type="text" id="tr-org" name="organization" placeholder="مثال: مدير الموارد البشرية - شركة التقنية" required data-i18n-ph="form_lbl_org" />
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-field">
+              <label class="form-label" for="tr-phone" data-i18n="form_lbl_phone">رقم الهاتف / واتساب</label>
+              <input class="form-input" type="tel" id="tr-phone" name="phone" placeholder="+971 -- --- ---- / +966 -- --- ----" required dir="ltr" />
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="tr-type" data-i18n="tr_form_lbl_type">نوع البرنامج المطلوب</label>
+              <select class="form-select" id="tr-type" name="program_type" required>
+                <option value="b2b" selected data-i18n="tr_opt_b2b">مؤسسي B2B</option>
+                <option value="vip" data-i18n="tr_opt_vip">فردي VIP</option>
+                <option value="ind" data-i18n="tr_opt_ind">دورة محددة للأفراد</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-feedback" role="status" aria-live="polite"></div>
+
+          <button class="btn btn--solid" type="submit" style="width: 100%; justify-content: center; margin-top: 10px;">
+            <span data-i18n="tr_form_submit">تأكيد طلب الاستشارة التدريبية</span>
+            <span class="btn__arw">&rarr;</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="nav__brand" href="/" aria-label="Solutions Castle — Home">
+        <img src="/public/logo-clear.png" alt="Solutions Castle" class="nav__logo" width="1340" height="441" />
+      </a>
+      <p class="footer__tagline" data-i18n="footer_tagline">
+        المنظومة المتكاملة للتمكين المؤسسي والتحول الرقمي المستدام في الإمارات والسعودية ومصر.
+      </p>
+    </div>
+
+    <div class="footer__cols">
+      <div class="footer__col">
+        <div class="footer__col-title" data-i18n="footer_quick_links">روابط سريعة</div>
+        <a class="footer__link" href="/" data-i18n="nav_home">الرئيسية</a>
+        <a class="footer__link" href="/about/" data-i18n="nav_about">من نحن</a>
+        <a class="footer__link" href="/it-services/" data-i18n="nav_it">خدمات تقنية المعلومات</a>
+        <a class="footer__link" href="/training/" data-i18n="nav_training">التدريب والتطوير</a>
+        <a class="footer__link" href="/#section-7" data-i18n="nav_industries">القطاعات</a>
+        <a class="footer__link" href="/contact/" data-i18n="nav_contact">تواصل معنا</a>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title" data-i18n="footer_credentials">الاعتمادات والشراكات</div>
+        <span class="footer__link" data-i18n="footer_khda">ترخيص KHDA حكومة دبي</span>
+        <span class="footer__link" data-i18n="footer_cpd">اعتماد CPD الدولي</span>
+        <span class="footer__link" data-i18n="footer_icv">شهادة القيمة الوطنية ICV</span>
+        <span class="footer__link" data-i18n="footer_oracle">شريك Oracle المعتمد</span>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title" data-i18n="footer_hubs">المقرات الإقليمية</div>
+        <span class="footer__link" data-i18n="footer_hub_dubai">دبي — شارع الشيخ زايد</span>
+        <span class="footer__link" data-i18n="footer_hub_riyadh">الرياض — المملكة العربية السعودية</span>
+        <span class="footer__link" data-i18n="footer_hub_cairo">القاهرة — جمهورية مصر العربية</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="footer__inner footer__bottom-inner">
+      <div class="footer__copy" data-i18n="footer_copy">&copy; 2026 Solutions Castle. جميع الحقوق محفوظة.</div>
+      <div class="footer__legal">
+        <span data-i18n="footer_legal">مرخص من هيئة المعرفة والتنمية البشرية (KHDA)</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/internal.js"></script>
+</body>
+</html>

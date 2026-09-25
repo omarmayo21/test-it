@@ -25,15 +25,41 @@ http.createServer((req, res) => {
   let file = path.join(ROOT, urlPath === '/' ? 'index.html' : urlPath);
   if (!file.startsWith(ROOT)) { res.writeHead(403).end('forbidden'); return; }
 
-  fs.stat(file, (err, st) => {
-    if (err || st.isDirectory()) {
-      res.writeHead(404, { 'content-type': 'text/plain' }).end('404');
-      return;
-    }
+  const serveStream = (targetFile) => {
     res.writeHead(200, {
-      'content-type': MIME[path.extname(file).toLowerCase()] || 'application/octet-stream',
+      'content-type': MIME[path.extname(targetFile).toLowerCase()] || 'application/octet-stream',
       'cache-control': 'no-cache'
     });
-    fs.createReadStream(file).pipe(res);
+    fs.createReadStream(targetFile).pipe(res);
+  };
+
+  fs.stat(file, (err, st) => {
+    if (!err && st.isFile()) {
+      serveStream(file);
+      return;
+    }
+    if (!err && st.isDirectory()) {
+      const idx = path.join(file, 'index.html');
+      fs.stat(idx, (iErr, iSt) => {
+        if (!iErr && iSt.isFile()) {
+          serveStream(idx);
+        } else {
+          res.writeHead(404, { 'content-type': 'text/plain' }).end('404');
+        }
+      });
+      return;
+    }
+    if (path.extname(file) === '') {
+      const htmlFile = file + '.html';
+      fs.stat(htmlFile, (hErr, hSt) => {
+        if (!hErr && hSt.isFile()) {
+          serveStream(htmlFile);
+        } else {
+          res.writeHead(404, { 'content-type': 'text/plain' }).end('404');
+        }
+      });
+      return;
+    }
+    res.writeHead(404, { 'content-type': 'text/plain' }).end('404');
   });
 }).listen(PORT, '0.0.0.0', () => console.log('serving ' + ROOT + ' on 0.0.0.0:' + PORT));

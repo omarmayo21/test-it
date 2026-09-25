@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>About Us | Solutions Castle — Institutional Enablement &amp; Digital Transformation</title>
+  <meta name="description" content="Solutions Castle was established as a comprehensive ecosystem merging accredited professional training with intelligent software development, serving enterprises and government entities across the UAE, Saudi Arabia, and Egypt." />
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+
+  <link rel="stylesheet" href="/assets/css/fonts.css" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/pages.css" />
+</head>
+<body data-q="3" data-page-title-key="about_h1">
+
+<!-- ══════════════════════ ATMOSPHERE ══════════════════════ -->
+<div class="atmosphere" aria-hidden="true">
+  <canvas id="dust"></canvas>
+  <div class="atmosphere__grid"></div>
+  <div class="atmosphere__horizon"></div>
+  <div class="atmosphere__glow atmosphere__glow--a"></div>
+  <div class="atmosphere__glow atmosphere__glow--b"></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ══════════════════════ NAVIGATION ══════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__bg" aria-hidden="true"></div>
+  <div class="nav__inner">
+    <a class="nav__brand" href="/" aria-label="Solutions Castle — Home">
+      <img src="/public/logo-clear.png" alt="Solutions Castle" class="nav__logo" width="1340" height="441" />
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <span class="nav__pill" id="navPill" aria-hidden="true"></span>
+      <a href="/" class="nav__link" data-i18n="nav_home">Home</a>
+      <a href="/about/" class="nav__link is-current" aria-current="page" data-i18n="nav_about">About Us</a>
+      <a href="/it-services/" class="nav__link" data-i18n="nav_it">IT Services</a>
+      <a href="/training/" class="nav__link" data-i18n="nav_training">Training</a>
+      <a href="/#section-7" class="nav__link" data-i18n="nav_industries">Industries</a>
+      <a href="/contact/" class="nav__link" data-i18n="nav_contact">Contact</a>
+    </nav>
+
+    <div class="nav__right">
+      <button class="lang-switch" id="langSwitch" type="button" aria-label="Switch Language / تغيير اللغة">
+        <span class="lang-btn lang-btn--en" data-lang="en">EN</span>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <span class="lang-btn lang-btn--ar" data-lang="ar">عربي</span>
+      </button>
+      <a href="/contact/" class="btn btn--ghost nav__cta"><span data-i18n="nav_cta">Let's talk</span> <span class="btn__arw" aria-hidden="true">&rarr;</span></a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav__rule"></div>
+</header>
+
+<!-- ══════════════════════ MOBILE MENU ══════════════════════ -->
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="menu__inner">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: clamp(24px,5vw,44px);">
+      <p class="menu__eyebrow" style="margin-bottom: 0;" data-i18n="menu_eyebrow">Solutions Castle</p>
+      <button class="lang-switch" id="langSwitchMobile" type="button" aria-label="Switch Language / تغيير اللغة">
+        <span class="lang-btn lang-btn--en" data-lang="en">EN</span>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <span class="lang-btn lang-btn--ar" data-lang="ar">عربي</span>
+      </button>
+    </div>
+    <nav class="menu__nav" aria-label="Mobile">
+      <a href="/"><i>01</i> <span data-i18n="nav_home">Home</span></a>
+      <a href="/about/"><i>02</i> <span data-i18n="nav_about">About Us</span></a>
+      <a href="/it-services/"><i>03</i> <span data-i18n="nav_it">IT Services</span></a>
+      <a href="/training/"><i>04</i> <span data-i18n="nav_training">Training</span></a>
+      <a href="/#section-7"><i>05</i> <span data-i18n="nav_industries">Industries</span></a>
+      <a href="/contact/"><i>06</i> <span data-i18n="nav_contact">Contact</span></a>
+    </nav>
+    <p class="menu__foot" data-i18n="menu_foot">IT Services &amp; Training</p>
+  </div>
+</div>
+
+<!-- ══════════════════════ PAGE CONTENT ══════════════════════ -->
+<main class="page-main">
+
+  <!-- ─────────── 01 · HERO & 2-COLUMN MEDIA COMPOSITION ─────────── -->
+  <section class="page-section page-hero">
+    <div class="section-inner">
+      <div class="page-hero__grid">
+        <div>
+          <span class="page-hero__eyebrow" data-i18n="about_eyebrow">Solutions Castle // About Us</span>
+          <h1 class="page-hero__title" data-i18n="about_h1">
+            شريكك المتكامل للتمكين المؤسسي والتحول الرقمي المستدام.
+          </h1>
+          <p class="page-hero__lede" data-i18n="about_sub">
+            تأسست سوليوشنز كاسل كمنظومة متكاملة تدمج بين التدريب المهني المرخص وتطوير الحلول البرمجية الذكية لخدمة الشركات والجهات الحكومية عبر الإمارات والسعودية ومصر.
+          </p>
+          <div class="cta-row" style="margin-top: 24px;">
+            <a href="/contact/" class="btn btn--solid"><span data-i18n="about_cta_primary">احجز جلسة نقاش استراتيجية</span> <span class="btn__arw">&#8592;</span></a>
+            <a href="/contact/" class="btn btn--ghost"><span data-i18n="about_cta_secondary">تواصل معنا عبر واتساب</span> <span class="btn__arw">&#8599;</span></a>
+          </div>
+        </div>
+
+        <!-- Hero Visual Frame -->
+        <div class="hero-visual">
+          <img src="/public/images/about-hero.jpg" alt="Solutions Castle Regional Network" class="hero-visual__img" loading="eager" />
+          <div class="hero-visual__overlay"></div>
+          <div class="hero-visual__badge">
+            <span class="hero-visual__badge-txt">Regional Digital Network</span>
+            <span class="hero-visual__badge-tag">UAE · KSA · EGYPT</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Credential Strip -->
+      <div class="cred-strip">
+        <div class="cred-item">
+          <span class="cred-icon">✓</span>
+          <p class="cred-text" data-i18n="about_cred_khda">مرخص من هيئة المعرفة والتنمية البشرية بحكومة دبي (<span class="tech-term">KHDA</span>).</p>
+        </div>
+        <div class="cred-item">
+          <span class="cred-icon">✓</span>
+          <p class="cred-text" data-i18n="about_cred_cpd">معتمد للتطوير المهني المستمر الدولي (<span class="tech-term">CPD</span>).</p>
+        </div>
+        <div class="cred-item">
+          <span class="cred-icon">✓</span>
+          <p class="cred-text" data-i18n="about_cred_icv">حاصل على شهادة القيمة الوطنية المضافة (<span class="tech-term">ICV</span>).</p>
+        </div>
+        <div class="cred-item">
+          <span class="cred-icon">✓</span>
+          <p class="cred-text" data-i18n="about_cred_oracle">شريك أوراكل المعتمد والشراكة الأكاديمية مع الجامعة الأمريكية في الإمارات (<span class="tech-term">AUE</span>).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 02 · LEADERSHIP MESSAGE ─────────── -->
+  <section class="page-section" style="padding-top: 0;">
+    <div class="section-inner">
+      <div class="exec-quote">
+        <p class="exec-quote__tag" data-i18n="lead_quote_tag">رسالة الإدارة التنفيذية</p>
+        <blockquote class="exec-quote__text" data-i18n="lead_quote_body">
+          "أسسنا سوليوشنز كاسل لنكون الشريك الاستراتيجي والتقني المتكامل للمؤسسات؛ هدفنا تجاوز الحلول المنفصلة والدمج الحقيقي بين تأهيل الكوادر البشرية وهندسة الأنظمة الذكية، لنصنع لشركائنا عائداً استثمارياً قابلاً للقياس وتفوقاً تشغيلياً مستداماً".
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 03 · REGIONAL EXPANSION SLIDER ─────────── -->
+  <section class="page-section">
+    <div class="section-inner">
+      <p class="eyebrow" data-i18n="timeline_eyebrow"><i>01</i> محطات التوسع الإقليمي</p>
+      <h2 class="title" style="margin-bottom: 20px;" data-i18n="timeline_title">مسيرة النمو عبر المنطقة</h2>
+      
+      <!-- Cinematic Slider -->
+      <div class="sc-slider" id="aboutSlider" role="region" aria-label="Regional Expansion Slider">
+        <div class="sc-slider__viewport">
+          <div class="sc-slider__track">
+            <!-- Slide 1 -->
+            <div class="sc-slider__slide">
+              <div class="sc-slider__media">
+                <img src="/public/images/about-hero.jpg" alt="Riyadh Expansion" class="sc-slider__img" loading="lazy" />
+                <div class="sc-slider__media-overlay"></div>
+              </div>
+              <div class="sc-slider__content">
+                <span class="sc-slider__tag">2019 // KSA</span>
+                <h3 class="sc-slider__title" data-i18n="tl_2019_title">الانطلاق في الرياض 2019</h3>
+                <p class="sc-slider__desc" data-i18n="tl_2019_desc">
+                  التأسيس في المملكة العربية السعودية وبناء شراكات التدريب والحلول المؤسسية.
+                </p>
+              </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="sc-slider__slide">
+              <div class="sc-slider__media">
+                <img src="/public/images/contact-hero.jpg" alt="Dubai Headquarters" class="sc-slider__img" loading="lazy" />
+                <div class="sc-slider__media-overlay"></div>
+              </div>
+              <div class="sc-slider__content">
+                <span class="sc-slider__tag">2023 // UAE</span>
+                <h3 class="sc-slider__title" data-i18n="tl_2023_title">التوسع في دولة الإمارات 2023</h3>
+                <p class="sc-slider__desc" data-i18n="tl_2023_desc">
+                  الحصول على ترخيص KHDA وافتتاح المقر الرئيسي في دبي (شارع الشيخ زايد) لخدمة السوق الإماراتي والخليجي.
+                </p>
+              </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="sc-slider__slide">
+              <div class="sc-slider__media">
+                <img src="/public/images/it-hero.jpg" alt="Egypt Center" class="sc-slider__img" loading="lazy" />
+                <div class="sc-slider__media-overlay"></div>
+              </div>
+              <div class="sc-slider__content">
+                <span class="sc-slider__tag">REGIONAL REACH // EGYPT</span>
+                <h3 class="sc-slider__title" data-i18n="tl_egypt_title">الانتشار الإقليمي - جمهورية مصر العربية</h3>
+                <p class="sc-slider__desc" data-i18n="tl_egypt_desc">
+                  إطلاق العمليات والمكتب التمثيلي لتوفير الكفاءات والدعم الفني والتشغيلي لعملاء المنطقة.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider Navigation Bar -->
+        <div class="sc-slider__bar">
+          <span class="sc-slider__counter">01 / 03</span>
+          <div class="sc-slider__dots">
+            <button class="sc-slider__dot is-active" type="button" aria-label="Slide 1"></button>
+            <button class="sc-slider__dot" type="button" aria-label="Slide 2"></button>
+            <button class="sc-slider__dot" type="button" aria-label="Slide 3"></button>
+          </div>
+          <div class="sc-slider__nav">
+            <button class="sc-slider__btn sc-slider__btn--prev" type="button" aria-label="Previous Slide"><span class="btn__arw">&#8592;</span></button>
+            <button class="sc-slider__btn sc-slider__btn--next" type="button" aria-label="Next Slide"><span class="btn__arw">&#8594;</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 04 · VISION & MISSION ─────────── -->
+  <section class="page-section">
+    <div class="section-inner">
+      <div class="vm-grid">
+        <!-- Vision -->
+        <div class="vm-card">
+          <span class="vm-card__num" data-i18n="vm_vision_tag">رؤيتنا</span>
+          <h3 class="vm-card__title" data-i18n="vm_vision_title">الريادة في التمكين المؤسسي والتحول الرقمي.</h3>
+          <p class="vm-card__desc" data-i18n="vm_vision_desc">
+            أن نكون الشريك الأكثر موثوقية في منطقة الخليج والشرق الأوسط لسد الفجوة بين الاستراتيجية والتنفيذ، وتمكين المؤسسات من قيادة التحول الرقمي بفاعلية واستدامة.
+          </p>
+        </div>
+
+        <!-- Mission -->
+        <div class="vm-card">
+          <span class="vm-card__num" data-i18n="vm_mission_tag">رسالتنا</span>
+          <h3 class="vm-card__title" data-i18n="vm_mission_title">بناء الكفاءات وهندسة الحلول المستدامة.</h3>
+          <p class="vm-card__desc" data-i18n="vm_mission_desc">
+            تمكين المؤسسات والكوادر من خلال منظومة مزدوجة تجمع بين البرامج التدريبية المعتمدة وتطبيقات الذكاء الاصطناعي والأنظمة السحابية، لترجمة المعرفة إلى أداء تشغيلي استثنائي.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 05 · WHY PARTNER WITH US ─────────── -->
+  <section class="page-section">
+    <div class="section-inner">
+      <p class="eyebrow" data-i18n="why_eyebrow"><i>02</i> لماذا تختارنا</p>
+      <h2 class="title" style="margin-bottom: 20px;" data-i18n="why_title">ثلاث ركائز تصنع الفارق لشركائنا</h2>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <span class="why-card__num">01</span>
+          <h3 class="why-card__title" data-i18n="why_p1_title">التكامل بين الإنسان والتقنية</h3>
+          <p class="why-card__desc" data-i18n="why_p1_desc">
+            الكيان الوحيد الذي يوفر توريد الأنظمة (IT) وتأهيل فرق العمل لاستخدامها تحت سقف واحد.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <span class="why-card__num">02</span>
+          <h3 class="why-card__title" data-i18n="why_p2_title">الاعتمادية الحكومية والأكاديمية</h3>
+          <p class="why-card__desc" data-i18n="why_p2_desc">
+            برامج موثقة رسميًا تدعم المسار الوظيفي وتمنح أولوية تفضيلية في المناقصات عبر شهادة الـ ICV.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <span class="why-card__num">03</span>
+          <h3 class="why-card__title" data-i18n="why_p3_title">فريق خبراء واستشاريين</h3>
+          <p class="why-card__desc" data-i18n="why_p3_desc">
+            أكثر من 20 مستشاراً وخبيراً معتمداً يمتلكون خبرة ميدانية واسعة في بيئة الأعمال الخليجية.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 06 · CONVERSION BANNER ─────────── -->
+  <section class="page-section">
+    <div class="section-inner">
+      <div class="enablement-box">
+        <h2 class="enablement-box__lead" data-i18n="about_cta_box_title">
+          جاهز للارتقاء بأداء مؤسستك وفريق عملك وبناء شراكة عمل ناجحة؟
+        </h2>
+        <div class="cta-row cta-row--center">
+          <a href="/contact/" class="btn btn--solid"><span data-i18n="about_cta_primary">احجز جلسة نقاش استراتيجية</span> <span class="btn__arw" aria-hidden="true">&rarr;</span></a>
+          <a href="/contact/" class="btn btn--ghost"><span data-i18n="about_cta_secondary">تواصل معنا عبر واتساب</span> <span class="btn__arw" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="nav__brand" href="/" aria-label="Solutions Castle — Home">
+        <img src="/public/logo-clear.png" alt="Solutions Castle" class="nav__logo" width="1340" height="441" />
+      </a>
+      <p class="footer__tagline" data-i18n="footer_tagline">
+        The integrated ecosystem for institutional enablement and sustainable digital transformation across the UAE, Saudi Arabia, and Egypt.
+      </p>
+    </div>
+
+    <div class="footer__cols">
+      <div class="footer__col">
+        <div class="footer__col-title" data-i18n="footer_quick_links">روابط سريعة</div>
+        <a class="footer__link" href="/" data-i18n="nav_home">الرئيسية</a>
+        <a class="footer__link" href="/about/" data-i18n="nav_about">من نحن</a>
+        <a class="footer__link" href="/it-services/" data-i18n="nav_it">خدمات تقنية المعلومات</a>
+        <a class="footer__link" href="/training/" data-i18n="nav_training">التدريب والتطوير</a>
+        <a class="footer__link" href="/#section-7" data-i18n="nav_industries">القطاعات</a>
+        <a class="footer__link" href="/contact/" data-i18n="nav_contact">تواصل معنا</a>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title" data-i18n="footer_credentials">الاعتمادات والشراكات</div>
+        <span class="footer__link" data-i18n="footer_khda">ترخيص KHDA حكومة دبي</span>
+        <span class="footer__link" data-i18n="footer_cpd">اعتماد CPD الدولي</span>
+        <span class="footer__link" data-i18n="footer_icv">شهادة القيمة الوطنية ICV</span>
+        <span class="footer__link" data-i18n="footer_oracle">شريك Oracle المعتمد</span>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title" data-i18n="footer_hubs">المقرات الإقليمية</div>
+        <span class="footer__link" data-i18n="footer_hub_dubai">دبي — شارع الشيخ زايد</span>
+        <span class="footer__link" data-i18n="footer_hub_riyadh">الرياض — المملكة العربية السعودية</span>
+        <span class="footer__link" data-i18n="footer_hub_cairo">القاهرة — جمهورية مصر العربية</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="footer__inner footer__bottom-inner">
+      <div class="footer__copy" data-i18n="footer_copy">&copy; 2026 Solutions Castle. جميع الحقوق محفوظة.</div>
+      <div class="footer__legal">
+        <span data-i18n="footer_legal">مرخص من هيئة المعرفة والتنمية البشرية (KHDA)</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/i18n.js"></script>
+<script src="/assets/js/internal.js"></script>
+</body>
+</html>

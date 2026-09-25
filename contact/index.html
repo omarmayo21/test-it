@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Contact Us | Solutions Castle</title>
+  <meta name="description" content="Contact Solutions Castle advisors for accredited professional training, AI systems engineering, and enterprise IT solutions in the UAE, Saudi Arabia, and Egypt.">
+  <link rel="canonical" href="https://solutionscastle.com/contact/">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Contact Us | Solutions Castle">
+  <meta property="og:description" content="Connect with Solutions Castle consultants for enterprise training, AI development, and digital transformation.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+
+  <!-- Core Design System CSS -->
+  <link rel="stylesheet" href="../assets/css/fonts.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+</head>
+<body class="page-internal page-contact">
+
+  <!-- Atmospheric Background Canvas -->
+  <canvas id="dust" aria-hidden="true"></canvas>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════
+       GLOBAL NAVIGATION
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <header class="nav" id="nav">
+    <div class="nav__bg" aria-hidden="true"></div>
+    <div class="nav__inner">
+      <a class="nav__brand" href="/" aria-label="Solutions Castle — Home">
+        <img src="/public/logo-clear.png" alt="Solutions Castle" class="nav__logo" width="1340" height="441" />
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <span class="nav__pill" id="navPill" aria-hidden="true"></span>
+        <a class="nav__link" href="/" data-i18n="nav_home">Home</a>
+        <a class="nav__link" href="/about/" data-i18n="nav_about">About Us</a>
+        <a class="nav__link" href="/it-services/" data-i18n="nav_it">IT Services</a>
+        <a class="nav__link" href="/training/" data-i18n="nav_training">Training</a>
+        <a class="nav__link" href="/#section-7" data-i18n="nav_industries">Industries</a>
+        <a class="nav__link is-current" href="/contact/" aria-current="page" data-i18n="nav_contact">Contact</a>
+      </nav>
+
+      <div class="nav__right">
+        <button class="lang-switch" id="langSwitch" type="button" aria-label="Switch Language / تغيير اللغة">
+          <span class="lang-btn lang-btn--en" data-lang="en">EN</span>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <span class="lang-btn lang-btn--ar" data-lang="ar">عربي</span>
+        </button>
+        <a href="#contact-form" class="btn btn--ghost nav__cta"><span data-i18n="nav_cta">Get in Touch</span> <span class="btn__arw">&rarr;</span></a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav__rule"></div>
+  </header>
+
+  <!-- ══════════════════════ MOBILE MENU ══════════════════════ -->
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+    <div class="menu__inner">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: clamp(24px,5vw,44px);">
+        <p class="menu__eyebrow" style="margin-bottom: 0;" data-i18n="menu_eyebrow">Solutions Castle</p>
+        <button class="lang-switch" id="langSwitchMobile" type="button" aria-label="Switch Language / تغيير اللغة">
+          <span class="lang-btn lang-btn--en" data-lang="en">EN</span>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <span class="lang-btn lang-btn--ar" data-lang="ar">عربي</span>
+        </button>
+      </div>
+      <nav class="menu__nav" aria-label="Mobile">
+        <a href="/"><i>01</i> <span data-i18n="nav_home">Home</span></a>
+        <a href="/about/"><i>02</i> <span data-i18n="nav_about">About Us</span></a>
+        <a href="/it-services/"><i>03</i> <span data-i18n="nav_it">IT Services</span></a>
+        <a href="/training/"><i>04</i> <span data-i18n="nav_training">Training</span></a>
+        <a href="/#section-7"><i>05</i> <span data-i18n="nav_industries">Industries</span></a>
+        <a href="/contact/"><i>06</i> <span data-i18n="nav_contact">Contact</span></a>
+      </nav>
+      <p class="menu__foot" data-i18n="menu_foot">IT Services &amp; Training</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════
+       MAIN CONTENT
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <main class="page-main" id="main-content">
+
+    <!-- Section 1 — Contact Hero with Visual Composition -->
+    <section class="page-section page-hero" aria-labelledby="contact-h1">
+      <div class="section-inner">
+        <div class="page-hero__grid">
+          <div class="page-hero__content">
+            <div class="page-hero__eyebrow">
+              <span class="dot-live" aria-hidden="true"></span>
+              <span data-i18n="contact_hero_eyebrow">Partnership & Contact Center</span>
+            </div>
+            <h1 class="page-hero__title" id="contact-h1" data-i18n="contact_h1">
+              Contact Us to Elevate Your Institutional Efficiency and Lead Your Digital Transformation.
+            </h1>
+            <p class="page-hero__lede" data-i18n="contact_sub">
+              Whether you are seeking accredited training programs for your teams or need a consultation to architect AI systems and workflow automation, our advisors are ready to deliver the right solutions.
+            </p>
+            
+            <div style="margin-top: 24px;">
+              <div class="sla-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span data-i18n="sla_badge">Committed to responding with tailored proposals within 1 business day</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <img src="/public/images/contact-hero.jpg" alt="Solutions Castle Regional Corporate Network" class="hero-visual__img" loading="eager" width="800" height="560">
+            <div class="hero-visual__badge">
+              <div class="hero-visual__badge-title" data-i18n="nav_brand">SOLUTIONS CASTLE</div>
+              <div class="hero-visual__badge-sub" data-i18n="map_eyebrow">REGIONAL PRESENCE · UAE • KSA • EGYPT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2 — Form & Regional Hubs Composition -->
+    <section class="page-section" id="contact-form" style="padding-top: 0;">
+      <div class="section-inner">
+        <div class="contact-layout">
+          
+          <!-- Contact Form -->
+          <div class="form-container" style="margin-top: 0;">
+            <div class="form-header">
+              <h2 class="form-title" data-i18n="contact_form_title">Send an Inquiry or Consultation Request</h2>
+              <p class="form-sub" data-i18n="contact_form_sub">Fill out the form and our advisory team will reach out within 1 business day.</p>
+            </div>
+
+            <form class="ajax-form" data-ajax="false" aria-label="Contact and Consultation Form">
+              
+              <!-- Category Selector -->
+              <div class="form-field" style="margin-bottom: 20px;">
+                <label class="form-label" for="c-category"><span data-i18n="c_lbl_category">Service Track / Area of Interest</span> <span style="color:var(--cyan-400);">*</span></label>
+                <select class="form-select" id="c-category" name="category" required>
+                  <option value="" disabled selected data-i18n="form_opt_default">Select requested service...</option>
+                  <option value="training" data-i18n="c_opt_training">Workforce Training & Capability Development</option>
+                  <option value="it-ai" data-i18n="c_opt_it">Information Technology & AI Solutions</option>
+                </select>
+              </div>
+
+              <div class="form-grid">
+                <!-- Full Name -->
+                <div class="form-field">
+                  <label class="form-label" for="c-name"><span data-i18n="form_lbl_name">Full Name</span> <span style="color:var(--cyan-400);">*</span></label>
+                  <input class="form-input" type="text" id="c-name" name="name" placeholder="Full name" required autocomplete="name">
+                </div>
+
+                <!-- Org / Title -->
+                <div class="form-field">
+                  <label class="form-label" for="c-org" data-i18n="form_lbl_org">Organization / Company & Job Title</label>
+                  <input class="form-input" type="text" id="c-org" name="organization" placeholder="e.g. Enterprise Corp — HR Director">
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <!-- Phone / WhatsApp -->
+                <div class="form-field">
+                  <label class="form-label" for="c-phone"><span data-i18n="form_lbl_phone">Phone / WhatsApp (with country code)</span> <span style="color:var(--cyan-400);">*</span></label>
+                  <input class="form-input" type="tel" id="c-phone" name="phone" placeholder="+971 -- --- ---- / +966 -- --- ----" required autocomplete="tel">
+                </div>
+
+                <!-- Work Email -->
+                <div class="form-field">
+                  <label class="form-label" for="c-email"><span data-i18n="form_lbl_email">Professional Work Email</span> <span style="color:var(--cyan-400);">*</span></label>
+                  <input class="form-input" type="email" id="c-email" name="email" placeholder="name@company.com" required autocomplete="email">
+                </div>
+              </div>
+
+              <!-- Message -->
+              <div class="form-field">
+                <label class="form-label" for="c-message" data-i18n="form_lbl_msg">Project Requirements Description</label>
+                <textarea class="form-textarea" id="c-message" name="message" rows="4" placeholder="Describe your organizational requirements or desired training pathway..."></textarea>
+              </div>
+
+              <div class="form-feedback" role="status" aria-live="polite"></div>
+
+              <button class="btn btn--solid" type="submit" style="width: 100%; justify-content: center; margin-top: 10px;">
+                <span data-i18n="contact_submit">Submit Request</span>
+                <span class="btn__arw">&rarr;</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Direct Channels & Regional Hubs -->
+          <div class="hubs-card">
+            
+            <!-- Dubai HQ -->
+            <div class="hub-item">
+              <div class="hub-item__title" data-i18n="c_hub_dubai_title">UAE Headquarters (Dubai)</div>
+              <div class="hub-item__detail">
+                <div style="margin-bottom: 6px;">
+                  <strong style="color: var(--white);" data-i18n="footer_hubs">Headquarters:</strong>
+                  <span data-i18n="c_hub_dubai_addr">Dubai, Sheikh Zayed Road, United Arab Emirates</span>
+                </div>
+                <div>
+                  <strong style="color: var(--white);" data-i18n="form_lbl_phone">Phone:</strong>
+                  <span class="placeholder-notice" data-i18n="c_phone_placeholder">[ Official Phone — Under Scheduled Update ]</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Riyadh Office -->
+            <div class="hub-item">
+              <div class="hub-item__title" data-i18n="c_hub_riyadh_title">Saudi Arabia Office (Riyadh)</div>
+              <div class="hub-item__detail">
+                <div style="margin-bottom: 6px;">
+                  <strong style="color: var(--white);" data-i18n="footer_hubs">Address:</strong>
+                  <span data-i18n="c_hub_riyadh_addr">Riyadh, Kingdom of Saudi Arabia</span>
+                </div>
+                <div>
+                  <strong style="color: var(--white);" data-i18n="form_lbl_phone">Phone:</strong>
+                  <span class="placeholder-notice" data-i18n="c_phone_placeholder">[ Official Phone — Under Scheduled Update ]</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="hub-item">
+              <div class="hub-item__title" data-i18n="c_hub_email_title">Unified Email</div>
+              <div class="hub-item__detail">
+                <a href="mailto:hello@solutionscastle.com" class="tech-term" style="color: var(--cyan-400); font-weight: 600; text-decoration: underline; text-underline-offset: 4px;">
+                  hello@solutionscastle.com
+                </a>
+              </div>
+            </div>
+
+            <!-- WhatsApp Direct -->
+            <div class="hub-item">
+              <div class="hub-item__title" data-i18n="c_hub_wa_title">Direct WhatsApp Channel</div>
+              <div class="hub-item__detail">
+                <p style="margin-bottom: 12px;" data-i18n="c_hub_wa_desc">Instant WhatsApp chat with corporate client service for rapid enterprise inquiries.</p>
+                <a href="#contact-form" class="btn btn--outline btn--sm" style="display: inline-flex;">
+                  <span class="btn__txt" data-i18n="c_hub_wa_btn">Instant Customer Service Chat</span>
+                  <span class="btn__arw" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3 — Google Maps / Regional Presence -->
+    <section class="page-section" style="padding-top: 0;" aria-labelledby="map-heading">
+      <div class="section-inner">
+        <div class="map-card">
+          <div style="margin-bottom: 20px;">
+            <span class="tech-term" style="font-size: 12px; font-weight: 700; letter-spacing: .15em; color: var(--cyan-400); text-transform: uppercase;" data-i18n="map_eyebrow">
+              REGIONAL PRESENCE &middot; UAE &bull; KSA &bull; EGYPT
+            </span>
+            <h3 id="map-heading" style="font-size: clamp(20px, 2vw, 26px); color: var(--white); font-weight: 700; margin-top: 6px;" data-i18n="map_title">
+              Regional Presence & Headquarters Map
+            </h3>
+          </div>
+
+          <div class="map-embed-placeholder" role="region" aria-label="Regional Map Placeholder">
+            <div>
+              <div style="width: 56px; height: 56px; margin-inline: auto; margin-bottom: 16px; border-radius: 50%; background: rgba(0, 240, 230, 0.1); border: 1px solid rgba(0, 240, 230, 0.3); display: grid; place-items: center; color: var(--cyan-400);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <h4 style="font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 8px;" data-i18n="map_hq_title">
+                Headquarters: Dubai — Sheikh Zayed Road
+              </h4>
+              <p style="font-size: 13.5px; color: var(--ink-70); max-width: 50ch; margin-inline: auto;" data-i18n="map_hq_desc">
+                Ready for live coordinates via Google Maps API. For on-site meetings, please arrange a scheduled appointment through the consultation form.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4 — Contact FAQ Accordion -->
+    <section class="page-section" style="padding-top: 20px;" aria-labelledby="faq-heading">
+      <div class="section-inner">
+        <div style="text-align: center; margin-bottom: 30px;">
+          <span class="tech-term" style="font-size: 12px; font-weight: 700; letter-spacing: .15em; color: var(--cyan-400); text-transform: uppercase;" data-i18n="faq_eyebrow">
+            FREQUENTLY ASKED QUESTIONS
+          </span>
+          <h2 id="faq-heading" style="font-size: clamp(24px, 3.2vw, 36px); font-weight: 800; color: var(--white); margin-top: 8px;" data-i18n="faq_title">
+            Frequently Asked Questions
+          </h2>
+        </div>
+
+        <div class="faq-accordion" role="region" aria-label="Frequently Asked Questions">
+          
+          <!-- Question 1 -->
+          <div class="faq-item is-open">
+            <button class="faq-trigger" type="button" aria-expanded="true">
+              <span data-i18n="faq_q1">Are the training programs officially accredited?</span>
+              <span class="faq-trigger__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-content" data-i18n="faq_a1">
+              Yes, all our courses and certificates are licensed and attested by the Knowledge and Human Development Authority — Government of Dubai (KHDA) and accredited under the Continuing Professional Development (CPD) system.
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="faq-item">
+            <button class="faq-trigger" type="button" aria-expanded="false">
+              <span data-i18n="faq_q2">Do you offer training services at the client's premises?</span>
+              <span class="faq-trigger__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-content" data-i18n="faq_a2">
+              Yes, we provide custom B2B programs conducted either at your company premises, at our headquarters, or virtually online.
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="faq-item">
+            <button class="faq-trigger" type="button" aria-expanded="false">
+              <span data-i18n="faq_q3">How does the IT and AI consultation process begin?</span>
+              <span class="faq-trigger__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-content" data-i18n="faq_a3">
+              An exploratory discovery session is organized to inspect existing infrastructure and identify automation opportunities prior to drafting technical and commercial proposals.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════
+       GLOBAL FOOTER
+       ═════════════════════════════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a class="nav__brand" href="/" aria-label="Solutions Castle — Home">
+          <img src="/public/logo-clear.png" alt="Solutions Castle" class="nav__logo" width="1340" height="441" />
+        </a>
+        <p class="footer__tagline" data-i18n="footer_tagline">
+          The integrated ecosystem for institutional enablement and sustainable digital transformation across the UAE, Saudi Arabia, and Egypt.
+        </p>
+      </div>
+
+      <div class="footer__cols">
+        <div class="footer__col">
+          <div class="footer__col-title" data-i18n="footer_quick_links">Quick Links</div>
+          <a class="footer__link" href="/" data-i18n="nav_home">Home</a>
+          <a class="footer__link" href="/about/" data-i18n="nav_about">About Us</a>
+          <a class="footer__link" href="/it-services/" data-i18n="nav_it">IT Services</a>
+          <a class="footer__link" href="/training/" data-i18n="nav_training">Training</a>
+          <a class="footer__link" href="/#section-7" data-i18n="nav_industries">Industries</a>
+          <a class="footer__link" href="/contact/" data-i18n="nav_contact">Contact</a>
+        </div>
+
+        <div class="footer__col">
+          <div class="footer__col-title" data-i18n="footer_credentials">Accreditations & Partnerships</div>
+          <span class="footer__link" data-i18n="footer_khda">KHDA Dubai Govt License</span>
+          <span class="footer__link" data-i18n="footer_cpd">CPD International Accreditation</span>
+          <span class="footer__link" data-i18n="footer_icv">National ICV Certification</span>
+          <span class="footer__link" data-i18n="footer_oracle">Certified Oracle Partner</span>
+        </div>
+
+        <div class="footer__col">
+          <div class="footer__col-title" data-i18n="footer_hubs">Regional Presence</div>
+          <span class="footer__link" data-i18n="footer_hub_dubai">Dubai — Sheikh Zayed Road</span>
+          <span class="footer__link" data-i18n="footer_hub_riyadh">Riyadh — Kingdom of Saudi Arabia</span>
+          <span class="footer__link" data-i18n="footer_hub_cairo">Cairo — Arab Republic of Egypt</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__inner footer__bottom-inner">
+        <div class="footer__copy" data-i18n="footer_copy">&copy; 2026 Solutions Castle. All rights reserved.</div>
+        <div class="footer__legal">
+          <span data-i18n="footer_legal">Licensed by the Knowledge and Human Development Authority (KHDA)</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bilingual & Interactive Scripts -->
+  <script src="../assets/js/i18n.js"></script>
+  <script src="../assets/js/internal.js" defer></script>
+</body>
+</html>

@@ -9,6 +9,8 @@
     "build": "echo 'Static site ready for deployment'",
     "preview": "node tools/serve.js",
     "verify": "node tools/verify.mjs",
+    "test:internal": "node tools/test-internal.mjs",
+    "test": "node tools/verify.mjs && node tools/test-internal.mjs",
     "filmstrip": "node tools/filmstrip.mjs",
     "metrics": "python3 tools/metrics.py \"shots/rest-*.png\"",
     "analyze": "python3 tools/analyze.py"

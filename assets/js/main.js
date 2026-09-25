@@ -101,182 +101,146 @@
   }
 
   /* ══════════════════════════════════════════════════════════════════════════
-     SO — the transition identity.  Nine different controlled motions.
+     SO TRANSITION CHOREOGRAPHIES — Curated for 3 key brand milestones:
+       1. What We Do → IT Services (Signature 1: Brand Introduction)
+       2. How We Work → Industries (Signature 2: Process to Ecosystem Hub)
+       3. The Connection → Two Destinations (Signature 3: Grand Visual Climax)
      ═════════════════════════════════════════════════════════════════════════ */
   const env = () => ({ vw, vh });
 
   const SO_MOTION = [
-    /* 01 — HERO → WHO WE ARE
-       emerges from depth + moves toward camera + controlled Y rotation */
+    /* 01 · WHAT WE DO → IT SERVICES (Transition 3)
+       Moderate SO presence — clean emergence from depth with controlled Y-axis yaw */
     (e, m) => {
       const t = inOutCubic(e);
       return {
-        x: 0, y: 0, z: lerp(-700, 480, t),
-        rx: lerp(10, -8, t), ry: lerp(-58, 26, t), rz: 0,
-        s: lerp(0.55, 1.25, t),
-        halo: lerp(0.50, 1.20, t),
+        x: 0, y: 0, z: lerp(-620, 380, t),
+        rx: lerp(3, -3, t), ry: lerp(-72, 60, t), rz: 0,
+        s: lerp(0.68, 1.15, t),
+        halo: lerp(0.55, 1.05, t),
         ring: 0, ringS: 1,
         beam: 0, beamA: 0, beamS: 1,
-        op: smoothstep(0.02, 0.20, e) * (1 - smoothstep(0.66, 0.95, e))
+        op: smoothstep(0.03, 0.18, e) * (1 - smoothstep(0.66, 0.95, e))
       };
     },
 
-    /* 02 — WHO WE ARE → WHAT WE DO
-       tilts on X + moves forward + subtle cyan energy pulse */
-    (e, m) => {
-      const t  = inOutCubic(e);
-      const pu = Math.sin(Math.PI * e);
-      return {
-        x: 0, y: 0, z: lerp(-820, 430, t),
-        rx: lerp(-68, 20, t), ry: lerp(14, -12, t), rz: 0,
-        s: lerp(0.50, 1.30, t),
-        halo: lerp(0.5, 1.15, t) + 0.55 * pu,
-        ring: pu * pu, ringS: lerp(0.8, 2.7, e),
-        beam: 0, beamA: 0, beamS: 1,
-        op: smoothstep(0.02, 0.18, e) * (1 - smoothstep(0.66, 0.95, e))
-      };
-    },
-
-    /* 03 — WHAT WE DO → IT SERVICES
-       controlled Y rotation */
+    /* 02 · HOW WE WORK → INDUSTRIES (Transition 6)
+       Subtle & concise — central hub pulse bridging execution to industry scale */
     (e, m) => {
       const t = inOutCubic(e);
       return {
-        x: 0, y: 0, z: lerp(-620, 400, t),
-        rx: lerp(3, -3, t), ry: lerp(-78, 70, t), rz: 0,
-        s: lerp(0.70, 1.15, t),
-        halo: lerp(0.6, 1.05, t),
-        ring: 0, ringS: 1,
-        beam: 0, beamA: 0, beamS: 1,
-        op: smoothstep(0.02, 0.18, e) * (1 - smoothstep(0.66, 0.95, e))
-      };
-    },
-
-    /* 04 — IT SERVICES → TRAINING
-       expands into a portal + the camera moves through the SO */
-    (e, m) => {
-      const t  = Math.pow(e, 1.45);
-      const t2 = Math.pow(e, 1.30);
-      return {
-        x: 0, y: 0, z: lerp(-520, 640, t),
-        rx: 0, ry: 0, rz: lerp(-8, 10, inOutCubic(e)),
-        s: lerp(0.45, 1.62, t2),
-        halo: lerp(0.80, 1.22, t2),
-        ring: smoothstep(0.04, 0.30, e) * (1 - smoothstep(0.80, 1.0, e)),
-        ringS: lerp(0.7, 3.4, e),
-        beam: 0, beamA: 0, beamS: 1,
-        op: smoothstep(0.02, 0.16, e) * (1 - smoothstep(0.74, 0.97, e))
-      };
-    },
-
-    /* 05 — TRAINING → HOW WE WORK
-       orbital rotation */
-    (e, m) => {
-      const a  = (e - 0.5) * Math.PI;
-      const R  = m.vw * 0.28;
-      const t  = inOutCubic(e);
-      return {
-        x: Math.sin(a) * R,
-        y: -Math.cos(a) * m.vh * 0.05 + m.vh * 0.02 * e,
-        z: lerp(-750, 430, t) - Math.cos(a) * 160,
-        rx: lerp(-8, 8, e), ry: lerp(-50, 50, e), rz: lerp(-4, 4, e),
-        s: lerp(0.55, 1.20, t),
+        x: 0, y: 0, z: lerp(-450, 160, t),
+        rx: lerp(-4, 4, t), ry: lerp(-16, 16, t), rz: 0,
+        s: lerp(0.80, 1.15, t),
         halo: lerp(0.6, 1.2, t),
-        ring: 0, ringS: 1,
-        beam: 0, beamA: 0, beamS: 1,
-        op: smoothstep(0.02, 0.18, e) * (1 - smoothstep(0.68, 0.96, e))
+        ring: smoothstep(0.06, 0.26, e) * (1 - smoothstep(0.74, 0.96, e)),
+        ringS: lerp(0.75, 2.3, e),
+        beam: smoothstep(0.08, 0.32, e) * (1 - smoothstep(0.70, 0.94, e)),
+        beamA: 0, beamS: lerp(0.20, 1.15, e),
+        op: smoothstep(0.04, 0.18, e) * (1 - smoothstep(0.68, 0.94, e))
       };
     },
 
-    /* 06 — HOW WE WORK → INDUSTRIES
-       the SO becomes the central hub */
-    (e, m) => {
-      const t = inOutCubic(e);
-      return {
-        x: 0, y: 0, z: lerp(-520, 200, t),
-        rx: lerp(-6, 6, t), ry: lerp(-20, 20, t), rz: 0,
-        s: lerp(0.80, 1.25, t),
-        halo: lerp(0.7, 1.35, t),
-        ring: smoothstep(0.04, 0.26, e) * (1 - smoothstep(0.78, 1.0, e)),
-        ringS: lerp(0.75, 2.5, e) * (1 + 0.12 * Math.sin(e * Math.PI * 2)),
-        beam: smoothstep(0.05, 0.35, e) * (1 - smoothstep(0.74, 1.0, e)),
-        beamA: 0, beamS: lerp(0.20, 1.30, e),
-        op: smoothstep(0.02, 0.18, e) * (1 - smoothstep(0.70, 0.96, e))
-      };
-    },
-
-    /* 07 — INDUSTRIES → THE CONNECTION
-       moves toward the panoramic centre */
-    (e, m) => {
-      const t = inOutCubic(e);
-      return {
-        x: lerp(m.vw * 0.30, 0, t),
-        y: lerp(m.vh * 0.09, 0, t),
-        z: lerp(-800, 300, t),
-        rx: 0, ry: lerp(-36, 0, t), rz: lerp(10, 0, t),
-        s: lerp(0.70, 1.25, t),
-        halo: lerp(0.6, 1.25, t),
-        ring: 0, ringS: 1,
-        beam: smoothstep(0.10, 0.45, e) * (1 - smoothstep(0.60, 0.96, e)),
-        beamA: 0, beamS: lerp(0.10, 1.70, e),
-        op: smoothstep(0.02, 0.18, e) * (1 - smoothstep(0.70, 0.96, e))
-      };
-    },
-
-    /* 08 — THE CONNECTION → TWO DESTINATIONS
-       expands and visually creates two directions */
+    /* 03 · THE CONNECTION → TWO DESTINATIONS (Transition 8)
+       Grand visual climax — expansive forward surge with dual split directional beams */
     (e, m) => {
       const t  = inOutCubic(e);
       const t2 = Math.pow(e, 1.2);
       return {
-        x: 0, y: 0, z: lerp(-260, 470, t2),
+        x: 0, y: 0, z: lerp(-240, 500, t2),
         rx: lerp(0, -4, t), ry: 0, rz: 0,
-        s: lerp(1.00, 1.42, t2),
-        halo: lerp(0.80, 1.22, t2),
-        ring: 0, ringS: 1,
-        beam: smoothstep(0.15, 0.50, e) * (1 - smoothstep(0.86, 1.0, e)),
-        beamA: lerp(0, 27, e), beamS: lerp(0.15, 1.10, e),
-        op: smoothstep(0.02, 0.18, e) * (1 - smoothstep(0.74, 0.97, e))
-      };
-    },
-
-    /* 09 — TWO DESTINATIONS → FINAL CTA
-       returns to the centre and settles */
-    (e, m) => {
-      const t = outBack(clamp(e, 0, 1));
-      return {
-        x: lerp(-m.vw * 0.22, 0, t),
-        y: lerp(m.vh * 0.11, 0, t),
-        z: lerp(-420, 60, t),
-        rx: lerp(-14, 0, t), ry: lerp(30, 0, t), rz: 0,
-        s: lerp(1.45, 1.05, t),
-        halo: lerp(1.35, 1.00, t),
-        ring: 0, ringS: 1,
-        beam: 0, beamA: 0, beamS: 1,
-        op: smoothstep(0.02, 0.18, e) * (1 - smoothstep(0.68, 0.96, e))
+        s: lerp(1.00, 1.48, t2),
+        halo: lerp(0.85, 1.30, t2),
+        ring: smoothstep(0.04, 0.28, e) * (1 - smoothstep(0.82, 0.98, e)),
+        ringS: lerp(0.8, 3.2, e),
+        beam: smoothstep(0.12, 0.45, e) * (1 - smoothstep(0.84, 0.98, e)),
+        beamA: lerp(0, 28, e), beamS: lerp(0.20, 1.25, e),
+        op: smoothstep(0.02, 0.16, e) * (1 - smoothstep(0.76, 0.98, e))
       };
     }
   ];
 
-  const SO_NAMES = [
-    'emerge / depth → camera',
-    'x-tilt + energy pulse',
-    'controlled Y rotation',
-    'portal / through the SO',
-    'orbital rotation',
-    'central hub',
-    'panoramic centre',
-    'expands → two directions',
-    'return + settle'
+  /* ══════════════════════════════════════════════════════════════════════════
+     CENTRALIZED TRANSITION CONFIGURATION
+     Controls SO activation, naming, and unique 3D panel dynamics per transition
+     ═════════════════════════════════════════════════════════════════════════ */
+  const TRANSITIONS = [
+    // 01 · Hero → Who We Are (Panel 3D clean recession & unfold)
+    {
+      name: 'Hero → Who We Are',
+      hasSO: false,
+      panel: { outRx: -48, outRy: 0, outZ: -900, outS: 0.78, outX: 0, outY: -32, inRx: 50, inRy: 0, inZ: -1400, inS: 0.84, inX: 0, inY: 48 }
+    },
+    // 02 · Who We Are → What We Do (3D pitch & architectural depth)
+    {
+      name: 'Who We Are → What We Do',
+      hasSO: false,
+      panel: { outRx: -54, outRy: 0, outZ: -860, outS: 0.77, outX: 0, outY: -28, inRx: 52, inRy: 0, inZ: -1250, inS: 0.85, inX: 0, inY: 52 }
+    },
+    // 03 · What We Do → IT Services (SO Signature 1: Introduction)
+    {
+      name: 'What We Do → IT Services',
+      hasSO: true,
+      soIndex: 0,
+      soLabel: 'SO signature · IT Services entrance',
+      panel: { outRx: -60, outRy: 0, outZ: -960, outS: 0.75, outX: 0, outY: -30, inRx: 58, inRy: 0, inZ: -1500, inS: 0.80, inX: 0, inY: 46 }
+    },
+    // 04 · IT Services → Training (Editorial bilateral yaw flip between major pillars)
+    {
+      name: 'IT Services → Training',
+      hasSO: false,
+      panel: { outRx: -46, outRy: -18, outZ: -980, outS: 0.76, outX: -40, outY: -20, inRx: 48, inRy: 18, inZ: -1350, inS: 0.82, inX: 40, inY: 40 }
+    },
+    // 05 · Training → How We Work (Smooth spatial progression into pipeline)
+    {
+      name: 'Training → How We Work',
+      hasSO: false,
+      panel: { outRx: -52, outRy: 0, outZ: -880, outS: 0.78, outX: 0, outY: -30, inRx: 54, inRy: 0, inZ: -1300, inS: 0.84, inX: 0, inY: 50 }
+    },
+    // 06 · How We Work → Industries (SO Signature 2: Central Hub Reappearance)
+    {
+      name: 'How We Work → Industries',
+      hasSO: true,
+      soIndex: 1,
+      soLabel: 'SO hub · Industries entrance',
+      panel: { outRx: -56, outRy: 0, outZ: -920, outS: 0.76, outX: 0, outY: -28, inRx: 56, inRy: 0, inZ: -1400, inS: 0.82, inX: 0, inY: 46 }
+    },
+    // 07 · Industries → The Connection (Spatial convergence into connection plane)
+    {
+      name: 'Industries → The Connection',
+      hasSO: false,
+      panel: { outRx: -48, outRy: 0, outZ: -940, outS: 0.75, outX: 0, outY: -32, inRx: 50, inRy: 0, inZ: -1450, inS: 0.80, inX: 0, inY: 44 }
+    },
+    // 08 · The Connection → Two Destinations (SO Signature 3: Grand Visual Climax)
+    {
+      name: 'The Connection → Two Destinations',
+      hasSO: true,
+      soIndex: 2,
+      soLabel: 'SO climax · Dual destination gateway',
+      panel: { outRx: -58, outRy: 0, outZ: -940, outS: 0.75, outX: 0, outY: -30, inRx: 56, inRy: 0, inZ: -1500, inS: 0.80, inX: 0, inY: 46 }
+    },
+    // 09 · Two Destinations → Final CTA (Clean settling into finale and footer)
+    {
+      name: 'Two Destinations → Final CTA',
+      hasSO: false,
+      panel: { outRx: -45, outRy: 0, outZ: -880, outS: 0.80, outX: 0, outY: -26, inRx: 46, inRy: 0, inZ: -1250, inS: 0.86, inX: 0, inY: 38 }
+    }
   ];
 
   function renderSO(t, p, active) {
-    // t = transition index (1..9). No SO outside a transition.
+    // Check if transition is outside bounds or at rest
     if (t < 1 || t > N - 1 || p <= 0.0005 || p >= 0.9995) {
-      so.style.opacity = '0';
-      so.style.transform = 'translate3d(0,0,-2600px)';
+      hideSO();
       return 0;
     }
+
+    const cfg = TRANSITIONS[t - 1];
+    // If this transition is not configured for SO, keep it completely hidden
+    if (!cfg || !cfg.hasSO) {
+      hideSO();
+      return 0;
+    }
+
     const e = clamp((p - DEAD) / (1 - 2 * DEAD), 0, 1);
     const m = env();
 
@@ -286,7 +250,7 @@
              beam: 0, beamA: 0, beamS: 1,
              op: smoothstep(0.10, 0.30, p) * (1 - smoothstep(0.70, 0.92, p)) };
     } else {
-      st = SO_MOTION[t - 1](e, m);
+      st = SO_MOTION[cfg.soIndex](e, m);
     }
 
     so.style.transform =
@@ -309,6 +273,15 @@
     soBeamR.style.transform = `translate(-100%,-50%) rotate(${(st.beamA).toFixed(2)}deg) scaleX(${bs})`;
 
     return st.op;
+  }
+
+  function hideSO() {
+    so.style.opacity = '0';
+    so.style.transform = 'translate3d(0,0,-2600px)';
+    soHalo.style.opacity = '0';
+    soRing.style.opacity = '0';
+    soBeamL.style.opacity = '0';
+    soBeamR.style.opacity = '0';
   }
 
   /* ══════════════════════════════════════════════════════════════════════════
@@ -355,21 +328,44 @@
     const EPS     = 0.0005;
     const settled = p >= 1 - EPS;   // the incoming section owns the screen
     const atStart = p <= EPS;       // the outgoing section still owns the screen
-    const activeIdx = settled ? to : from;
+    const activeIdx = p >= 0.5 ? to : from;
+    const cfg = TRANSITIONS[t - 1] || TRANSITIONS[0];
 
     /* ---- panels ---- */
     const e = clamp((p - DEAD) / (1 - 2 * DEAD), 0, 1);
     const outT = REDUCED ? e : Math.pow(e, 1.25);   // accelerates away from the camera
     const inT  = REDUCED ? e : inOutCubic(e);       // unfolds forward out of depth
 
+    const pCfg = cfg.panel || {};
+    const maxOutRx = pCfg.outRx !== undefined ? pCfg.outRx : -66;
+    const maxOutRy = pCfg.outRy !== undefined ? pCfg.outRy : 0;
+    const maxOutZ  = pCfg.outZ  !== undefined ? pCfg.outZ  : -920;
+    const minOutS  = pCfg.outS  !== undefined ? pCfg.outS  : 0.76;
+    const maxOutX  = pCfg.outX  !== undefined ? pCfg.outX  : 0;
+    const maxOutY  = pCfg.outY  !== undefined ? pCfg.outY  : -30;
+
+    const minInRx  = pCfg.inRx  !== undefined ? pCfg.inRx  : 62;
+    const minInRy  = pCfg.inRy  !== undefined ? pCfg.inRy  : 0;
+    const minInZ   = pCfg.inZ   !== undefined ? pCfg.inZ   : -1500;
+    const minInS   = pCfg.inS   !== undefined ? pCfg.inS   : 0.80;
+    const minInX   = pCfg.inX   !== undefined ? pCfg.inX   : 0;
+    const minInY   = pCfg.inY   !== undefined ? pCfg.inY   : 46;
+
     /* live numbers, exposed for browser verification */
-    const outRx = REDUCED ? 0 : lerp(0, -66, outT);
-    const outZ  = REDUCED ? 0 : lerp(0, -920, outT);
-    const outS  = REDUCED ? 1 : lerp(1, 0.76, outT);
+    const outRx = REDUCED ? 0 : lerp(0, maxOutRx, outT);
+    const outRy = REDUCED ? 0 : lerp(0, maxOutRy, outT);
+    const outZ  = REDUCED ? 0 : lerp(0, maxOutZ, outT);
+    const outS  = REDUCED ? 1 : lerp(1, minOutS, outT);
+    const outX  = REDUCED ? 0 : lerp(0, maxOutX, outT);
+    const outY  = REDUCED ? 0 : lerp(0, maxOutY, outT);
     const outOp = REDUCED ? 1 - smoothstep(0.10, 0.45, e) : 1 - smoothstep(0.12, 0.72, e);
-    const inRx  = REDUCED ? 0 : lerp(62, 0, inT);
-    const inZ   = REDUCED ? 0 : lerp(-1500, 0, inT);
-    const inS   = REDUCED ? 1 : lerp(0.80, 1, inT);
+
+    const inRx  = REDUCED ? 0 : lerp(minInRx, 0, inT);
+    const inRy  = REDUCED ? 0 : lerp(minInRy, 0, inT);
+    const inZ   = REDUCED ? 0 : lerp(minInZ, 0, inT);
+    const inS   = REDUCED ? 1 : lerp(minInS, 1, inT);
+    const inX   = REDUCED ? 0 : lerp(minInX, 0, inT);
+    const inY   = REDUCED ? 0 : lerp(minInY, 0, inT);
     const inOp  = REDUCED ? smoothstep(0.45, 0.80, e) : smoothstep(0.35, 0.92, e);
 
     const setOff = (k) => {
@@ -392,19 +388,23 @@
         if (atStart) { state = 'active'; }
         else if (settled) { setOff(k); continue; }
         else {
-          state = 'out';
-          tf = `perspective(${persp}px) translate3d(0,0,${outZ.toFixed(2)}px) rotateX(${outRx.toFixed(3)}deg) scale(${outS.toFixed(4)})`;
+          state = (k === activeIdx) ? 'active' : 'out';
+          const rotY = Math.abs(outRy) > 0.01 ? ` rotateY(${outRy.toFixed(3)}deg)` : '';
+          const transX = Math.abs(outX) > 0.01 ? `${outX.toFixed(2)}px` : '0';
+          tf = `perspective(${persp}px) translate3d(${transX},0,${outZ.toFixed(2)}px) rotateX(${outRx.toFixed(3)}deg)${rotY} scale(${outS.toFixed(4)})`;
           op = outOp;
-          innerTf = `translate3d(0,${(-outT * 30).toFixed(2)}px,0)`;
+          innerTf = `translate3d(0,${outY.toFixed(2)}px,0)`;
         }
       } else {
         if (settled) { state = 'active'; }
         else if (atStart) { setOff(k); continue; }
         else {
-          state = 'in';
-          tf = `perspective(${persp}px) translate3d(0,0,${inZ.toFixed(2)}px) rotateX(${inRx.toFixed(3)}deg) scale(${inS.toFixed(4)})`;
+          state = (k === activeIdx) ? 'active' : 'in';
+          const rotY = Math.abs(inRy) > 0.01 ? ` rotateY(${inRy.toFixed(3)}deg)` : '';
+          const transX = Math.abs(inX) > 0.01 ? `${inX.toFixed(2)}px` : '0';
+          tf = `perspective(${persp}px) translate3d(${transX},0,${inZ.toFixed(2)}px) rotateX(${inRx.toFixed(3)}deg)${rotY} scale(${inS.toFixed(4)})`;
           op = inOp;
-          innerTf = `translate3d(0,${((1 - inT) * 46).toFixed(2)}px,0)`;
+          innerTf = `translate3d(0,${inY.toFixed(2)}px,0)`;
         }
       }
 
@@ -412,8 +412,8 @@
       if (panel.dataset.st !== state) {
         panel.dataset.st = state;
         panel.className = 'panel is-' + state + (liveSet.has(k) ? ' is-live' : '');
-        panel.inert = (state !== 'active');   // only the settled section is interactive
       }
+      panel.inert = (k !== activeIdx);
       if (op > 0.002 && !liveSet.has(k)) { liveSet.add(k); panel.classList.add('is-live'); }
 
       panel.style.transform = tf;
@@ -433,13 +433,6 @@
     nav.classList.toggle('is-stuck', y > 40);
     cue.classList.toggle('is-hidden', y > 40);
 
-    for (let i = 0; i < navLinks.length; i++) {
-      const target = +navLinks[i].dataset.goto;
-      const on = target === activeIdx;
-      navLinks[i].classList.toggle('is-current', on);
-      if (on) navLinks[i].setAttribute('aria-current', 'true'); else navLinks[i].removeAttribute('aria-current');
-    }
-
     /* ---- atmosphere parallax ---- */
     const gy = -(y * 0.045) % (vh * 2);
     const glowA = document.querySelector('.atmosphere__glow--a');
@@ -455,14 +448,14 @@
       dbgS.textContent = (activeIdx + 1) + ' / ' + N;
       dbgP.textContent = p.toFixed(2);
       dbgT.textContent = (p > 0.0005 && p < 0.9995)
-        ? String(from + 1).padStart(2, '0') + '→' + String(to + 1).padStart(2, '0') + '  ' + SO_NAMES[t - 1]
+        ? String(from + 1).padStart(2, '0') + '→' + String(to + 1).padStart(2, '0') + '  ' + (cfg.hasSO ? '[SO] ' + cfg.soLabel : '[3D] ' + cfg.name)
         : 'hold · ' + String(activeIdx + 1).padStart(2, '0');
     }
 
     const state = {
       y, t, p, from, to, activeIdx, settled, atStart, soOp,
-      out: { rx: outRx, z: outZ, s: outS, op: outOp },
-      in:  { rx: inRx,  z: inZ,  s: inS,  op: inOp  }
+      out: { rx: outRx, ry: outRy, z: outZ, s: outS, x: outX, y: outY, op: outOp },
+      in:  { rx: inRx,  ry: inRy,  z: inZ,  s: inS,  x: inX,  y: inY,  op: inOp  }
     };
     lastState = state;
     return state;
@@ -654,12 +647,124 @@
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
+  /* ── SlideTabs Navigation Indicator ─────────────────────────────────────── */
+  function initSlideTabs() {
+    const navContainer = document.querySelector('.nav__links');
+    if (!navContainer) return;
+
+    let pill = navContainer.querySelector('.nav__pill');
+    if (!pill) {
+      pill = document.createElement('span');
+      pill.className = 'nav__pill';
+      pill.setAttribute('aria-hidden', 'true');
+      navContainer.prepend(pill);
+    }
+
+    const links = Array.from(navContainer.querySelectorAll('.nav__link'));
+    if (links.length === 0) return;
+
+    function getActiveLink() {
+      const rawPath = window.location.pathname.replace(/\/index\.html$/, '/');
+      const path = (rawPath === '' || rawPath === '/solutions-it' || rawPath === '/solutions-it/') ? '/' : rawPath;
+      
+      let active = null;
+      if (path === '/') {
+        active = links.find(l => {
+          const href = l.getAttribute('href');
+          return href === '/' || href === '/index.html' || href === './' || href === '#section-1';
+        }) || links[0];
+      } else {
+        links.forEach(l => {
+          const href = l.getAttribute('href');
+          if (!href.startsWith('#')) {
+            const cleanHref = href.split('#')[0].replace(/\/index\.html$/, '/');
+            if (cleanHref !== '/' && cleanHref !== '' && path.startsWith(cleanHref)) {
+              active = l;
+            }
+          }
+        });
+      }
+      return active || links[0];
+    }
+
+    function movePillTo(el, instant = false) {
+      if (!el) {
+        pill.classList.remove('is-visible');
+        links.forEach(l => l.classList.remove('is-pill-active'));
+        return;
+      }
+      const containerRect = navContainer.getBoundingClientRect();
+      const elRect = el.getBoundingClientRect();
+      const left = elRect.left - containerRect.left;
+      const width = elRect.width;
+
+      if (instant) {
+        pill.style.transition = 'none';
+      }
+      pill.style.transform = `translateX(${left}px)`;
+      pill.style.width = `${width}px`;
+      pill.classList.add('is-visible');
+
+      if (instant) {
+        pill.offsetHeight;
+        requestAnimationFrame(() => {
+          pill.style.transition = '';
+        });
+      }
+
+      links.forEach(l => {
+        l.classList.toggle('is-pill-active', l === el);
+      });
+    }
+
+    function resetToActive(instant = false) {
+      const active = getActiveLink() || links[0];
+      links.forEach(l => {
+        const isCurrent = (l === active);
+        l.classList.toggle('is-current', isCurrent);
+        if (isCurrent) l.setAttribute('aria-current', 'page');
+        else l.removeAttribute('aria-current');
+      });
+      movePillTo(active, instant);
+    }
+
+    // Initial placement (snap instantly, then confirm once fonts/layout settle)
+    resetToActive(true);
+    requestAnimationFrame(() => {
+      resetToActive(true);
+      setTimeout(() => resetToActive(true), 80);
+      setTimeout(() => resetToActive(true), 250);
+    });
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => resetToActive(true));
+    }
+
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => movePillTo(link, false));
+      link.addEventListener('focus', () => movePillTo(link, false));
+    });
+
+    navContainer.addEventListener('mouseleave', () => {
+      resetToActive(false);
+    });
+
+    window.addEventListener('resize', () => {
+      resetToActive(true);
+    }, { passive: true });
+
+    window.addEventListener('sc:languageChanged', () => {
+      setTimeout(() => resetToActive(true), 50);
+    });
+  }
+
   /* ══════════════════════════════════════════════════════════════════════════
      BOOT
      ═════════════════════════════════════════════════════════════════════════ */
   function boot() {
     layout();
     sizeDust();
+    initSlideTabs();
     rw = window.innerWidth; rh = window.innerHeight;
 
     const mem = navigator.deviceMemory || 4;
@@ -679,6 +784,9 @@
     ensureLoop();
     window.addEventListener('load', () => { layout(); sizeDust(); render(); }, { once: true });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { fitText(); render(); });
+    window.addEventListener('sc:languageChanged', () => {
+      setTimeout(() => { layout(); fitText(); render(); }, 40);
+    });
   }
 
   if (document.readyState === 'loading') {

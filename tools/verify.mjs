@@ -136,39 +136,46 @@ for (const r of rows) {
   if (!(c.in.z < -60))   errs.push(`in translateZ ${c.in.z}px`);
   if (!(d75.in.op > b25.in.op)) errs.push('in not rising');
   if (!(Math.abs(c.appliedZ[r.t] - c.in.z) < 1)) errs.push(`in Z not applied (${c.appliedZ[r.t]} vs ${c.in.z})`);
-  // SO is the bridge
-  if (!(c.soOp > 0.45)) errs.push(`SO mid opacity ${c.soOp}`);
+  
+  // SO presence: only transitions 3, 6, 8 show SO; transitions 1, 2, 4, 5, 7, 9 keep SO hidden
+  const isSO = [3, 6, 8].includes(r.t);
+  if (isSO) {
+    if (!(c.soOp > 0.45)) errs.push(`SO mid opacity ${c.soOp}`);
+    if (!(c.out.z > c.in.z)) errs.push('depth ordering wrong');
+  } else {
+    if (!(c.soOp < 0.02)) errs.push(`SO visible during non-SO transition (${c.soOp})`);
+  }
   if (!(a.soOp < 0.05 && e.soOp < 0.05)) errs.push(`SO visible at rest (${a.soOp}/${e.soOp})`);
-  if (!(c.out.z > c.in.z)) errs.push('SO/depth ordering wrong');
   if (c.y !== Math.round(yAt(r.t, 0.5))) errs.push(`landed at ${c.y} not ${Math.round(yAt(r.t, 0.5))}`);
   if (errs.length) tBad.push(`T${String(r.t).padStart(2, '0')}→${String(r.t + 1).padStart(2, '0')}: ${errs.join('; ')}`);
-  summary.push(`${r.t}→${r.t + 1}[out ${c.out.rx}°/${c.out.z}px h${c.rect[0].h} · in ${c.in.rx}°/${c.in.z}px · SO ${c.soOp} @z${c.soZ} x${c.soX} s${c.soScale}]`);
+  summary.push(`${r.t}→${r.t + 1}[${isSO ? 'SO ' + c.soOp + ' @z' + c.soZ + ' s' + c.soScale : '3D panel'} · out ${c.out.rx}°/${c.out.z}px · in ${c.in.rx}°/${c.in.z}px]`);
 }
 tBad.length === 0
-  ? ok('all 9 transitions flip → SO → emerge', 'verified on the live DOM + rendered geometry')
+  ? ok('all 9 transitions verified (3 curated SO moments + 6 distinct 3D panel transitions)', 'verified on the live DOM + rendered geometry')
   : bad('transitions', tBad.join('\n         '));
 info('mid-transition state (50%)', summary.join('\n         '));
 
-/* ── 5 · nine distinct SO motions ───────────────────────────────────────── */
-const sigs = rows.map(r => r.s.filter((_, i) => i !== 0 && i !== 4).map(s => [s.soX, s.soZ, s.soScale, s.soOp]));
+/* ── 5 · three curated SO transition motions ────────────────────────────── */
+const soRows = rows.filter(r => [3, 6, 8].includes(r.t));
+const sigs = soRows.map(r => r.s.filter((_, i) => i !== 0 && i !== 4).map(s => [s.soX, s.soZ, s.soScale, s.soOp]));
 const uniq = new Set(sigs.map(s => JSON.stringify(s)));
-uniq.size === 9 ? ok('9 distinct SO transition motions', uniq.size + ' unique signatures')
-                : bad('SO motions not distinct', uniq.size + '/9');
+uniq.size === 3 ? ok('3 distinct curated SO transition motions', uniq.size + ' unique signatures')
+                : bad('SO motions not distinct', uniq.size + '/3');
 
 /* ── 6 · stop halfway and it stays there ────────────────────────────────── */
-const y52 = Math.round(SEG - TRANS + 0.52 * TRANS);
+const y52 = Math.round(3 * SEG - TRANS + 0.52 * TRANS);
 await sample(y52);
-const snapA = await page.evaluate(() => document.querySelectorAll('.panel')[0].style.transform + '|' +
-  document.querySelectorAll('.panel')[1].style.opacity + '|' + document.getElementById('so').style.opacity);
+const snapA = await page.evaluate(() => document.querySelectorAll('.panel')[2].style.transform + '|' +
+  document.querySelectorAll('.panel')[3].style.opacity + '|' + document.getElementById('so').style.opacity);
 await page.waitForTimeout(2000);
-const snapB = await page.evaluate(() => document.querySelectorAll('.panel')[0].style.transform + '|' +
-  document.querySelectorAll('.panel')[1].style.opacity + '|' + document.getElementById('so').style.opacity);
+const snapB = await page.evaluate(() => document.querySelectorAll('.panel')[2].style.transform + '|' +
+  document.querySelectorAll('.panel')[3].style.opacity + '|' + document.getElementById('so').style.opacity);
 snapA === snapB ? ok('holds at 52% while idle (no autoplay / timer)', snapA.slice(0, 72) + '…')
                 : bad('drifted while idle', `${snapA}\n         ${snapB}`);
 await page.screenshot({ path: `${OUT}/hold-52.png` });
 
 /* ── 7 · reversal ───────────────────────────────────────────────────────── */
-const probe = Math.round(SEG - TRANS + 0.4 * TRANS);
+const probe = Math.round(3 * SEG - TRANS + 0.4 * TRANS);
 await sample(probe);
 const down = await page.evaluate(() => [...document.querySelectorAll('.panel')].map(p => p.style.transform + '@' + p.style.opacity).join('|'));
 await sample(0);
@@ -245,11 +252,11 @@ await rm.goto(URL, { waitUntil: 'networkidle' });
 await rm.waitForTimeout(900);
 const rmS = await rm.evaluate(() => {
   const seg = window.__SC.segPx, tr = window.__SC.transPx;
-  window.scrollTo({ top: Math.round(seg - tr + 0.5 * tr), behavior: 'instant' });
+  window.scrollTo({ top: Math.round(3 * seg - tr + 0.5 * tr), behavior: 'instant' });
   window.__SC.render();
   const mid = window.__SC.state;
   const soMid = +getComputedStyle(document.getElementById('so')).opacity;
-  window.scrollTo({ top: Math.round(seg - tr + 0.9 * tr), behavior: 'instant' });
+  window.scrollTo({ top: Math.round(3 * seg - tr + 0.9 * tr), behavior: 'instant' });
   window.__SC.render();
   const late = window.__SC.state;
   window.scrollTo({ top: Math.round(seg * 3), behavior: 'instant' });
@@ -274,7 +281,7 @@ await mob.waitForTimeout(1200);
 await mob.screenshot({ path: `${OUT}/mobile-01-hero.png` });
 const mobS = await mob.evaluate(() => {
   const seg = window.__SC.segPx, tr = window.__SC.transPx;
-  window.scrollTo({ top: Math.round(seg - tr + 0.5 * tr), behavior: 'instant' });
+  window.scrollTo({ top: Math.round(3 * seg - tr + 0.5 * tr), behavior: 'instant' });
   window.__SC.render();
   const st = window.__SC.state;
   return { docH: document.documentElement.scrollHeight, p: +st.p.toFixed(2), outRx: +st.out.rx.toFixed(1),
@@ -300,7 +307,7 @@ await tab.goto(URL, { waitUntil: 'networkidle' });
 await tab.waitForTimeout(900);
 const tabS = await tab.evaluate(() => {
   const seg = window.__SC.segPx, tr = window.__SC.transPx;
-  window.scrollTo({ top: Math.round(seg - tr + 0.5 * tr), behavior: 'instant' });
+  window.scrollTo({ top: Math.round(3 * seg - tr + 0.5 * tr), behavior: 'instant' });
   window.__SC.render();
   const st = window.__SC.state;
   const inner = document.querySelectorAll('.panel')[2].querySelector('.panel__inner');

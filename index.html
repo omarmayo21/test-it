@@ -1,48 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en" dir="ltr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Solutions Castle — IT Services &amp; Training</title>
-<meta name="description" content="Solutions Castle delivers professional IT services and technical training engineered to help organizations build stronger technology and human capability." />
-<meta name="theme-color" content="#02131E" />
-<link rel="icon" href="public/logo.png" />
-<link rel="preload" as="image" href="public/So.png" />
-<link rel="preload" as="font" type="font/woff2" href="public/fonts/PlusJakartaSans.woff2" crossorigin />
-<link rel="stylesheet" href="assets/css/fonts.css" />
-<link rel="stylesheet" href="assets/css/main.css" />
-</head>
-<body>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Solutions Castle — IT Services &amp; Training</title>
+  <meta name="description" content="Solutions Castle delivers professional IT services and technical training engineered to help organizations build stronger technology and human capability." />
+  <meta name="theme-color" content="#02131E" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
 
-<!-- ══════════════════════ ATMOSPHERE (continuous world) ══════════════════════ -->
+  <!-- Preload critical brand & font assets for immediate zero-jank frame 0 -->
+  <link rel="preload" href="public/So.png" as="image" />
+  <link rel="preload" href="public/fonts/PlusJakartaSans.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="assets/css/fonts.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body data-q="3" data-page-title-key="hero_eyebrow">
+
+<!-- ══════════════════════ ATMOSPHERE ══════════════════════ -->
 <div class="atmosphere" aria-hidden="true">
-  <canvas id="dust" class="atmosphere__dust"></canvas>
+  <canvas id="dust"></canvas>
   <div class="atmosphere__grid"></div>
   <div class="atmosphere__horizon"></div>
   <div class="atmosphere__glow atmosphere__glow--a"></div>
   <div class="atmosphere__glow atmosphere__glow--b"></div>
-  <div class="atmosphere__vignette"></div>
 </div>
 <div class="grain" aria-hidden="true"></div>
 
 <!-- ══════════════════════ NAVIGATION ══════════════════════ -->
 <header class="nav" id="nav">
+  <div class="nav__bg" aria-hidden="true"></div>
   <div class="nav__inner">
     <a class="nav__brand" href="#section-1" data-goto="0" aria-label="Solutions Castle — home">
       <img src="public/logo-clear.png" alt="Solutions Castle" class="nav__logo" width="1340" height="441" />
     </a>
 
-    <nav class="nav__links" aria-label="Primary">
-      <a href="#section-1" data-goto="0" class="nav__link is-current">Home</a>
-      <a href="#section-2" data-goto="1" class="nav__link">About Us</a>
-      <a href="#section-4" data-goto="3" class="nav__link">IT Services</a>
-      <a href="#section-5" data-goto="4" class="nav__link">Training</a>
-      <a href="#section-7" data-goto="6" class="nav__link">Industries</a>
-      <a href="#section-10" data-goto="9" class="nav__link">Contact</a>
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <span class="nav__pill" id="navPill" aria-hidden="true"></span>
+      <a href="/" class="nav__link is-current" data-i18n="nav_home">Home</a>
+      <a href="/about/" class="nav__link" data-i18n="nav_about">About Us</a>
+      <a href="/it-services/" class="nav__link" data-i18n="nav_it">IT Services</a>
+      <a href="/training/" class="nav__link" data-i18n="nav_training">Training</a>
+      <a href="/#section-7" class="nav__link" data-i18n="nav_industries">Industries</a>
+      <a href="/contact/" class="nav__link" data-i18n="nav_contact">Contact</a>
     </nav>
 
     <div class="nav__right">
-      <a href="#section-10" data-goto="9" class="btn btn--ghost nav__cta">Let&rsquo;s talk <span class="btn__arw">&#8594;</span></a>
+      <button class="lang-switch" id="langSwitch" type="button" aria-label="Switch Language / تغيير اللغة">
+        <span class="lang-btn lang-btn--en is-active" data-lang="en">EN</span>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <span class="lang-btn lang-btn--ar" data-lang="ar">عربي</span>
+      </button>
+      <a href="/contact/" class="btn btn--ghost nav__cta"><span data-i18n="nav_cta">Let&rsquo;s talk</span> <span class="btn__arw">&#8594;</span></a>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
         <span></span><span></span>
       </button>
@@ -54,18 +63,23 @@
 <!-- ══════════════════════ MOBILE MENU ══════════════════════ -->
 <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
   <div class="menu__inner">
-    <p class="menu__eyebrow">Solutions Castle</p>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: clamp(24px,5vw,44px);">
+      <p class="menu__eyebrow" style="margin-bottom: 0;" data-i18n="menu_eyebrow">Solutions Castle</p>
+      <button class="lang-switch" id="langSwitchMobile" type="button" aria-label="Switch Language / تغيير اللغة">
+        <span class="lang-btn lang-btn--en is-active" data-lang="en">EN</span>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <span class="lang-btn lang-btn--ar" data-lang="ar">عربي</span>
+      </button>
+    </div>
     <nav class="menu__nav" aria-label="Mobile">
-      <a href="#section-1" data-goto="0"><i>01</i> Home</a>
-      <a href="#section-2" data-goto="1"><i>02</i> About Us</a>
-      <a href="#section-3" data-goto="2"><i>03</i> What We Do</a>
-      <a href="#section-4" data-goto="3"><i>04</i> IT Services</a>
-      <a href="#section-5" data-goto="4"><i>05</i> Training</a>
-      <a href="#section-6" data-goto="5"><i>06</i> How We Work</a>
-      <a href="#section-7" data-goto="6"><i>07</i> Industries</a>
-      <a href="#section-10" data-goto="9"><i>08</i> Contact</a>
+      <a href="/"><i>01</i> <span data-i18n="nav_home">Home</span></a>
+      <a href="/about/"><i>02</i> <span data-i18n="nav_about">About Us</span></a>
+      <a href="/it-services/"><i>03</i> <span data-i18n="nav_it">IT Services</span></a>
+      <a href="/training/"><i>04</i> <span data-i18n="nav_training">Training</span></a>
+      <a href="/#section-7"><i>05</i> <span data-i18n="nav_industries">Industries</span></a>
+      <a href="/contact/"><i>06</i> <span data-i18n="nav_contact">Contact</span></a>
     </nav>
-    <p class="menu__foot">IT Services &amp; Training</p>
+    <p class="menu__foot" data-i18n="menu_foot">IT Services &amp; Training</p>
   </div>
 </div>
 
@@ -106,28 +120,28 @@
       <div class="panel__inner">
         <div class="hero">
           <p class="eyebrow eyebrow--center">
-            <span class="dot"></span> Solutions Castle <em>//</em> IT Services &amp; Training
+            <span class="dot"></span> <span data-i18n="hero_eyebrow">Solutions Castle <em>//</em> IT Services &amp; Training</span>
           </p>
 
           <h1 class="display" data-fit>
-            <span class="mask"><span class="mask__i">Solutions</span></span>
-            <span class="mask"><span class="mask__i">Castle<i>.</i></span></span>
+            <span class="mask"><span class="mask__i" data-i18n="hero_title_1">Solutions</span></span>
+            <span class="mask"><span class="mask__i" data-i18n="hero_title_2">Castle<i>.</i></span></span>
           </h1>
 
-          <p class="lede">
+          <p class="lede" data-i18n="hero_lede">
             Professional IT services and technical training engineered to help
             organizations build stronger technology and human capability.
           </p>
 
           <div class="cta-row">
-            <a href="#section-10" data-goto="9" class="btn btn--solid">Let&rsquo;s talk <span class="btn__arw">&#8594;</span></a>
-            <a href="#section-3" data-goto="2" class="btn btn--ghost">Explore services <span class="btn__arw">&#8599;</span></a>
+            <a href="/contact/" class="btn btn--solid"><span data-i18n="hero_cta_talk">Let&rsquo;s talk</span> <span class="btn__arw">&#8594;</span></a>
+            <a href="#section-3" data-goto="2" class="btn btn--ghost"><span data-i18n="hero_cta_explore">Explore services</span> <span class="btn__arw">&#8599;</span></a>
           </div>
 
           <div class="hero__meta">
             <span>Est. Alexandria</span><span class="sep"></span>
-            <span>IT Services</span><span class="sep"></span>
-            <span>Training</span>
+            <span data-i18n="hero_meta_services">IT Services</span><span class="sep"></span>
+            <span data-i18n="hero_meta_training">Training</span>
           </div>
         </div>
       </div>
@@ -151,19 +165,19 @@
       <div class="panel__inner">
         <div class="split">
           <div class="split__lead">
-            <p class="eyebrow"><i>01</i> Who we are</p>
-            <h2 class="title" data-fit>Who<br />we are</h2>
+            <p class="eyebrow" data-i18n="who_eyebrow"><i>01</i> Who we are</p>
+            <h2 class="title" data-fit data-i18n="who_title">Who<br />we are</h2>
           </div>
           <div class="split__body">
-            <p class="lead">
+            <p class="lead" data-i18n="who_lead">
               Solutions Castle is an IT services and training company built on one
               idea: technology only creates value when the people around it can
               operate it with confidence.
             </p>
             <ul class="statements">
-              <li><i>01</i><span><b>Engineered delivery</b>Systems designed, deployed and supported with discipline.</span></li>
-              <li><i>02</i><span><b>Human capability</b>Training that turns teams into operators, not spectators.</span></li>
-              <li><i>03</i><span><b>Long-term partnership</b>We stay after go-live. That is where value compounds.</span></li>
+              <li><i>01</i><span><b data-i18n="who_stmt_1_title">Engineered delivery</b><span data-i18n="who_stmt_1_desc">Systems designed, deployed and supported with discipline.</span></span></li>
+              <li><i>02</i><span><b data-i18n="who_stmt_2_title">Human capability</b><span data-i18n="who_stmt_2_desc">Training that turns teams into operators, not spectators.</span></span></li>
+              <li><i>03</i><span><b data-i18n="who_stmt_3_title">Long-term partnership</b><span data-i18n="who_stmt_3_desc">We stay after go-live. That is where value compounds.</span></span></li>
             </ul>
           </div>
         </div>
@@ -171,7 +185,7 @@
     </div>
   </section>
 
-  <!-- ─────────── 03 · WHAT WE DO ─────────── -->
+  <!-- ─────────── 03 · WHAT WE DO (FORK VISUAL - NON-INTERACTIVE) ─────────── -->
   <section class="scroll-section" id="section-3" data-title="What We Do">
     <div class="panel" data-panel="2">
       <div class="panel__env" aria-hidden="true">
@@ -187,22 +201,22 @@
 
       <div class="panel__inner">
         <div class="stack stack--center">
-          <p class="eyebrow eyebrow--center"><i>02</i> What we do</p>
-          <h2 class="title title--center" data-fit>What<br />we do</h2>
-          <p class="lead lead--center">Two connected capabilities, engineered to reinforce each other.</p>
+          <p class="eyebrow eyebrow--center" data-i18n="what_eyebrow"><i>02</i> What we do</p>
+          <h2 class="title title--center" data-fit data-i18n="what_title">What<br />we do</h2>
+          <p class="lead lead--center" data-i18n="what_lead">Two connected capabilities, engineered to reinforce each other.</p>
         </div>
 
-        <div class="fork">
-          <a href="#section-4" data-goto="3" class="fork__side">
+        <div class="fork" role="region" aria-label="Core Capabilities">
+          <a href="/it-services/" class="fork__side">
             <span class="fork__idx">A</span>
-            <span class="fork__name" data-fit>IT<br />Services</span>
-            <span class="fork__desc">Infrastructure, cloud, security and support &mdash; run as one system.</span>
+            <span class="fork__name" data-fit data-i18n="fork_name_a">IT<br />Services</span>
+            <span class="fork__desc" data-i18n="fork_desc_a">Infrastructure, cloud, security and support &mdash; run as one system.</span>
           </a>
           <span class="fork__axis" aria-hidden="true"></span>
-          <a href="#section-5" data-goto="4" class="fork__side fork__side--r">
+          <a href="/training/" class="fork__side fork__side--r">
             <span class="fork__idx">B</span>
-            <span class="fork__name" data-fit>Train&shy;ing</span>
-            <span class="fork__desc">Practical programmes that build real operational capability.</span>
+            <span class="fork__name" data-fit data-i18n="fork_name_b">Train&shy;ing</span>
+            <span class="fork__desc" data-i18n="fork_desc_b">Practical programmes that build real operational capability.</span>
           </a>
         </div>
       </div>
@@ -227,21 +241,24 @@
       <div class="panel__inner">
         <div class="split">
           <div class="split__lead">
-            <p class="eyebrow"><i>03</i> IT Services</p>
-            <h2 class="title" data-fit>IT<br />Services</h2>
-            <p class="lead lead--tight">
+            <p class="eyebrow" data-i18n="it_eyebrow"><i>03</i> IT Services</p>
+            <h2 class="title" data-fit data-i18n="it_title">IT<br />Services</h2>
+            <p class="lead lead--tight" data-i18n="it_lead">
               Infrastructure, cloud, security and support &mdash; engineered as a single
               system rather than a list of tickets.
             </p>
+            <div style="margin-top: 24px;">
+              <a href="/it-services/" class="btn btn--ghost nav__cta"><span data-i18n="it_explore_cta">Explore IT Services</span> <span class="btn__arw" aria-hidden="true">&rarr;</span></a>
+            </div>
           </div>
           <div class="split__body">
             <ul class="index">
-              <li><i>01</i><span><b>IT Infrastructure</b>Servers, storage, virtualisation and lifecycle management.</span></li>
-              <li><i>02</i><span><b>Cloud &amp; Systems</b>Migration, architecture and hybrid operations.</span></li>
-              <li><i>03</i><span><b>Cybersecurity</b>Assessment, hardening and continuous monitoring.</span></li>
-              <li><i>04</i><span><b>Networking</b>Design, segmentation and resilient connectivity.</span></li>
-              <li><i>05</i><span><b>Technical Support</b>Managed service desk and on-site engineering.</span></li>
-              <li><i>06</i><span><b>Digital Solutions</b>Custom platforms built around how you actually work.</span></li>
+              <li><i>01</i><span><b data-i18n="it_idx_1_title">IT Infrastructure</b><span data-i18n="it_idx_1_desc">Servers, storage, virtualisation and lifecycle management.</span></span></li>
+              <li><i>02</i><span><b data-i18n="it_idx_2_title">Cloud &amp; Systems</b><span data-i18n="it_idx_2_desc">Migration, architecture and hybrid operations.</span></span></li>
+              <li><i>03</i><span><b data-i18n="it_idx_3_title">Cybersecurity</b><span data-i18n="it_idx_3_desc">Assessment, hardening and continuous monitoring.</span></span></li>
+              <li><i>04</i><span><b data-i18n="it_idx_4_title">Networking</b><span data-i18n="it_idx_4_desc">Design, segmentation and resilient connectivity.</span></span></li>
+              <li><i>05</i><span><b data-i18n="it_idx_5_title">Technical Support</b><span data-i18n="it_idx_5_desc">Managed service desk and on-site engineering.</span></span></li>
+              <li><i>06</i><span><b data-i18n="it_idx_6_title">Digital Solutions</b><span data-i18n="it_idx_6_desc">Custom platforms built around how you actually work.</span></span></li>
             </ul>
           </div>
         </div>
@@ -268,20 +285,23 @@
       <div class="panel__inner">
         <div class="split split--flip">
           <div class="split__lead">
-            <p class="eyebrow"><i>04</i> Training</p>
-            <h2 class="title" data-fit>Train&shy;ing</h2>
-            <p class="lead lead--tight">
+            <p class="eyebrow" data-i18n="training_eyebrow"><i>04</i> Training</p>
+            <h2 class="title" data-fit data-i18n="training_title">Train&shy;ing</h2>
+            <p class="lead lead--tight" data-i18n="training_lead">
               Instructor-led, hands-on programmes designed around the gaps your team
               actually has &mdash; not a generic catalogue.
             </p>
+            <div style="margin-top: 24px;">
+              <a href="/training/" class="btn btn--ghost nav__cta"><span data-i18n="tr_explore_cta">Explore Training</span> <span class="btn__arw" aria-hidden="true">&rarr;</span></a>
+            </div>
           </div>
           <div class="split__body">
             <ul class="index index--arc">
-              <li><i>01</i><span><b>Technical Training</b>Hands-on labs across infrastructure, cloud and security.</span></li>
-              <li><i>02</i><span><b>Professional Development</b>Communication, delivery and technical leadership.</span></li>
-              <li><i>03</i><span><b>IT Skills</b>Vendor-aligned and vendor-neutral certification tracks.</span></li>
-              <li><i>04</i><span><b>Practical Learning</b>Scenario-driven exercises drawn from live environments.</span></li>
-              <li><i>05</i><span><b>Workforce Capability</b>Programmes mapped to your organisation&rsquo;s real gaps.</span></li>
+              <li><i>01</i><span><b data-i18n="tr_idx_1_title">Technical Training</b><span data-i18n="tr_idx_1_desc">Hands-on labs across infrastructure, cloud and security.</span></span></li>
+              <li><i>02</i><span><b data-i18n="tr_idx_2_title">Professional Development</b><span data-i18n="tr_idx_2_desc">Communication, delivery and technical leadership.</span></span></li>
+              <li><i>03</i><span><b data-i18n="tr_idx_3_title">IT Skills</b><span data-i18n="tr_idx_3_desc">Vendor-aligned and vendor-neutral certification tracks.</span></span></li>
+              <li><i>04</i><span><b data-i18n="tr_idx_4_title">Practical Learning</b><span data-i18n="tr_idx_4_desc">Scenario-driven exercises drawn from live environments.</span></span></li>
+              <li><i>05</i><span><b data-i18n="tr_idx_5_title">Workforce Capability</b><span data-i18n="tr_idx_5_desc">Programmes mapped to your organisation&rsquo;s real gaps.</span></span></li>
             </ul>
           </div>
         </div>
@@ -303,17 +323,17 @@
 
       <div class="panel__inner">
         <div class="stack stack--center">
-          <p class="eyebrow eyebrow--center"><i>05</i> How we work</p>
-          <h2 class="title title--center" data-fit>How<br />we work</h2>
-          <p class="lead lead--center">A structured progression from first conversation to long-term support.</p>
+          <p class="eyebrow eyebrow--center" data-i18n="how_eyebrow"><i>05</i> How we work</p>
+          <h2 class="title title--center" data-fit data-i18n="how_title">How<br />we work</h2>
+          <p class="lead lead--center" data-i18n="how_lead">A structured progression from first conversation to long-term support.</p>
         </div>
 
         <ol class="stages">
-          <li><i></i><b>Discover</b><span>We map your environment, risks and objectives.</span></li>
-          <li><i></i><b>Plan</b><span>A sequenced roadmap with measurable outcomes.</span></li>
-          <li><i></i><b>Build</b><span>Implementation by engineers, not hand-offs.</span></li>
-          <li><i></i><b>Optimize</b><span>Tuning, hardening and cost discipline.</span></li>
-          <li><i></i><b>Support</b><span>Managed operations and continuous enablement.</span></li>
+          <li><i></i><b data-i18n="stage_1_name">Discover</b><span data-i18n="stage_1_desc">We map your environment, risks and objectives.</span></li>
+          <li><i></i><b data-i18n="stage_2_name">Plan</b><span data-i18n="stage_2_desc">A sequenced roadmap with measurable outcomes.</span></li>
+          <li><i></i><b data-i18n="stage_3_name">Build</b><span data-i18n="stage_3_desc">Implementation by engineers, not hand-offs.</span></li>
+          <li><i></i><b data-i18n="stage_4_name">Optimize</b><span data-i18n="stage_4_desc">Tuning, hardening and cost discipline.</span></li>
+          <li><i></i><b data-i18n="stage_5_name">Support</b><span data-i18n="stage_5_desc">Managed operations and continuous enablement.</span></li>
         </ol>
       </div>
     </div>
@@ -337,19 +357,19 @@
 
       <div class="panel__inner">
         <div class="stack stack--center">
-          <p class="eyebrow eyebrow--center"><i>06</i> Industries</p>
-          <h2 class="title title--center" data-fit>Indus&shy;tries</h2>
-          <p class="lead lead--center">We support organisations where uptime, security and skill are not optional.</p>
+          <p class="eyebrow eyebrow--center" data-i18n="ind_eyebrow"><i>06</i> Industries</p>
+          <h2 class="title title--center" data-fit data-i18n="ind_title">Indus&shy;tries</h2>
+          <p class="lead lead--center" data-i18n="ind_lead">We support organisations where uptime, security and skill are not optional.</p>
         </div>
         <ul class="cloud">
-          <li>Enterprise &amp; Corporate</li>
-          <li>Government &amp; Public Sector</li>
-          <li>Education &amp; Research</li>
-          <li>Healthcare</li>
-          <li>Finance &amp; Banking</li>
-          <li>Manufacturing &amp; Logistics</li>
-          <li>Retail &amp; Hospitality</li>
-          <li>Energy &amp; Utilities</li>
+          <li data-i18n="ind_1">Enterprise &amp; Corporate</li>
+          <li data-i18n="ind_2">Government &amp; Public Sector</li>
+          <li data-i18n="ind_3">Education &amp; Research</li>
+          <li data-i18n="ind_4">Healthcare</li>
+          <li data-i18n="ind_5">Finance &amp; Banking</li>
+          <li data-i18n="ind_6">Manufacturing &amp; Logistics</li>
+          <li data-i18n="ind_7">Retail &amp; Hospitality</li>
+          <li data-i18n="ind_8">Energy &amp; Utilities</li>
         </ul>
       </div>
     </div>
@@ -371,20 +391,20 @@
 
       <div class="panel__inner">
         <div class="nexus">
-          <p class="eyebrow eyebrow--center"><i>07</i> The connection</p>
+          <p class="eyebrow eyebrow--center" data-i18n="conn_eyebrow"><i>07</i> The connection</p>
 
           <div class="nexus__row">
-            <span class="nexus__label" data-fit>IT Services</span>
+            <span class="nexus__label" data-fit data-i18n="conn_label_l">IT Services</span>
             <span class="nexus__wire" aria-hidden="true"><i></i></span>
             <span class="nexus__core">
               <img src="public/So.png" alt="Solutions Castle" class="so-inline" width="2000" height="2000" />
             </span>
             <span class="nexus__wire nexus__wire--r" aria-hidden="true"><i></i></span>
-            <span class="nexus__label nexus__label--r" data-fit>Training</span>
+            <span class="nexus__label nexus__label--r" data-fit data-i18n="conn_label_r">Training</span>
           </div>
 
-          <h2 class="title title--center title--sm" data-fit>One&nbsp;system</h2>
-          <p class="lead lead--center lead--wide">
+          <h2 class="title title--center title--sm" data-fit data-i18n="conn_title">One&nbsp;system</h2>
+          <p class="lead lead--center lead--wide" data-i18n="conn_lead">
             Services build the system. Training builds the people who run it.
             Neither works alone &mdash; and that is exactly why we do both.
           </p>
@@ -393,7 +413,7 @@
     </div>
   </section>
 
-  <!-- ─────────── 09 · TWO DESTINATIONS ─────────── -->
+  <!-- ─────────── 09 · TWO DESTINATIONS (GATES VISUAL - NON-INTERACTIVE) ─────────── -->
   <section class="scroll-section" id="section-9" data-title="Two Destinations">
     <div class="panel" data-panel="8">
       <div class="panel__env" aria-hidden="true">
@@ -407,27 +427,27 @@
       </div>
 
       <div class="panel__inner">
-        <p class="eyebrow eyebrow--center"><i>08</i> Two destinations</p>
-        <div class="gates">
-          <a href="#section-4" data-goto="3" class="gate">
+        <p class="eyebrow eyebrow--center" data-i18n="dest_eyebrow"><i>08</i> Two destinations</p>
+        <div class="gates" role="region" aria-label="Destinations Overview">
+          <a href="/it-services/" class="gate">
             <span class="gate__k">01</span>
-            <h3 class="gate__t" data-fit>IT<br />Services</h3>
-            <p class="gate__d">Start with an environment assessment.</p>
-            <span class="gate__go">Enter <em>&#8594;</em></span>
+            <h3 class="gate__t" data-fit data-i18n="gate_1_title">IT<br />Services</h3>
+            <p class="gate__d" data-i18n="gate_1_desc">Start with an environment assessment.</p>
+            <span class="gate__go"><span data-i18n="gate_1_go">Overview</span> <em>&#8594;</em></span>
           </a>
 
           <span class="gate__core" aria-hidden="true">
             <img src="public/So.png" alt="" class="so-inline" width="2000" height="2000" />
           </span>
 
-          <a href="#section-5" data-goto="4" class="gate gate--r">
+          <a href="/training/" class="gate gate--r">
             <span class="gate__k">02</span>
-            <h3 class="gate__t" data-fit>Train&shy;ing</h3>
-            <p class="gate__d">Start with a capability review.</p>
-            <span class="gate__go">Enter <em>&#8594;</em></span>
+            <h3 class="gate__t" data-fit data-i18n="gate_2_title">Train&shy;ing</h3>
+            <p class="gate__d" data-i18n="gate_2_desc">Start with a capability review.</p>
+            <span class="gate__go"><span data-i18n="gate_2_go">Overview</span> <em>&#8594;</em></span>
           </a>
         </div>
-        <p class="gates__note">Two entry points. One connected organisation.</p>
+        <p class="gates__note" data-i18n="gates_note">Two entry points. One connected organisation.</p>
       </div>
     </div>
   </section>
@@ -447,26 +467,27 @@
 
       <div class="panel__inner">
         <div class="finale">
-          <p class="eyebrow eyebrow--center"><i>09</i> Solutions Castle</p>
+          <p class="eyebrow eyebrow--center" data-i18n="fin_eyebrow"><i>09</i> Solutions Castle</p>
           <h2 class="display display--finale" data-fit>
-            <span class="mask"><span class="mask__i">Let&rsquo;s build</span></span>
-            <span class="mask"><span class="mask__i">what&rsquo;s next<i>.</i></span></span>
+            <span class="mask"><span class="mask__i" data-i18n="fin_title_1">Let&rsquo;s build</span></span>
+            <span class="mask"><span class="mask__i" data-i18n="fin_title_2">what&rsquo;s next<i>.</i></span></span>
           </h2>
           <div class="cta-row cta-row--center">
-            <a href="mailto:hello@solutionscastle.com" class="btn btn--solid">Let&rsquo;s talk <span class="btn__arw">&#8594;</span></a>
+            <a href="/contact/" class="btn btn--solid"><span data-i18n="fin_cta">Let&rsquo;s talk</span> <span class="btn__arw">&#8594;</span></a>
           </div>
 
           <footer class="foot">
-            <a class="foot__brand" href="#section-1" data-goto="0" aria-label="Solutions Castle — home">
+            <a class="foot__brand" href="/" aria-label="Solutions Castle — home">
               <img src="public/logo-clear.png" alt="Solutions Castle" width="1340" height="441" />
             </a>
             <nav class="foot__nav" aria-label="Footer">
-              <a href="#section-2" data-goto="1">About Us</a>
-              <a href="#section-4" data-goto="3">IT Services</a>
-              <a href="#section-5" data-goto="4">Training</a>
-              <a href="#section-7" data-goto="6">Industries</a>
+              <a href="/about/" data-i18n="nav_about">About Us</a>
+              <a href="/it-services/" data-i18n="nav_it">IT Services</a>
+              <a href="/training/" data-i18n="nav_training">Training</a>
+              <a href="/#section-7" data-i18n="nav_industries">Industries</a>
+              <a href="/contact/" data-i18n="nav_contact">Contact</a>
             </nav>
-            <p class="foot__copy">&copy; 2026 Solutions Castle. IT Services &amp; Training.</p>
+            <p class="foot__copy" data-i18n="footer_copy">&copy; 2026 Solutions Castle. All rights reserved.</p>
           </footer>
         </div>
       </div>
@@ -494,6 +515,7 @@
   <div>TRANSITION: <b id="dbgT">&mdash;</b></div>
 </div>
 
+<script src="assets/js/i18n.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
