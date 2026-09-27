@@ -207,65 +207,32 @@ async function runTests() {
     await page.close();
   }
 
-  // 12. Verification of Landing Page Fork & Gate Non-Interactive Elements
+  // 12. Verification of Landing Page Fork Links & Removal of Gates/Nexus
   console.log('\n──────────────────────────────────────────────────');
-  console.log('Testing Landing Page Fork & Gate Non-Interactive Safety...');
+  console.log('Testing Landing Page Fork Links & Removal of Gates/Nexus...');
   const homePage = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   await homePage.goto('http://127.0.0.1:3000/?debug', { waitUntil: 'domcontentloaded' });
   await homePage.waitForTimeout(500);
 
-  // Check Fork Sides: Must NOT be <a> tags, must have NO href, must not navigate
+  // Check Fork Sides: Must be <a> tags with proper href
   const forkSides = await homePage.$$eval('.fork__side', els => els.map(el => ({
     tagName: el.tagName,
-    hasHref: el.hasAttribute('href'),
-    role: el.getAttribute('role'),
-    tabIndex: el.getAttribute('tabindex')
+    href: el.getAttribute('href')
   })));
 
   console.log(`  - Found ${forkSides.length} Fork elements:`, JSON.stringify(forkSides));
-  for (const f of forkSides) {
-    if (f.tagName === 'A' || f.hasHref) {
-      console.error('  - Fork element is still interactive/<a> tag! ✗');
-      totalErrors++;
-    } else {
-      console.log('  - Fork element confirmed non-interactive <div> (no href, non-focusable) ✓');
-    }
-  }
+  const forkAOk = forkSides[0]?.tagName === 'A' && forkSides[0]?.href === '/it-services/';
+  const forkBOk = forkSides[1]?.tagName === 'A' && forkSides[1]?.href === '/training/';
+  console.log(`  - Fork A is link -> /it-services/: ${forkAOk ? '✓' : '✗'}`);
+  console.log(`  - Fork B is link -> /training/: ${forkBOk ? '✓' : '✗'}`);
+  if (!forkAOk || !forkBOk) totalErrors++;
 
-  // Check Gate items in Section 9
-  const gateItems = await homePage.$$eval('.gate', els => els.map(el => ({
-    tagName: el.tagName,
-    hasHref: el.hasAttribute('href')
-  })));
-  console.log(`  - Found ${gateItems.length} Gate elements:`, JSON.stringify(gateItems));
-  for (const g of gateItems) {
-    if (g.tagName === 'A' || g.hasHref) {
-      console.error('  - Gate element is still interactive/<a> tag! ✗');
-      totalErrors++;
-    } else {
-      console.log('  - Gate element confirmed non-interactive <div> (no href) ✓');
-    }
-  }
-
-  // Scroll to Section 3 (The Fork)
-  await homePage.evaluate(() => {
-    window.scrollTo(0, window.__SC.segPx * 2);
-  });
-  await homePage.waitForTimeout(400);
-
-  // Test clicking Fork A and Fork B: Ensure URL does not change and no hash navigation occurs
-  const urlBefore = homePage.url();
-  await homePage.click('.fork__side:first-child', { force: true });
-  await homePage.waitForTimeout(200);
-  const urlAfterA = homePage.url();
-  console.log(`  - Clicking Fork A: URL remains "${urlAfterA}" ${urlBefore === urlAfterA ? '✓' : '✗'}`);
-  if (urlBefore !== urlAfterA) totalErrors++;
-
-  await homePage.click('.fork__side:last-child', { force: true });
-  await homePage.waitForTimeout(200);
-  const urlAfterB = homePage.url();
-  console.log(`  - Clicking Fork B: URL remains "${urlAfterB}" ${urlBefore === urlAfterB ? '✓' : '✗'}`);
-  if (urlBefore !== urlAfterB) totalErrors++;
+  // Check Gates & Nexus are completely removed
+  const gateCount = await homePage.$$eval('.gate, .gates', els => els.length);
+  const nexusCount = await homePage.$$eval('.nexus', els => els.length);
+  console.log(`  - Gate elements count in DOM: ${gateCount} (Expected: 0) ${gateCount === 0 ? '✓' : '✗'}`);
+  console.log(`  - Nexus elements count in DOM: ${nexusCount} (Expected: 0) ${nexusCount === 0 ? '✓' : '✗'}`);
+  if (gateCount !== 0 || nexusCount !== 0) totalErrors++;
 
   // Test Landing Page Language Switch
   console.log('  - Testing Landing Page Bilingual Toggle (EN <-> AR)...');

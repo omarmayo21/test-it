@@ -138,7 +138,7 @@
       "gate_2_go": "Overview",
       "gates_note": "Two entry points. One connected organisation.",
 
-      "fin_eyebrow": "09 Solutions Castle",
+      "fin_eyebrow": "07 Solutions Castle",
       "fin_title_1": "Let's build",
       "fin_title_2": "what's next.",
       "fin_cta": "Let's talk",
@@ -452,7 +452,7 @@
       "gate_2_go": "نظرة عامة",
       "gates_note": "نقطتا انطلاق.. لمنظومة عمل واحدة ومترابطة.",
 
-      "fin_eyebrow": "09 سوليوشنز كاسل",
+      "fin_eyebrow": "07 سوليوشنز كاسل",
       "fin_title_1": "لنبنِ معاً",
       "fin_title_2": "المستقبل.",
       "fin_cta": "تواصل معنا",

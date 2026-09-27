@@ -100,46 +100,47 @@ async function runCompleteTestSuite() {
   await landingPage.goto('http://127.0.0.1:3000/', { waitUntil: 'domcontentloaded' });
   await landingPage.waitForTimeout(400);
 
-  // 1.4 Verify Gate 01 & Gate 02 Semantic Links and Clickability
-  const gateItems = await landingPage.evaluate(() => {
-    const gates = Array.from(document.querySelectorAll('.gates .gate'));
-    const core = document.querySelector('.gates .gate__core');
+  // 1.4 Verify Gates & Nexus sections are completely removed from DOM
+  const removedSections = await landingPage.evaluate(() => ({
+    gatesCount: document.querySelectorAll('.gates, .gate').length,
+    nexusCount: document.querySelectorAll('.nexus, .nexus__row').length,
+    sectionCount: document.querySelectorAll('.scroll-section').length,
+    panelCount: document.querySelectorAll('.panel').length
+  }));
+
+  const gatesRemovedOk = removedSections.gatesCount === 0;
+  const nexusRemovedOk = removedSections.nexusCount === 0;
+  const sectionCountOk = removedSections.sectionCount === 8 && removedSections.panelCount === 8;
+  console.log(`  - Gates section completely removed: ${gatesRemovedOk ? '✓' : '✗'}`);
+  console.log(`  - Nexus section completely removed: ${nexusRemovedOk ? '✓' : '✗'}`);
+  console.log(`  - Total remaining sections is 8: ${sectionCountOk ? '✓' : '✗'}`);
+  if (!gatesRemovedOk || !nexusRemovedOk || !sectionCountOk) totalErrors++;
+
+  // 1.5 Verify Navbar Logo alignment & compact CTA sizing
+  const navMetrics = await landingPage.evaluate(() => {
+    const brand = document.querySelector('.nav__brand');
+    const logo = document.querySelector('.nav__logo');
+    const cta = document.querySelector('.nav__cta');
+    const links = document.getElementById('navLinks');
+    const bRect = brand.getBoundingClientRect();
+    const lRect = logo.getBoundingClientRect();
+    const cRect = cta.getBoundingClientRect();
+    const nRect = links.getBoundingClientRect();
     return {
-      gates: gates.map(g => ({
-        tagName: g.tagName.toLowerCase(),
-        href: g.getAttribute('href')
-      })),
-      coreIsSpan: core?.tagName.toLowerCase() === 'span' && !core.hasAttribute('href')
+      logoH: Math.round(lRect.height),
+      logoW: Math.round(lRect.width),
+      ctaH: Math.round(cRect.height),
+      ctaFontSize: parseFloat(getComputedStyle(cta).fontSize),
+      logoCenterY: Math.round(lRect.top + lRect.height / 2),
+      navCenterY: Math.round(nRect.top + nRect.height / 2)
     };
   });
 
-  const gate1Ok = gateItems.gates[0]?.tagName === 'a' && gateItems.gates[0]?.href === '/it-services/';
-  const gate2Ok = gateItems.gates[1]?.tagName === 'a' && gateItems.gates[1]?.href === '/training/';
-  console.log(`  - Gate 01 is link -> /it-services/: ${gate1Ok ? '✓' : '✗'}`);
-  console.log(`  - Gate 02 is link -> /training/: ${gate2Ok ? '✓' : '✗'}`);
-  console.log(`  - Central SO Core is non-clickable decorative element: ${gateItems.coreIsSpan ? '✓' : '✗'}`);
-  if (!gate1Ok || !gate2Ok || !gateItems.coreIsSpan) totalErrors++;
-
-  // Click Test Gate 01 (Scroll to Section 9)
-  console.log('  - Scrolling to Section 9 (Two Destinations)...');
-  await landingPage.evaluate(() => window.scrollTo(0, window.__SC.tops[8]));
-  await landingPage.waitForTimeout(600);
-
-  console.log('  - Testing click on Gate 01...');
-  await landingPage.click('.gates .gate:first-child');
-  await landingPage.waitForURL('**/it-services/');
-  console.log(`    Successfully navigated to: ${landingPage.url()} ✓`);
-
-  // Return to home and scroll to Section 9 for Gate 02
-  await landingPage.goto('http://127.0.0.1:3000/', { waitUntil: 'domcontentloaded' });
-  await landingPage.waitForTimeout(400);
-  await landingPage.evaluate(() => window.scrollTo(0, window.__SC.tops[8]));
-  await landingPage.waitForTimeout(600);
-
-  console.log('  - Testing click on Gate 02...');
-  await landingPage.click('.gates .gate--r');
-  await landingPage.waitForURL('**/training/');
-  console.log(`    Successfully navigated to: ${landingPage.url()} ✓`);
+  const ctaCompactOk = navMetrics.ctaH <= 38 && navMetrics.ctaFontSize <= 12;
+  const logoAlignedOk = Math.abs(navMetrics.logoCenterY - navMetrics.navCenterY) <= 8;
+  console.log(`  - Navbar CTA is compact (${navMetrics.ctaH}px high, ${navMetrics.ctaFontSize}px font): ${ctaCompactOk ? '✓' : '✗'}`);
+  console.log(`  - Navbar Logo is vertically centered with navigation (ΔY ${Math.abs(navMetrics.logoCenterY - navMetrics.navCenterY)}px): ${logoAlignedOk ? '✓' : '✗'}`);
+  if (!ctaCompactOk || !logoAlignedOk) totalErrors++;
 
   await landingPage.close();
 

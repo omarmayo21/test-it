@@ -24,9 +24,9 @@
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
   /* ── constants ─────────────────────────────────────────────────────────── */
-  const N          = 10;    // sections
-  const SEG        = 1.6;   // section length, in viewport heights
-  const TRANS      = 1.0;   // transition distance, in viewport heights
+  const N          = 8;     // sections (8 total)
+  const SEG        = 1.30;  // section length, in viewport heights (15-25% faster progression)
+  const TRANS      = 0.82;  // transition distance, in viewport heights (crisp responsive travel)
   const DEAD       = 0.04;  // settle window at each end of a transition
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -101,31 +101,32 @@
   }
 
   /* ══════════════════════════════════════════════════════════════════════════
-     SO TRANSITION CHOREOGRAPHIES — Curated for 3 key brand milestones:
-       1. What We Do → IT Services (Signature 1: Brand Introduction)
-       2. How We Work → Industries (Signature 2: Process to Ecosystem Hub)
-       3. The Connection → Two Destinations (Signature 3: Grand Visual Climax)
+     SO TRANSITION CHOREOGRAPHIES — Curated for 2 key brand milestones:
+       1. Who We Are → What We Do (Signature 1: Brand Introduction before What We Do)
+       2. How We Work → Industries (Signature 2: Ecosystem Hub Reappearance)
      ═════════════════════════════════════════════════════════════════════════ */
   const env = () => ({ vw, vh });
 
   const SO_MOTION = [
-    /* 01 · WHAT WE DO → IT SERVICES (Transition 3)
-       Moderate SO presence — clean emergence from depth with controlled Y-axis yaw */
+    /* 01 · WHO WE ARE → WHAT WE DO (Transition 2)
+       Brand Signature Bridge into Core Capabilities — elegant emergence from depth,
+       subtle expansion and controlled rotation clearing cleanly before What We Do settles */
     (e, m) => {
       const t = inOutCubic(e);
       return {
-        x: 0, y: 0, z: lerp(-620, 380, t),
-        rx: lerp(3, -3, t), ry: lerp(-72, 60, t), rz: 0,
-        s: lerp(0.68, 1.15, t),
+        x: 0, y: 0, z: lerp(-580, 280, t),
+        rx: lerp(4, -3, t), ry: lerp(-45, 35, t), rz: 0,
+        s: lerp(0.72, 1.12, t),
         halo: lerp(0.55, 1.05, t),
-        ring: 0, ringS: 1,
+        ring: smoothstep(0.08, 0.32, e) * (1 - smoothstep(0.68, 0.94, e)),
+        ringS: lerp(0.8, 2.0, e),
         beam: 0, beamA: 0, beamS: 1,
-        op: smoothstep(0.03, 0.18, e) * (1 - smoothstep(0.66, 0.95, e))
+        op: smoothstep(0.04, 0.20, e) * (1 - smoothstep(0.66, 0.94, e))
       };
     },
 
     /* 02 · HOW WE WORK → INDUSTRIES (Transition 6)
-       Subtle & concise — central hub pulse bridging execution to industry scale */
+       Ecosystem Hub Pulse — bridging operational execution to industry ecosystem scale */
     (e, m) => {
       const t = inOutCubic(e);
       return {
@@ -139,29 +140,11 @@
         beamA: 0, beamS: lerp(0.20, 1.15, e),
         op: smoothstep(0.04, 0.18, e) * (1 - smoothstep(0.68, 0.94, e))
       };
-    },
-
-    /* 03 · THE CONNECTION → TWO DESTINATIONS (Transition 8)
-       Grand visual climax — expansive forward surge with dual split directional beams */
-    (e, m) => {
-      const t  = inOutCubic(e);
-      const t2 = Math.pow(e, 1.2);
-      return {
-        x: 0, y: 0, z: lerp(-240, 500, t2),
-        rx: lerp(0, -4, t), ry: 0, rz: 0,
-        s: lerp(1.00, 1.48, t2),
-        halo: lerp(0.85, 1.30, t2),
-        ring: smoothstep(0.04, 0.28, e) * (1 - smoothstep(0.82, 0.98, e)),
-        ringS: lerp(0.8, 3.2, e),
-        beam: smoothstep(0.12, 0.45, e) * (1 - smoothstep(0.84, 0.98, e)),
-        beamA: lerp(0, 28, e), beamS: lerp(0.20, 1.25, e),
-        op: smoothstep(0.02, 0.16, e) * (1 - smoothstep(0.76, 0.98, e))
-      };
     }
   ];
 
   /* ══════════════════════════════════════════════════════════════════════════
-     CENTRALIZED TRANSITION CONFIGURATION
+     CENTRALIZED TRANSITION CONFIGURATION (7 transitions between 8 sections)
      Controls SO activation, naming, and unique 3D panel dynamics per transition
      ═════════════════════════════════════════════════════════════════════════ */
   const TRANSITIONS = [
@@ -171,19 +154,19 @@
       hasSO: false,
       panel: { outRx: -48, outRy: 0, outZ: -900, outS: 0.78, outX: 0, outY: -32, inRx: 50, inRy: 0, inZ: -1400, inS: 0.84, inX: 0, inY: 48 }
     },
-    // 02 · Who We Are → What We Do (3D pitch & architectural depth)
+    // 02 · Who We Are → What We Do (SO Signature 1: Brand Introduction before What We Do)
     {
       name: 'Who We Are → What We Do',
-      hasSO: false,
-      panel: { outRx: -54, outRy: 0, outZ: -860, outS: 0.77, outX: 0, outY: -28, inRx: 52, inRy: 0, inZ: -1250, inS: 0.85, inX: 0, inY: 52 }
-    },
-    // 03 · What We Do → IT Services (SO Signature 1: Introduction)
-    {
-      name: 'What We Do → IT Services',
       hasSO: true,
       soIndex: 0,
-      soLabel: 'SO signature · IT Services entrance',
-      panel: { outRx: -60, outRy: 0, outZ: -960, outS: 0.75, outX: 0, outY: -30, inRx: 58, inRy: 0, inZ: -1500, inS: 0.80, inX: 0, inY: 46 }
+      soLabel: 'SO signature · What We Do entrance',
+      panel: { outRx: -56, outRy: 0, outZ: -920, outS: 0.76, outX: 0, outY: -28, inRx: 54, inRy: 0, inZ: -1400, inS: 0.82, inX: 0, inY: 48 }
+    },
+    // 03 · What We Do → IT Services (3D panel spatial expansion into IT platform)
+    {
+      name: 'What We Do → IT Services',
+      hasSO: false,
+      panel: { outRx: -52, outRy: 0, outZ: -880, outS: 0.78, outX: 0, outY: -30, inRx: 52, inRy: 0, inZ: -1300, inS: 0.84, inX: 0, inY: 46 }
     },
     // 04 · IT Services → Training (Editorial bilateral yaw flip between major pillars)
     {
@@ -205,25 +188,11 @@
       soLabel: 'SO hub · Industries entrance',
       panel: { outRx: -56, outRy: 0, outZ: -920, outS: 0.76, outX: 0, outY: -28, inRx: 56, inRy: 0, inZ: -1400, inS: 0.82, inX: 0, inY: 46 }
     },
-    // 07 · Industries → The Connection (Spatial convergence into connection plane)
+    // 07 · Industries → Final CTA (Clean settling into finale and footer)
     {
-      name: 'Industries → The Connection',
+      name: 'Industries → Final CTA',
       hasSO: false,
-      panel: { outRx: -48, outRy: 0, outZ: -940, outS: 0.75, outX: 0, outY: -32, inRx: 50, inRy: 0, inZ: -1450, inS: 0.80, inX: 0, inY: 44 }
-    },
-    // 08 · The Connection → Two Destinations (SO Signature 3: Grand Visual Climax)
-    {
-      name: 'The Connection → Two Destinations',
-      hasSO: true,
-      soIndex: 2,
-      soLabel: 'SO climax · Dual destination gateway',
-      panel: { outRx: -58, outRy: 0, outZ: -940, outS: 0.75, outX: 0, outY: -30, inRx: 56, inRy: 0, inZ: -1500, inS: 0.80, inX: 0, inY: 46 }
-    },
-    // 09 · Two Destinations → Final CTA (Clean settling into finale and footer)
-    {
-      name: 'Two Destinations → Final CTA',
-      hasSO: false,
-      panel: { outRx: -45, outRy: 0, outZ: -880, outS: 0.80, outX: 0, outY: -26, inRx: 46, inRy: 0, inZ: -1250, inS: 0.86, inX: 0, inY: 38 }
+      panel: { outRx: -48, outRy: 0, outZ: -900, outS: 0.80, outX: 0, outY: -26, inRx: 48, inRy: 0, inZ: -1300, inS: 0.86, inX: 0, inY: 40 }
     }
   ];
 

@@ -31,15 +31,16 @@ const geom = await page.evaluate(() => ({
   maxScroll: window.__SC.maxScroll,
   segPx: window.__SC.segPx,
   transPx: window.__SC.transPx,
+  N: window.__SC.N,
   htmlOverflow: getComputedStyle(document.documentElement).overflow,
   bodyOverflowY: getComputedStyle(document.body).overflowY,
   panelPosition: getComputedStyle(document.querySelector('.panel')).position
 }));
-const { segPx: SEG, transPx: TRANS, vh: VH } = geom;
+const { segPx: SEG, transPx: TRANS, vh: VH, N: SECT_COUNT } = geom;
 
-geom.scrollHeight === SEG * 10
-  ? ok('document has real scrollable height', `${geom.scrollHeight}px  (10 × ${SEG}px, viewport ${geom.vh}px)`)
-  : bad('document height', `${geom.scrollHeight} != ${SEG * 10}`);
+geom.scrollHeight === SEG * 8
+  ? ok('document has real scrollable height', `${geom.scrollHeight}px  (8 × ${SEG}px, viewport ${geom.vh}px)`)
+  : bad('document height', `${geom.scrollHeight} != ${SEG * 8}`);
 (geom.htmlOverflow !== 'hidden' && geom.bodyOverflowY !== 'hidden')
   ? ok('nothing locks the document scroll', `html:${geom.htmlOverflow}  body-y:${geom.bodyOverflowY}`)
   : bad('scroll lock detected', JSON.stringify(geom));
@@ -92,7 +93,7 @@ async function sample(yPx, shot) {
 
 /* ── 3 · rest positions ─────────────────────────────────────────────────── */
 let restBad = [];
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 8; i++) {
   const s = await sample(i * SEG, `rest-${String(i + 1).padStart(2, '0')}`);
   const visible = s.vis.filter((v, k) => v === 'visible' && s.op[k] > 0.01).length;
   const good = s.cls[i].includes('is-active') && s.op[i] > 0.99 &&
@@ -101,14 +102,14 @@ for (let i = 0; i < 10; i++) {
   if (!good) restBad.push(`sec${i + 1}: cls="${s.cls[i]}" op=${s.op[i]} z=${s.appliedZ[i]} so=${s.soOp} vis=${visible} h=${s.rect[0].h}`);
 }
 restBad.length === 0
-  ? ok('all 10 rest positions flat, clean, SO hidden', 'one visible panel, identity transform, full-height render')
+  ? ok('all 8 rest positions flat, clean, SO hidden', 'one visible panel, identity transform, full-height render')
   : bad('rest positions', restBad.join(' | '));
 
-/* ── 4 · the 9 transitions, scrubbed ────────────────────────────────────── */
-const yAt = (t, f) => t * SEG - TRANS + f * TRANS;
+/* ── 4 · the 7 transitions, scrubbed ────────────────────────────────────── */
+const yAt = (t, f) => Math.round(t * SEG - VH + f * TRANS);
 const rows = [];
-for (let t = 1; t <= 9; t++) {
-  const start = t * SEG - TRANS;
+for (let t = 1; t <= 7; t++) {
+  const start = t * SEG - VH;
   const r = { t, s: [] };
   for (const f of [0, 0.25, 0.5, 0.75, 1]) {
     const s = await sample(Math.round(start + f * TRANS), f === 0.5 ? `trans-${String(t).padStart(2, '0')}-mid` : null);
@@ -137,8 +138,8 @@ for (const r of rows) {
   if (!(d75.in.op > b25.in.op)) errs.push('in not rising');
   if (!(Math.abs(c.appliedZ[r.t] - c.in.z) < 1)) errs.push(`in Z not applied (${c.appliedZ[r.t]} vs ${c.in.z})`);
   
-  // SO presence: only transitions 3, 6, 8 show SO; transitions 1, 2, 4, 5, 7, 9 keep SO hidden
-  const isSO = [3, 6, 8].includes(r.t);
+  // SO presence: only transition 2 (into What We Do) and transition 6 (into Industries) show SO
+  const isSO = [2, 6].includes(r.t);
   if (isSO) {
     if (!(c.soOp > 0.45)) errs.push(`SO mid opacity ${c.soOp}`);
     if (!(c.out.z > c.in.z)) errs.push('depth ordering wrong');
@@ -146,36 +147,36 @@ for (const r of rows) {
     if (!(c.soOp < 0.02)) errs.push(`SO visible during non-SO transition (${c.soOp})`);
   }
   if (!(a.soOp < 0.05 && e.soOp < 0.05)) errs.push(`SO visible at rest (${a.soOp}/${e.soOp})`);
-  if (c.y !== Math.round(yAt(r.t, 0.5))) errs.push(`landed at ${c.y} not ${Math.round(yAt(r.t, 0.5))}`);
+  if (c.y !== yAt(r.t, 0.5)) errs.push(`landed at ${c.y} not ${yAt(r.t, 0.5)}`);
   if (errs.length) tBad.push(`T${String(r.t).padStart(2, '0')}→${String(r.t + 1).padStart(2, '0')}: ${errs.join('; ')}`);
   summary.push(`${r.t}→${r.t + 1}[${isSO ? 'SO ' + c.soOp + ' @z' + c.soZ + ' s' + c.soScale : '3D panel'} · out ${c.out.rx}°/${c.out.z}px · in ${c.in.rx}°/${c.in.z}px]`);
 }
 tBad.length === 0
-  ? ok('all 9 transitions verified (3 curated SO moments + 6 distinct 3D panel transitions)', 'verified on the live DOM + rendered geometry')
+  ? ok('all 7 transitions verified (2 curated SO moments + 5 distinct 3D panel transitions)', 'verified on the live DOM + rendered geometry')
   : bad('transitions', tBad.join('\n         '));
 info('mid-transition state (50%)', summary.join('\n         '));
 
-/* ── 5 · three curated SO transition motions ────────────────────────────── */
-const soRows = rows.filter(r => [3, 6, 8].includes(r.t));
+/* ── 5 · two curated SO transition motions ──────────────────────────────── */
+const soRows = rows.filter(r => [2, 6].includes(r.t));
 const sigs = soRows.map(r => r.s.filter((_, i) => i !== 0 && i !== 4).map(s => [s.soX, s.soZ, s.soScale, s.soOp]));
 const uniq = new Set(sigs.map(s => JSON.stringify(s)));
-uniq.size === 3 ? ok('3 distinct curated SO transition motions', uniq.size + ' unique signatures')
-                : bad('SO motions not distinct', uniq.size + '/3');
+uniq.size === 2 ? ok('2 distinct curated SO transition motions', uniq.size + ' unique signatures')
+                : bad('SO motions not distinct', uniq.size + '/2');
 
 /* ── 6 · stop halfway and it stays there ────────────────────────────────── */
-const y52 = Math.round(3 * SEG - TRANS + 0.52 * TRANS);
+const y52 = Math.round(2 * SEG - VH + 0.52 * TRANS);
 await sample(y52);
-const snapA = await page.evaluate(() => document.querySelectorAll('.panel')[2].style.transform + '|' +
-  document.querySelectorAll('.panel')[3].style.opacity + '|' + document.getElementById('so').style.opacity);
+const snapA = await page.evaluate(() => document.querySelectorAll('.panel')[1].style.transform + '|' +
+  document.querySelectorAll('.panel')[2].style.opacity + '|' + document.getElementById('so').style.opacity);
 await page.waitForTimeout(2000);
-const snapB = await page.evaluate(() => document.querySelectorAll('.panel')[2].style.transform + '|' +
-  document.querySelectorAll('.panel')[3].style.opacity + '|' + document.getElementById('so').style.opacity);
+const snapB = await page.evaluate(() => document.querySelectorAll('.panel')[1].style.transform + '|' +
+  document.querySelectorAll('.panel')[2].style.opacity + '|' + document.getElementById('so').style.opacity);
 snapA === snapB ? ok('holds at 52% while idle (no autoplay / timer)', snapA.slice(0, 72) + '…')
                 : bad('drifted while idle', `${snapA}\n         ${snapB}`);
 await page.screenshot({ path: `${OUT}/hold-52.png` });
 
 /* ── 7 · reversal ───────────────────────────────────────────────────────── */
-const probe = Math.round(3 * SEG - TRANS + 0.4 * TRANS);
+const probe = Math.round(2 * SEG - VH + 0.4 * TRANS);
 await sample(probe);
 const down = await page.evaluate(() => [...document.querySelectorAll('.panel')].map(p => p.style.transform + '@' + p.style.opacity).join('|'));
 await sample(0);
@@ -251,17 +252,17 @@ const rm = await b.newPage({ viewport: { width: 1440, height: 900 }, reducedMoti
 await rm.goto(URL, { waitUntil: 'networkidle' });
 await rm.waitForTimeout(900);
 const rmS = await rm.evaluate(() => {
-  const seg = window.__SC.segPx, tr = window.__SC.transPx;
-  window.scrollTo({ top: Math.round(3 * seg - tr + 0.5 * tr), behavior: 'instant' });
+  const seg = window.__SC.segPx, tr = window.__SC.transPx, vh = window.innerHeight;
+  window.scrollTo({ top: Math.round(2 * seg - vh + 0.5 * tr), behavior: 'instant' });
   window.__SC.render();
   const mid = window.__SC.state;
   const soMid = +getComputedStyle(document.getElementById('so')).opacity;
-  window.scrollTo({ top: Math.round(3 * seg - tr + 0.9 * tr), behavior: 'instant' });
+  window.scrollTo({ top: Math.round(2 * seg - vh + 0.9 * tr), behavior: 'instant' });
   window.__SC.render();
   const late = window.__SC.state;
-  window.scrollTo({ top: Math.round(seg * 3), behavior: 'instant' });
+  window.scrollTo({ top: Math.round(seg * 2), behavior: 'instant' });
   window.__SC.render();
-  const rest = +getComputedStyle(document.querySelectorAll('.panel')[3]).opacity;
+  const rest = +getComputedStyle(document.querySelectorAll('.panel')[2]).opacity;
   return { outRx: mid.out.rx, outZ: mid.out.z, soMid: +soMid.toFixed(2),
            incomingAt90: +late.in.op.toFixed(2), restingPanel: rest,
            scrollable: document.documentElement.scrollHeight > window.innerHeight * 5 };
@@ -280,8 +281,8 @@ await mob.goto(URL, { waitUntil: 'networkidle' });
 await mob.waitForTimeout(1200);
 await mob.screenshot({ path: `${OUT}/mobile-01-hero.png` });
 const mobS = await mob.evaluate(() => {
-  const seg = window.__SC.segPx, tr = window.__SC.transPx;
-  window.scrollTo({ top: Math.round(3 * seg - tr + 0.5 * tr), behavior: 'instant' });
+  const seg = window.__SC.segPx, tr = window.__SC.transPx, vh = window.innerHeight;
+  window.scrollTo({ top: Math.round(2 * seg - vh + 0.5 * tr), behavior: 'instant' });
   window.__SC.render();
   const st = window.__SC.state;
   return { docH: document.documentElement.scrollHeight, p: +st.p.toFixed(2), outRx: +st.out.rx.toFixed(1),
@@ -306,11 +307,11 @@ const tab = await b.newPage({ viewport: { width: 834, height: 1112 } });
 await tab.goto(URL, { waitUntil: 'networkidle' });
 await tab.waitForTimeout(900);
 const tabS = await tab.evaluate(() => {
-  const seg = window.__SC.segPx, tr = window.__SC.transPx;
-  window.scrollTo({ top: Math.round(3 * seg - tr + 0.5 * tr), behavior: 'instant' });
+  const seg = window.__SC.segPx, tr = window.__SC.transPx, vh = window.innerHeight;
+  window.scrollTo({ top: Math.round(2 * seg - vh + 0.5 * tr), behavior: 'instant' });
   window.__SC.render();
   const st = window.__SC.state;
-  const inner = document.querySelectorAll('.panel')[2].querySelector('.panel__inner');
+  const inner = document.querySelectorAll('.panel')[1].querySelector('.panel__inner');
   let minT = 1e9, maxB = -1e9;
   [...inner.children].forEach(k => { const r = k.getBoundingClientRect(); minT = Math.min(minT, r.top); maxB = Math.max(maxB, r.bottom); });
   return { p: +st.p.toFixed(2), outRx: +st.out.rx.toFixed(1), so: +(+getComputedStyle(document.getElementById('so')).opacity).toFixed(2), fits: minT > -1 && maxB < window.innerHeight + 1 };
@@ -323,11 +324,10 @@ await tab.close();
 const assets = await page.evaluate(() => {
   const so = document.querySelector('.so__img'), lg = document.querySelector('.nav__logo');
   return { so: so.getAttribute('src') + ' ' + so.naturalWidth + '×' + so.naturalHeight, soOk: so.complete && so.naturalWidth > 0,
-           logo: lg.getAttribute('src'), logoOk: lg.complete && lg.naturalWidth > 0,
-           inlineSo: document.querySelectorAll('img[src*="So.png"]').length };
+           logo: lg.getAttribute('src'), logoOk: lg.complete && lg.naturalWidth > 0 };
 });
-(assets.soOk && assets.logoOk && assets.inlineSo >= 3)
-  ? ok('real brand assets render', `${assets.so} · ${assets.logo} · ${assets.inlineSo} So.png uses`)
+(assets.soOk && assets.logoOk)
+  ? ok('real brand assets render', `${assets.so} · ${assets.logo}`)
   : bad('brand assets', JSON.stringify(assets));
 errors.length === 0 ? ok('no console / runtime errors') : bad('console errors', errors.slice(0, 6).join(' | '));
 
