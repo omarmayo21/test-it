@@ -317,7 +317,20 @@
       "faq_q3": "How does the IT and AI consultation process begin?",
       "faq_a3": "An exploratory discovery session is organized to inspect existing infrastructure and identify automation opportunities prior to drafting technical and commercial proposals.",
       "contact_submit": "Submit Request",
-      "feedback_success": "Thank you for reaching out. Your request has been received and our consultant will contact you within 1 business day."
+      "feedback_success": "Thank you for reaching out. Your request has been received and our consultant will contact you within 1 business day.",
+      "alt_about_hero": "Solutions Castle UAE Regional Corporate Headquarters & Digital Ecosystem",
+      "alt_about_slide_1": "2019 Riyadh Inception & Institutional Partnerships",
+      "alt_about_slide_2": "Dubai Headquarters on Sheikh Zayed Road",
+      "alt_about_slide_3": "Egypt Regional Operations & Technical Capabilities",
+      "alt_it_hero": "Enterprise Cloud Infrastructure, AI Systems & Data Automation",
+      "alt_it_p1": "AI Department Agents & Robotic Process Automation",
+      "alt_it_p2": "Enterprise ERP & Core Systems Integration",
+      "alt_it_p3": "Cybersecurity, Penetration Testing & ISO 27001 Compliance",
+      "alt_it_p4": "Cloud Architecture, Azure, AWS & Infrastructure Modernization",
+      "alt_tr_hero": "Executive Learning Lab & KHDA-Licensed Training Environment",
+      "alt_tr_slide_1": "B2B Custom Corporate In-House Training",
+      "alt_tr_slide_2": "Executive 1-on-1 VIP Coaching on Sheikh Zayed Road Dubai",
+      "alt_tr_slide_3": "Public Professional Calendar & Accredited Certifications"
     },
 
     ar: {
@@ -631,7 +644,20 @@
       "faq_q3": "كيف تبدأ عملية استشارة الـ IT والذكاء الاصطناعي؟",
       "faq_a3": "يتم تنظيم جلسة استكشافية لفحص البنية التحتية وتحديد فرص الأتمتة قبل صياغة العرض الفني والتجاري.",
       "contact_submit": "إرسال الطلب",
-      "feedback_success": "شكراً لتواصلك. تم استلام طلبك بنجاح وسيتواصل معك مستشارنا خلال يوم عمل واحد."
+      "feedback_success": "شكراً لتواصلك. تم استلام طلبك بنجاح وسيتواصل معك مستشارنا خلال يوم عمل واحد.",
+      "alt_about_hero": "المقر الإقليمي لشركة سوليوشنز كاسل ومنظومة التمكين المؤسسي والتحول الرقمي",
+      "alt_about_slide_1": "الانطلاق في الرياض 2019 وبناء الشراكات المؤسسية",
+      "alt_about_slide_2": "المقر الرئيسي في دبي - شارع الشيخ زايد",
+      "alt_about_slide_3": "الانتشار الإقليمي والمكتب التمثيلي والتشغيلي في جمهورية مصر العربية",
+      "alt_it_hero": "البنية التحتية السحابية الذكية وأنظمة الذكاء الاصطناعي المؤسسية",
+      "alt_it_p1": "وكلاء الذكاء الاصطناعي وأتمتة العمليات",
+      "alt_it_p2": "أنظمة تخطيط الموارد المؤسسية ERP والتكامل الشامل",
+      "alt_it_p3": "الأمن السيبراني واختبارات الاختراق والامتثال لمعايير ISO 27001",
+      "alt_it_p4": "الهندسة السحابية وإدارة بيئات العمل المؤسسية",
+      "alt_tr_hero": "مختبر التعلم التنفيذي وبيئة التدريب المرخصة من KHDA",
+      "alt_tr_slide_1": "التدريب المخصص للشركات والمؤسسات B2B",
+      "alt_tr_slide_2": "التدريب الفردي التنفيذي VIP بمقر دبي بشارع الشيخ زايد",
+      "alt_tr_slide_3": "الجدول الزمني للبرامج المهنية العامة والشهادات المعتمدة"
     }
   };
 
@@ -677,6 +703,15 @@
       const key = el.getAttribute('data-i18n-ph');
       if (dict[key] !== undefined) {
         el.setAttribute('placeholder', dict[key]);
+      }
+    });
+
+    // 3b. Update image alt attributes with data-i18n-alt
+    const altElements = document.querySelectorAll('[data-i18n-alt]');
+    altElements.forEach(el => {
+      const key = el.getAttribute('data-i18n-alt');
+      if (dict[key] !== undefined) {
+        el.setAttribute('alt', dict[key]);
       }
     });
 

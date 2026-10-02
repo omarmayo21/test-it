@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>About Us | Solutions Castle — Institutional Enablement &amp; Digital Transformation</title>
-  <meta name="description" content="Solutions Castle was established as a comprehensive ecosystem merging accredited professional training with intelligent software development, serving enterprises and government entities across the UAE, Saudi Arabia, and Egypt." />
-  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>About Us | Solutions Castle — Enablement &amp; IT Training</title>
+  <meta name="description" content="Solutions Castle was established as a comprehensive ecosystem merging accredited professional training with intelligent software development, serving enterprises and government entities across the UAE, Saudi Arabia, and Egypt.">
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
 
-  <link rel="stylesheet" href="/assets/css/fonts.css" />
-  <link rel="stylesheet" href="/assets/css/main.css" />
-  <link rel="stylesheet" href="/assets/css/pages.css" />
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/pages.css">
 </head>
 <body data-q="3" data-page-title-key="about_h1">
 
@@ -28,7 +28,7 @@
   <div class="nav__bg" aria-hidden="true"></div>
   <div class="nav__inner">
     <a class="nav__brand" href="/" aria-label="Solutions Castle — Home">
-      <img src="/public/logo-clear.png" alt="Solutions Castle" class="nav__logo" width="1340" height="441" />
+      <img src="/public/logo-clear.png" alt="Solutions Castle" class="nav__logo" width="1340" height="441">
     </a>
 
     <nav class="nav__links" id="navLinks" aria-label="Primary">
@@ -48,7 +48,7 @@
         <span class="lang-btn lang-btn--ar" data-lang="ar">عربي</span>
       </button>
       <a href="/contact/" class="btn btn--ghost nav__cta"><span data-i18n="nav_cta">Let's talk</span> <span class="btn__arw" aria-hidden="true">&rarr;</span></a>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+      <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
         <span></span><span></span>
       </button>
     </div>
@@ -59,8 +59,8 @@
 <!-- ══════════════════════ MOBILE MENU ══════════════════════ -->
 <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
   <div class="menu__inner">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: clamp(24px,5vw,44px);">
-      <p class="menu__eyebrow" style="margin-bottom: 0;" data-i18n="menu_eyebrow">Solutions Castle</p>
+    <div class="menu__header">
+      <p class="menu__eyebrow" data-i18n="menu_eyebrow">Solutions Castle</p>
       <button class="lang-switch" id="langSwitchMobile" type="button" aria-label="Switch Language / تغيير اللغة">
         <span class="lang-btn lang-btn--en" data-lang="en">EN</span>
         <span class="lang-sep" aria-hidden="true">/</span>
@@ -84,6 +84,8 @@
 
   <!-- ─────────── 01 · HERO & 2-COLUMN MEDIA COMPOSITION ─────────── -->
   <section class="page-section page-hero">
+    <div class="page-hero__geometric-grid" aria-hidden="true"></div>
+    <div class="page-hero__skyline" aria-hidden="true"></div>
     <div class="section-inner">
       <div class="page-hero__grid">
         <div>
@@ -94,7 +96,7 @@
           <p class="page-hero__lede" data-i18n="about_sub">
             تأسست سوليوشنز كاسل كمنظومة متكاملة تدمج بين التدريب المهني المرخص وتطوير الحلول البرمجية الذكية لخدمة الشركات والجهات الحكومية عبر الإمارات والسعودية ومصر.
           </p>
-          <div class="cta-row" style="margin-top: 24px;">
+          <div class="cta-row u-mt-24">
             <a href="/contact/" class="btn btn--solid"><span data-i18n="about_cta_primary">احجز جلسة نقاش استراتيجية</span> <span class="btn__arw">&#8592;</span></a>
             <a href="/contact/" class="btn btn--ghost"><span data-i18n="about_cta_secondary">تواصل معنا عبر واتساب</span> <span class="btn__arw">&#8599;</span></a>
           </div>
@@ -102,18 +104,18 @@
 
         <!-- Hero Visual Frame -->
         <div class="hero-visual">
-          <img src="/public/images/about-hero.jpg" alt="Solutions Castle Regional Network" class="hero-visual__img" loading="eager" />
+          <img src="/public/images/About us/About US Main.jpg" alt="Solutions Castle Regional Network" class="hero-visual__img" loading="eager" data-i18n-alt="alt_about_hero">
           <div class="hero-visual__overlay"></div>
           <div class="hero-visual__badge">
-            <span class="hero-visual__badge-txt">Regional Digital Network</span>
-            <span class="hero-visual__badge-tag">UAE · KSA · EGYPT</span>
+            <span class="hero-visual__badge-txt" data-i18n="badge_regional_network">Regional Digital Network</span>
+            <span class="hero-visual__badge-tag hero-visual__badge-tag--gold" data-i18n="badge_regional_reach">UAE · KSA · EGYPT</span>
           </div>
         </div>
       </div>
 
       <!-- Credential Strip -->
       <div class="cred-strip">
-        <div class="cred-item">
+        <div class="cred-item cred-item--uae">
           <span class="cred-icon">✓</span>
           <p class="cred-text" data-i18n="about_cred_khda">مرخص من هيئة المعرفة والتنمية البشرية بحكومة دبي (<span class="tech-term">KHDA</span>).</p>
         </div>
@@ -121,7 +123,7 @@
           <span class="cred-icon">✓</span>
           <p class="cred-text" data-i18n="about_cred_cpd">معتمد للتطوير المهني المستمر الدولي (<span class="tech-term">CPD</span>).</p>
         </div>
-        <div class="cred-item">
+        <div class="cred-item cred-item--uae">
           <span class="cred-icon">✓</span>
           <p class="cred-text" data-i18n="about_cred_icv">حاصل على شهادة القيمة الوطنية المضافة (<span class="tech-term">ICV</span>).</p>
         </div>
@@ -134,7 +136,7 @@
   </section>
 
   <!-- ─────────── 02 · LEADERSHIP MESSAGE ─────────── -->
-  <section class="page-section" style="padding-top: 0;">
+  <section class="page-section u-pt-0">
     <div class="section-inner">
       <div class="exec-quote">
         <p class="exec-quote__tag" data-i18n="lead_quote_tag">رسالة الإدارة التنفيذية</p>
@@ -145,20 +147,27 @@
     </div>
   </section>
 
+  <!-- Emirati Section Divider -->
+  <div class="emirati-divider" aria-hidden="true">
+    <div class="emirati-divider__line"></div>
+    <span class="emirati-divider__motif">✦ REGIONAL EXPANSION ✦</span>
+    <div class="emirati-divider__line emirati-divider__line--end"></div>
+  </div>
+
   <!-- ─────────── 03 · REGIONAL EXPANSION SLIDER ─────────── -->
   <section class="page-section">
     <div class="section-inner">
       <p class="eyebrow" data-i18n="timeline_eyebrow"><i>01</i> محطات التوسع الإقليمي</p>
-      <h2 class="title" style="margin-bottom: 20px;" data-i18n="timeline_title">مسيرة النمو عبر المنطقة</h2>
-      
+      <h2 class="title u-mb-20" data-i18n="timeline_title">مسيرة النمو عبر المنطقة</h2>
+
       <!-- Cinematic Slider -->
-      <div class="sc-slider" id="aboutSlider" role="region" aria-label="Regional Expansion Slider">
+      <div class="sc-slider" id="aboutSlider">
         <div class="sc-slider__viewport">
           <div class="sc-slider__track">
             <!-- Slide 1 -->
             <div class="sc-slider__slide">
               <div class="sc-slider__media">
-                <img src="/public/images/about-hero.jpg" alt="Riyadh Expansion" class="sc-slider__img" loading="lazy" />
+                <img src="/public/images/About us/Slider - Ryiadh.jpg" alt="Riyadh Expansion" class="sc-slider__img" loading="lazy" data-i18n-alt="alt_about_slide_1">
                 <div class="sc-slider__media-overlay"></div>
               </div>
               <div class="sc-slider__content">
@@ -172,7 +181,7 @@
             <!-- Slide 2 -->
             <div class="sc-slider__slide">
               <div class="sc-slider__media">
-                <img src="/public/images/contact-hero.jpg" alt="Dubai Headquarters" class="sc-slider__img" loading="lazy" />
+                <img src="/public/images/About us/Slider - Dubai.jpg" alt="Dubai Headquarters" class="sc-slider__img" loading="lazy" data-i18n-alt="alt_about_slide_2">
                 <div class="sc-slider__media-overlay"></div>
               </div>
               <div class="sc-slider__content">
@@ -186,7 +195,7 @@
             <!-- Slide 3 -->
             <div class="sc-slider__slide">
               <div class="sc-slider__media">
-                <img src="/public/images/it-hero.jpg" alt="Egypt Center" class="sc-slider__img" loading="lazy" />
+                <img src="/public/images/About us/Slider - Egypt.jpg" alt="Egypt Center" class="sc-slider__img" loading="lazy" data-i18n-alt="alt_about_slide_3">
                 <div class="sc-slider__media-overlay"></div>
               </div>
               <div class="sc-slider__content">
@@ -246,7 +255,7 @@
   <section class="page-section">
     <div class="section-inner">
       <p class="eyebrow" data-i18n="why_eyebrow"><i>02</i> لماذا تختارنا</p>
-      <h2 class="title" style="margin-bottom: 20px;" data-i18n="why_title">ثلاث ركائز تصنع الفارق لشركائنا</h2>
+      <h2 class="title u-mb-20" data-i18n="why_title">ثلاث ركائز تصنع الفارق لشركائنا</h2>
 
       <div class="why-grid">
         <div class="why-card">
@@ -294,11 +303,11 @@
 </main>
 
 <!-- ══════════════════════ FOOTER ══════════════════════ -->
-<footer class="footer" role="contentinfo">
+<footer class="footer">
   <div class="footer__inner">
     <div class="footer__brand">
       <a class="nav__brand" href="/" aria-label="Solutions Castle — Home">
-        <img src="/public/logo-clear.png" alt="Solutions Castle" class="nav__logo" width="1340" height="441" />
+        <img src="/public/logo-clear.png" alt="Solutions Castle" class="nav__logo" width="1340" height="441">
       </a>
       <p class="footer__tagline" data-i18n="footer_tagline">
         The integrated ecosystem for institutional enablement and sustainable digital transformation across the UAE, Saudi Arabia, and Egypt.

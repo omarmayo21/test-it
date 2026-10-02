@@ -170,8 +170,22 @@
 
       let current = 0;
       const total = slides.length;
+      let autoplayTimer = null;
+      let isHovered = false;
+      let isIntersecting = true;
+      const AUTOPLAY_INTERVAL = 4500; // 4.5 seconds
 
-      function update(index) {
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let prefersReducedMotion = mediaQuery.matches;
+      if (mediaQuery.addEventListener) {
+        mediaQuery.addEventListener('change', e => {
+          prefersReducedMotion = e.matches;
+          if (prefersReducedMotion) stopAutoplay();
+          else startAutoplay();
+        });
+      }
+
+      function update(index, userInitiated = false) {
         current = (index + total) % total;
         slider.dataset.activeSlide = String(current);
         const isRtl = document.documentElement.dir === 'rtl';
@@ -187,38 +201,127 @@
         dots.forEach((dot, idx) => {
           dot.classList.toggle('is-active', idx === current);
         });
+
+        if (userInitiated) {
+          restartAutoplay();
+        }
+      }
+
+      function nextSlide() {
+        update(current + 1, false);
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        if (prefersReducedMotion || isHovered || !isIntersecting || document.hidden || total <= 1) {
+          return;
+        }
+        autoplayTimer = setInterval(() => {
+          nextSlide();
+        }, AUTOPLAY_INTERVAL);
+      }
+
+      function stopAutoplay() {
+        if (autoplayTimer) {
+          clearInterval(autoplayTimer);
+          autoplayTimer = null;
+        }
+      }
+
+      function restartAutoplay() {
+        stopAutoplay();
+        startAutoplay();
       }
 
       slider.dataset.activeSlide = '0';
 
-      if (prevBtn) prevBtn.addEventListener('click', () => update(current - 1));
-      if (nextBtn) nextBtn.addEventListener('click', () => update(current + 1));
+      if (prevBtn) prevBtn.addEventListener('click', () => update(current - 1, true));
+      if (nextBtn) nextBtn.addEventListener('click', () => update(current + 1, true));
 
       dots.forEach((dot, idx) => {
-        dot.addEventListener('click', () => update(idx));
+        dot.addEventListener('click', () => update(idx, true));
       });
 
       // Keyboard arrow navigation on hover/focus
       slider.addEventListener('keydown', e => {
-        if (e.key === 'ArrowLeft') update(document.documentElement.dir === 'rtl' ? current + 1 : current - 1);
-        if (e.key === 'ArrowRight') update(document.documentElement.dir === 'rtl' ? current - 1 : current + 1);
+        if (e.key === 'ArrowLeft') update(document.documentElement.dir === 'rtl' ? current + 1 : current - 1, true);
+        if (e.key === 'ArrowRight') update(document.documentElement.dir === 'rtl' ? current - 1 : current + 1, true);
       });
 
-      // Swipe support
+      // Desktop Hover and Focus interactions: pause on hover/focus, resume on leave/blur
+      slider.addEventListener('mouseenter', () => {
+        isHovered = true;
+        stopAutoplay();
+      });
+      slider.addEventListener('mouseleave', () => {
+        isHovered = false;
+        startAutoplay();
+      });
+      slider.addEventListener('focusin', () => {
+        isHovered = true;
+        stopAutoplay();
+      });
+      slider.addEventListener('focusout', () => {
+        isHovered = false;
+        startAutoplay();
+      });
+
+      // Visibility change (pause when tab hidden, resume when visible)
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          stopAutoplay();
+        } else {
+          startAutoplay();
+        }
+      });
+
+      // Viewport IntersectionObserver: pause animation when out of viewport
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            isIntersecting = entry.isIntersecting;
+            if (isIntersecting) {
+              startAutoplay();
+            } else {
+              stopAutoplay();
+            }
+          });
+        }, { threshold: 0.15 });
+        observer.observe(slider);
+      }
+
+      // Swipe support with vertical scroll preservation
       let startX = 0;
-      slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+      let startY = 0;
+      slider.addEventListener('touchstart', e => {
+        if (e.touches && e.touches[0]) {
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+        }
+        stopAutoplay();
+      }, { passive: true });
+
       slider.addEventListener('touchend', e => {
-        const diff = e.changedTouches[0].clientX - startX;
-        if (Math.abs(diff) > 45) {
-          if (diff > 0) update(document.documentElement.dir === 'rtl' ? current + 1 : current - 1);
-          else update(document.documentElement.dir === 'rtl' ? current - 1 : current + 1);
+        if (e.changedTouches && e.changedTouches[0]) {
+          const diffX = e.changedTouches[0].clientX - startX;
+          const diffY = e.changedTouches[0].clientY - startY;
+          // Only trigger horizontal slide if movement was primarily horizontal
+          if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY)) {
+            if (diffX > 0) update(document.documentElement.dir === 'rtl' ? current + 1 : current - 1, true);
+            else update(document.documentElement.dir === 'rtl' ? current - 1 : current + 1, true);
+          } else {
+            startAutoplay();
+          }
+        } else {
+          startAutoplay();
         }
       }, { passive: true });
 
       // Language change refresh
-      window.addEventListener('sc:languageChanged', () => update(current));
+      window.addEventListener('sc:languageChanged', () => update(current, false));
 
-      update(0);
+      update(0, false);
+      startAutoplay();
     });
   }
   initSliders();

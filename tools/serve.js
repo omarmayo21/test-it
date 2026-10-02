@@ -60,6 +60,14 @@ http.createServer((req, res) => {
       });
       return;
     }
-    res.writeHead(404, { 'content-type': 'text/plain' }).end('404');
+    // Fallback to public directory if file not found at root
+    const publicFile = path.join(ROOT, 'public', urlPath);
+    fs.stat(publicFile, (pErr, pSt) => {
+      if (!pErr && pSt.isFile()) {
+        serveStream(publicFile);
+        return;
+      }
+      res.writeHead(404, { 'content-type': 'text/plain' }).end('404');
+    });
   });
 }).listen(PORT, '0.0.0.0', () => console.log('serving ' + ROOT + ' on 0.0.0.0:' + PORT));

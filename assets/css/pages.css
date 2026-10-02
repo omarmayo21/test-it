@@ -6,8 +6,18 @@
    ========================================================================= */
 
 /* ══════════════════════════════════════════════════════════════════════════
-   GLOBAL RTL / LTR BEHAVIOR
+   GLOBAL RTL / LTR BEHAVIOR & REGIONAL EMIRATI TOKENS
    ═════════════════════════════════════════════════════════════════════════ */
+:root {
+  --gold-500: #D4AF37;
+  --gold-400: #E6C875;
+  --gold-300: #F3DC9B;
+  --gold-100: #FBF6E9;
+  --gold-glow: rgba(230, 200, 117, 0.14);
+  --gold-border: rgba(230, 200, 117, 0.28);
+  --sand-warm: rgba(243, 220, 155, 0.08);
+}
+
 html[dir="rtl"] {
   direction: rtl;
   text-align: right;
@@ -64,8 +74,62 @@ html[dir="ltr"] .btn:hover .btn__arw {
    PAGE HERO & 2-COLUMN EDITORIAL VISUAL COMPOSITION
    ═════════════════════════════════════════════════════════════════════════ */
 .page-hero {
+  position: relative;
+  overflow: hidden;
   padding-top: clamp(30px, 6vh, 60px);
   padding-bottom: clamp(40px, 7vh, 80px);
+}
+
+/* Subtle architectural radial warmth */
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(ellipse at 85% 15%, rgba(230, 200, 117, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 15% 85%, rgba(0, 240, 230, 0.05) 0%, transparent 45%);
+  z-index: 0;
+}
+
+/* Emirati Geometric Star Lattice Pattern */
+.page-hero__geometric-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: 
+    radial-gradient(circle, rgba(230, 200, 117, 0.8) 1px, transparent 1px),
+    linear-gradient(45deg, rgba(0, 240, 230, 0.12) 25%, transparent 25%, transparent 75%, rgba(0, 240, 230, 0.12) 75%),
+    linear-gradient(-45deg, rgba(230, 200, 117, 0.12) 25%, transparent 25%, transparent 75%, rgba(230, 200, 117, 0.12) 75%);
+  background-size: 40px 40px, 80px 80px, 80px 80px;
+  background-position: 0 0, 0 0, 40px 40px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 0%, rgba(0,0,0,0.3) 65%, transparent 88%);
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 0%, rgba(0,0,0,0.3) 65%, transparent 88%);
+  z-index: 0;
+}
+
+/* Dubai Modern Skyline Silhouette */
+.page-hero__skyline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: clamp(80px, 12vw, 140px);
+  pointer-events: none;
+  opacity: 0.075;
+  background-repeat: repeat-x;
+  background-position: bottom center;
+  background-size: 1000px auto;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 140' fill='none' stroke='%2300f0e6' stroke-width='1.2'%3E%3Cpath d='M0,140 L50,140 L50,95 L75,95 L75,140 L120,140 L120,75 L135,75 L135,45 L150,45 L150,75 L165,75 L165,140 L210,140 L210,85 L235,85 L235,140 L280,140 L280,60 L300,60 L300,18 L305,4 L310,18 L310,60 L330,60 L330,140 L375,140 L375,90 L410,90 L410,140 L455,140 L455,52 L472,52 L472,25 L485,8 L498,25 L498,52 L515,52 L515,140 L560,140 L560,80 L595,80 L595,140 L640,140 L640,65 L662,65 L662,35 L675,15 L688,35 L688,65 L710,65 L710,140 L760,140 L760,100 L790,100 L790,140 L840,140 L840,70 L865,70 L865,140 L910,140 L910,88 L935,88 L935,140 L980,140 L980,58 L990,30 L1000,58 L1000,140'/%3E%3Cline x1='305' y1='4' x2='305' y2='140' stroke='%23e6c875' stroke-width='0.8' stroke-dasharray='2 3'/%3E%3Cline x1='485' y1='8' x2='485' y2='140' stroke='%23e6c875' stroke-width='0.8' stroke-dasharray='2 3'/%3E%3Cline x1='675' y1='15' x2='675' y2='140' stroke='%23e6c875' stroke-width='0.8' stroke-dasharray='2 3'/%3E%3C/svg%3E");
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  z-index: 0;
+}
+
+.page-hero > .section-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .page-hero__grid {
@@ -132,6 +196,49 @@ html[dir="ltr"] .page-hero { text-align: left; }
   aspect-ratio: 16 / 10;
 }
 
+/* Subtle Gold & Cyan Architectural Corner Brackets */
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 22px;
+  height: 22px;
+  border-top: 2px solid var(--gold-400);
+  border-right: 2px solid var(--gold-400);
+  opacity: 0.7;
+  z-index: 4;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease);
+}
+html[dir="rtl"] .hero-visual::before {
+  right: auto;
+  left: 14px;
+  border-right: 0;
+  border-left: 2px solid var(--gold-400);
+}
+
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  width: 22px;
+  height: 22px;
+  border-bottom: 2px solid var(--cyan-400);
+  border-left: 2px solid var(--cyan-400);
+  opacity: 0.7;
+  z-index: 4;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease);
+}
+html[dir="rtl"] .hero-visual::after {
+  left: auto;
+  right: 14px;
+  border-left: 0;
+  border-right: 2px solid var(--cyan-400);
+}
+
 .hero-visual__img {
   width: 100%;
   height: 100%;
@@ -182,6 +289,69 @@ html[dir="ltr"] .page-hero { text-align: left; }
   padding: 3px 10px;
   border-radius: 999px;
   text-transform: uppercase;
+}
+
+.hero-visual__badge-tag--gold {
+  color: var(--gold-400);
+  background: rgba(230, 200, 117, 0.12);
+  border: 1px solid rgba(230, 200, 117, 0.28);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   EMIRATI SECTION DIVIDER & MOTIFS
+   ═════════════════════════════════════════════════════════════════════════ */
+.emirati-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: clamp(24px, 4vh, 48px) auto;
+  max-width: var(--maxw);
+  padding: 0 var(--pad);
+  opacity: 0.85;
+}
+
+.emirati-divider__line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 230, 0.2) 50%, rgba(230, 200, 117, 0.35) 100%);
+}
+html[dir="rtl"] .emirati-divider__line {
+  background: linear-gradient(270deg, transparent, rgba(0, 240, 230, 0.2) 50%, rgba(230, 200, 117, 0.35) 100%);
+}
+
+.emirati-divider__line--end {
+  background: linear-gradient(90deg, rgba(230, 200, 117, 0.35) 0%, rgba(0, 240, 230, 0.2) 50%, transparent 100%);
+}
+html[dir="rtl"] .emirati-divider__line--end {
+  background: linear-gradient(270deg, rgba(230, 200, 117, 0.35) 0%, rgba(0, 240, 230, 0.2) 50%, transparent 100%);
+}
+
+.emirati-divider__motif {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--gold-400);
+  letter-spacing: 0.12em;
+  font-family: var(--ff-alt);
+}
+.emirati-divider__motif::before,
+.emirati-divider__motif::after {
+  content: "◆";
+  font-size: 5px;
+  color: var(--cyan-400);
+  opacity: 0.75;
+}
+
+.cred-item--uae .cred-icon {
+  background: rgba(230, 200, 117, 0.12);
+  border-color: rgba(230, 200, 117, 0.35);
+  color: var(--gold-400);
+}
+
+.cred-item--uae .tech-term {
+  color: var(--gold-300);
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -1290,4 +1460,137 @@ span.footer__link {
     align-items: flex-start;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SHARED UTILITY HELPERS & COMPONENT CLASSES (Zero Inline Styles)
+   ═════════════════════════════════════════════════════════════════════════ */
+.u-pt-0 { padding-top: 0 !important; }
+.u-pt-20 { padding-top: 20px !important; }
+.u-mt-0 { margin-top: 0 !important; }
+.u-mt-6 { margin-top: 6px !important; }
+.u-mt-8 { margin-top: 8px !important; }
+.u-mt-10 { margin-top: 10px !important; }
+.u-mt-16 { margin-top: 16px !important; }
+.u-mt-20 { margin-top: 20px !important; }
+.u-mt-24 { margin-top: 24px !important; }
+.u-mb-0 { margin-bottom: 0 !important; }
+.u-mb-6 { margin-bottom: 6px !important; }
+.u-mb-8 { margin-bottom: 8px !important; }
+.u-mb-12 { margin-bottom: 12px !important; }
+.u-mb-14 { margin-bottom: 14px !important; }
+.u-mb-16 { margin-bottom: 16px !important; }
+.u-mb-18 { margin-bottom: 18px !important; }
+.u-mb-20 { margin-bottom: 20px !important; }
+.u-mb-30 { margin-bottom: 30px !important; }
+.u-color-cyan { color: var(--cyan-400) !important; }
+.u-color-white { color: var(--white) !important; }
+.u-color-ink90 { color: var(--ink-90) !important; }
+.u-color-ink70 { color: var(--ink-70) !important; }
+.u-text-center { text-align: center !important; }
+.u-inline-flex { display: inline-flex !important; }
+.u-w-fit { width: fit-content !important; }
+.u-w-full { width: 100% !important; }
+.btn--full { width: 100% !important; justify-content: center !important; }
+.btn--fit { width: fit-content !important; }
+
+.catalog-panel__title {
+  font-size: clamp(18px, 1.4vw, 22px);
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.catalog-panel__desc {
+  font-size: 15px;
+  color: var(--ink-90);
+  margin-bottom: 18px;
+}
+.catalog-panel__notice {
+  font-size: 13.5px;
+  color: var(--ink-70);
+  max-width: 52ch;
+  margin-inline: auto;
+}
+
+.icv-box__title {
+  font-family: var(--ff);
+  font-size: clamp(22px, 2.2vw, 32px);
+  color: var(--white);
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+.icv-box__desc {
+  font-size: 15px;
+  color: var(--ink-70);
+  line-height: 1.7;
+  max-width: 48ch;
+}
+.trial-card__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.trial-card__desc {
+  font-size: 13px;
+  color: var(--ink-70);
+}
+
+.map-card__eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  color: var(--cyan-400);
+  text-transform: uppercase;
+}
+.map-card__title {
+  font-size: clamp(20px, 2vw, 26px);
+  color: var(--white);
+  font-weight: 700;
+  margin-top: 6px;
+}
+.map-pin-icon {
+  width: 56px;
+  height: 56px;
+  margin-inline: auto;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  background: rgba(0, 240, 230, 0.1);
+  border: 1px solid rgba(0, 240, 230, 0.3);
+  display: grid;
+  place-items: center;
+  color: var(--cyan-400);
+}
+.map-hq__title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.map-hq__desc {
+  font-size: 13.5px;
+  color: var(--ink-70);
+  max-width: 50ch;
+  margin-inline: auto;
+}
+
+.faq-header__eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  color: var(--cyan-400);
+  text-transform: uppercase;
+}
+.faq-header__title {
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 800;
+  color: var(--white);
+  margin-top: 8px;
+}
+.hub-link-email {
+  color: var(--cyan-400);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 
