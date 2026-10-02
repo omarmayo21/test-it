@@ -326,8 +326,19 @@ h1,h2,h3,p{ margin:0; }
 .burger.is-open span:first-child{ top:50%; transform:translateX(-50%) rotate(45deg); }
 .burger.is-open span:last-child{ bottom:auto; top:50%; transform:translateX(-50%) rotate(-45deg); }
 
-/* RTL Layout Adaptations for Landing Page */
-html[dir="rtl"] { direction:rtl; text-align:right; }
+/* RTL Layout Adaptations for Landing Page & Arabic Typography (GE SS Two) */
+html[lang="ar"],
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+  --ff: 'GE SS Two', 'Noto Sans Arabic', 'Segoe UI', Tahoma, Arial, sans-serif;
+  --ff-alt: 'GE SS Two', 'Noto Sans Arabic', 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-family: var(--ff);
+}
+html[lang="ar"] body,
+html[dir="rtl"] body {
+  font-family: var(--ff);
+}
 html[dir="rtl"] .nav__links{ direction:rtl; }
 html[dir="rtl"] .menu__inner{ text-align:right; }
 html[dir="rtl"] .btn__arw{ transform:scaleX(-1); }
@@ -335,6 +346,69 @@ html[dir="rtl"] .btn:hover .btn__arw{ transform:scaleX(-1) translateX(4px); }
 html[dir="rtl"] .fork__side--r{ text-align:left; justify-items:start; }
 html[dir="rtl"] .fork__side:not(.fork__side--r){ text-align:right; justify-items:end; }
 html[dir="rtl"] .rail{ right:auto; left:clamp(16px,2vw,36px); }
+
+/* Arabic Display & Hero Headings — Refined Scale & Natural Spacing */
+html[lang="ar"] .display,
+html[dir="rtl"] .display {
+  font-family: var(--ff);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 5.2vw, 4.8rem);
+  line-height: 1.22;
+  letter-spacing: 0;
+  word-spacing: 0.16em;
+  text-transform: none;
+}
+html[lang="ar"] .hero .display,
+html[dir="rtl"] .hero .display {
+  text-align: center;
+  max-width: 18ch;
+  margin-inline: auto;
+}
+html[lang="ar"] .display .mask,
+html[dir="rtl"] .display .mask {
+  padding-bottom: 0.08em;
+  overflow: visible;
+}
+html[lang="ar"] .display .mask:not(:last-child),
+html[dir="rtl"] .display .mask:not(:last-child) {
+  margin-bottom: 0.04em;
+  margin-inline-end: 0.35em;
+}
+html[lang="ar"] .display--finale,
+html[dir="rtl"] .display--finale {
+  font-size: clamp(2.1rem, 5.5vw, 5.2rem);
+  line-height: 1.22;
+  letter-spacing: 0;
+  word-spacing: 0.16em;
+}
+html[lang="ar"] .title,
+html[dir="rtl"] .title {
+  font-family: var(--ff);
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.18;
+}
+html[lang="ar"] .lede,
+html[lang="ar"] .lead,
+html[dir="rtl"] .lede,
+html[dir="rtl"] .lead {
+  font-family: var(--ff);
+  letter-spacing: 0;
+  line-height: 1.7;
+}
+
+@media (max-width: 560px) {
+  html[lang="ar"] .display,
+  html[dir="rtl"] .display {
+    font-size: clamp(1.85rem, 7.8vw, 2.85rem);
+    line-height: 1.25;
+    margin-top: 10px;
+  }
+  html[lang="ar"] .title,
+  html[dir="rtl"] .title {
+    font-size: clamp(1.75rem, 7.2vw, 2.55rem);
+  }
+}
 
 /* ── mobile menu ─────────────────────────────────────────────────────────── */
 .menu{

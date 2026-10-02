@@ -1,3 +1,30 @@
-/* Self-hosted brand type — Plus Jakarta Sans (primary) + Syne (accent) */
+/* Self-hosted brand type — Plus Jakarta Sans (primary) + Syne (accent) + GE SS Two (Arabic) */
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:200 800;font-display:swap;src:url(/public/fonts/PlusJakartaSans.woff2) format('woff2');}
 @font-face{font-family:'Syne';font-style:normal;font-weight:400 800;font-display:swap;src:url(/public/fonts/Syne.woff2) format('woff2');}
+
+/* GE SS Two — Official Arabic Corporate Typography */
+@font-face {
+  font-family: 'GE SS Two';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/public/fonts/GE-SS-Two-Light.woff2') format('woff2'),
+       url('/public/fonts/GE-SS-Two-Light.woff') format('woff');
+}
+@font-face {
+  font-family: 'GE SS Two';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/public/fonts/GE-SS-Two-Medium.woff2') format('woff2'),
+       url('/public/fonts/GE-SS-Two-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'GE SS Two';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/public/fonts/GE-SS-Two-Bold.woff2') format('woff2'),
+       url('/public/fonts/GE-SS-Two-Bold.woff') format('woff');
+}
+

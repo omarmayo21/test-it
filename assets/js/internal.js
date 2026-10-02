@@ -458,4 +458,44 @@
     resizeDust();
     requestAnimationFrame(loopDust);
   }
+
+  // ── IT Solutions Category Filter Tabs & Form Pre-Selection ──────────────
+  const svcTabs = document.querySelectorAll('.svc-tab');
+  const catBlocks = document.querySelectorAll('.svc-category-block');
+  if (svcTabs.length > 0 && catBlocks.length > 0) {
+    svcTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.targetCat;
+        svcTabs.forEach(t => t.classList.remove('is-active'));
+        tab.classList.add('is-active');
+
+        catBlocks.forEach(block => {
+          if (target === 'all' || block.id === target) {
+            block.style.display = '';
+            block.style.opacity = '1';
+          } else {
+            block.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // Pre-select service in Tech Consultation form when clicking "Discuss This Solution"
+  document.addEventListener('click', e => {
+    const cta = e.target.closest('[data-select-service]');
+    if (cta) {
+      const serviceVal = cta.dataset.selectService;
+      const selectEl = document.getElementById('t-service');
+      if (selectEl && serviceVal) {
+        selectEl.value = serviceVal;
+        selectEl.style.borderColor = 'var(--cyan-400)';
+        selectEl.style.boxShadow = '0 0 16px rgba(0, 240, 230, 0.4)';
+        setTimeout(() => {
+          selectEl.style.borderColor = '';
+          selectEl.style.boxShadow = '';
+        }, 1800);
+      }
+    }
+  });
 })();
